@@ -10,7 +10,7 @@
 
 
 ## Defining dependencies in Maven
-* In pom.xml file define repository folder inside <repositories> </repositories> tags e.g. 
+* In pom.xml file define repository folder inside &lt;repositories\&gt; &lt;/repositories&gt; tags e.g. 
 ```
     <repository>
         <id>my-local-repo</id>
@@ -26,5 +26,5 @@
         <version>1.2</version>
     </dependency>
 ```
-inside <dependencies> </dependencies> tags.
+inside &lt;dependencies&gt; &lt;/dependencies&gt; tags.
 
