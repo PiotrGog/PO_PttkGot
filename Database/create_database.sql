@@ -1,9 +1,11 @@
-CREATE DATABASE PTTK_GOT;
+CREATE DATABASE IF NOT EXISTS PTTK_GOT;
 
 USE PTTK_GOT;
 
-DROP TABLE IF EXISTS location;
 DROP TABLE IF EXISTS sections;
+DROP TABLE IF EXISTS locations;
+DROP TABLE IF EXISTS mounstain_groups;
+DROP TABLE IF EXISTS mounstain_ranges;
 
 CREATE TABLE IF NOT EXISTS mounstain_ranges(
 	IdMountainRange INT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE,
@@ -19,7 +21,7 @@ CREATE TABLE IF NOT EXISTS mounstain_groups(
 
 	PRIMARY KEY(MountainGroupName),
 
-	FOREIGN KEY(IdMountainRange) REFERENCES 
+	FOREIGN KEY(IdMountainRange) REFERENCES mounstain_ranges(IdMountainRange)
 );
 
 CREATE TABLE IF NOT EXISTS locations(
@@ -42,7 +44,7 @@ CREATE TABLE IF NOT EXISTS sections(
 	LocationTwoId INT UNSIGNED NOT NULL,
 	MountainGroupId INT UNSIGNED NOT NULL,
 
-	CHECK(LocationOneId != LocationTwoId),
+	CHECK(LocationOneId!=LocationTwoId),
 
 	PRIMARY KEY(LocationOneId, LocationTwoId),
 	FOREIGN KEY(LocationOneId) REFERENCES locations(IdLocation),
