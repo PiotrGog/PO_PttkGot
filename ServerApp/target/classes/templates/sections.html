@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="pl-PL" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="../static/css/sections.css" th:href="@{/css/sections.css}" rel="stylesheet" />
+</head>
+<body>
+    <table>
+        <tr>
+            <th>BUTTON</th>
+            <th>Pasmo górskie</th>
+            <th>Grupa górska</th>
+            <th>Lokalizacja pierwsza</th>
+            <th>Lokalizacja druga</th>
+            <th>Punkty</th>
+            <th></th>
+        </tr>
+        <tr th:each="section : ${sections}">
+            <td>jkakfsjdaklfj</td>
+            <td th:text="${section.mountainGroup.getName()}">Onions</td>
+            <td th:text="${section.mountainGroup.getMountainRange().getName()}">Onions</td>
+            <td th:text="${section.getLocationOne().getName()}">Onions</td>
+            <td th:text="${section.getLocationTwo().getName()}">Onions</td>
+            <td th:text="${section.getPointsAltitude() + '/' + section.getPointsDistance()}">Onions</td>
+            <td>
+                <form action="#" th:action="@{/sections/details/} + ${section.getId()}" method="get">
+                    <p><input type="submit" value="Wyświetl"/></p>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        <!--<a href="../home.html" th:href="@{/}">Return to home</a>-->
+    </p>
+</body>
+</html>

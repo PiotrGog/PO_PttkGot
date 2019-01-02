@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="pl-PL" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../static/css/sections.css" th:href="@{/css/sections.css}" rel="stylesheet"/>
+</head>
+<body>
+<table>
+    <tr>
+        <td>Pasmo górskie</td>
+        <td th:text="${mountainRange}"></td>
+    </tr>
+    <tr>
+        <td>Grupa górskie</td>
+        <td th:text="${mountainGroup}"></td>
+    </tr>
+    <tr>
+        <td>Lokalizacja pierwsza</td>
+        <td th:text="${localizationOne}"></td>
+    </tr>
+    <tr>
+        <td>Lokalizacja druga</td>
+        <td th:text="${localizationTwo}"></td>
+    </tr>
+    <tr>
+        <td>Różnica wysokości</td>
+        <td th:text="${altitudeDiff} + 'm'"></td>
+    </tr>
+    <tr>
+        <td>Odległość</td>
+        <td th:text="${distance} + 'm'"></td>
+    </tr>
+    <tr>
+        <td>Punkty za wysokość</td>
+        <td th:text="${altitudePoints}"></td>
+    </tr>
+    <tr>
+        <td>Punkty za odległość</td>
+        <td th:text="${distancePoints}"></td>
+    </tr>
+</table>
+
+<p>
+    <!--<a href="../home.html" th:href="@{/}">Return to home</a>-->
+</p>
+</body>
+</html>
