@@ -25,7 +25,7 @@ public class SectionController {
     }
 
     @RequestMapping(value = "/details/{id}", method = RequestMethod.GET)
-    public String detailsSections(@PathVariable("id") Integer id, Model model) {
+    public String detailsSection(@PathVariable("id") Integer id, Model model) {
         Optional<Section> section = sectionRepository_.findById(id);
         if (section.isPresent()) {
             model.addAttribute("mountainRange", section.get().getMountainGroup().getMountainRange().getName());
@@ -38,8 +38,24 @@ public class SectionController {
             model.addAttribute("altitudePoints", section.get().getPointsAltitude());
             model.addAttribute("distancePoints", section.get().getPointsDistance());
         }
-        return "sections_details";
+        return "section_details";
     }
 
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    public String editSection(@PathVariable("id") Integer id, Model model) {
+        Optional<Section> section = sectionRepository_.findById(id);
+        if (section.isPresent()) {
+            model.addAttribute("mountainRange", section.get().getMountainGroup().getMountainRange().getName());
+            model.addAttribute("mountainGroup", section.get().getMountainGroup().getName());
+            model.addAttribute("localizationOne", section.get().getLocationOne().getName());
+            model.addAttribute("localizationTwo", section.get().getLocationTwo().getName());
+            model.addAttribute("altitudeDiff", Math.abs(section.get().getLocationOne().getAltitude() -
+                    section.get().getLocationTwo().getAltitude()));
+            model.addAttribute("distance", section.get().getDistance());
+            model.addAttribute("altitudePoints", section.get().getPointsAltitude());
+            model.addAttribute("distancePoints", section.get().getPointsDistance());
+        }
+        return "section_edit";
+    }
 
 }

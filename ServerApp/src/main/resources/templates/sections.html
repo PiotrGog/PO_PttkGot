@@ -27,6 +27,9 @@
                 <form action="#" th:action="@{/sections/details/} + ${section.getId()}" method="get">
                     <p><input type="submit" value="Wyświetl"/></p>
                 </form>
+                <form action="#" th:action="@{/sections/edit/} + ${section.getId()}" method="get">
+                    <p><input type="submit" value="Edytuj"/></p>
+                </form>
             </td>
         </tr>
     </table>
