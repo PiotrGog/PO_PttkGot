@@ -1,5 +1,8 @@
 package pttk.model;
 
+import org.hibernate.validator.constraints.UniqueElements;
+import org.springframework.context.annotation.Primary;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,21 +11,23 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="mounstain_ranges")
+@Table(name="mountain_ranges")
 public class MountainRange {
-    @Id
-    @Column(name="IdMountainRange")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private int id;
 
-    @Column(name="MountainRangeName")
+    @Id
+    @UniqueElements
+    @Column(name="id_mountain_range")
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Integer id;
+
+    @Column(name="mountain_range_name")
     private String name;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

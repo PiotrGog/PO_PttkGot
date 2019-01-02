@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Session JDBC Example</title>
+</head>
+<body>
+    <h1>Mountain ranges list:</h1>
+    <ul th:each="m : ${mountainranges}">
+        <li th:text="${m}">msg</li>
+    </ul>
+</body>
+</html>
