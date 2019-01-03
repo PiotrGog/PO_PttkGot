@@ -7,4 +7,12 @@ locationTwo=1
 distance=19
 pointsAltitude=1
 pointsDistance=1
-added section = id=null, location 1 A location two A mountain id=1, name=B, mountain range=id=2, name=b
+updated section = id=12, location 1 A location two A mountain id=1, name=B, mountain range=id=2, name=b
+mountainGroup=1
+locationOne=1
+locationOne=1
+locationTwo=1
+distance=19
+pointsAltitude=8
+pointsDistance=1
+updated section = id=12, location 1 A location two A mountain id=1, name=B, mountain range=id=2, name=b

@@ -63,26 +63,41 @@ public class SectionController {
         if (section.isPresent()) {
             model.addAttribute("section", section.get());
             model.addAttribute("mountainRanges", mountainRangeRepository_.findAll());
+            model.addAttribute("mountainGroups", mountainGroupRepository_.findAll());
             model.addAttribute("locations", locationRepository_.findAll());
-            model.addAttribute("mountainRange", section.get().getMountainGroup().getMountainRange());
-            model.addAttribute("mountainGroup", section.get().getMountainGroup());
-            model.addAttribute("localizationOne", section.get().getLocationOne());
-            model.addAttribute("localizationTwo", section.get().getLocationTwo());
-            model.addAttribute("distance", section.get().getDistance());
-            model.addAttribute("altitudePoints", section.get().getPointsAltitude());
-            model.addAttribute("distancePoints", section.get().getPointsDistance());
         }
         return "section_edit";
     }
 
-    @RequestMapping(value = "/edit/save/{id}", method = RequestMethod.GET)
-    public String updateSection(@PathVariable("id") Integer id, @Valid Section section, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            model.addAttribute("sections", sectionRepository_.findAll());
-            return "sections";
-        }
+    @RequestMapping(value = "/edit/save/{id}", method = RequestMethod.POST)
+    public String updateSection(@PathVariable("id") Integer id,
+//    public String updateSection(@RequestParam("id") Integer id,
+                                @RequestParam Integer mountainGroup,
+                                @RequestParam Integer locationOne,
+                                @RequestParam Integer locationTwo,
+                                @RequestParam Integer distance,
+                                @RequestParam Integer pointsAltitude,
+                                @RequestParam Integer pointsDistance,
+                                Model model) {
 
-        sectionRepository_.save(section);
+        Application.log.info("mountainGroup=" + mountainGroup);
+        Application.log.info("locationOne=" + mountainGroup);
+        Application.log.info("locationOne=" + locationOne);
+        Application.log.info("locationTwo=" + locationTwo);
+        Application.log.info("distance=" + distance);
+        Application.log.info("pointsAltitude=" + pointsAltitude);
+        Application.log.info("pointsDistance=" + pointsDistance);
+
+        Section newSection = new Section();
+        newSection.setId(id);
+        newSection.setLocationOne(locationRepository_.findById(locationOne).get());
+        newSection.setLocationTwo(locationRepository_.findById(locationTwo).get());
+        newSection.setDistance(distance);
+        newSection.setPointsAltitude(pointsAltitude);
+        newSection.setPointsDistance(pointsDistance);
+        newSection.setMountainGroup(mountainGroupRepository_.findById(mountainGroup).get());
+        Application.log.info("updated section = " + newSection);
+        sectionRepository_.save(newSection);
         model.addAttribute("sections", sectionRepository_.findAll());
         return "sections";
     }
@@ -91,21 +106,10 @@ public class SectionController {
     public String showAddSectionForm(Model model) {
         System.out.println("showAddSectionForm");
         model.addAttribute("mountainRanges", mountainRangeRepository_.findAll());
-        model.addAttribute("mountainGroups", mountainRangeRepository_.findAll());
+        model.addAttribute("mountainGroups", mountainGroupRepository_.findAll());
         model.addAttribute("locations", locationRepository_.findAll());
         return "section_add_new";
     }
-
-//    @PostMapping("/adduser")
-//    public String addUser(@Valid User user, BindingResult result, Model model) {
-//        if (result.hasErrors()) {
-//            return "add-user";
-//        }
-//
-//        userRepository.save(user);
-//        model.addAttribute("users", userRepository.findAll());
-//        return "index";
-//    }
 
     @RequestMapping(value = "/addSection", method = RequestMethod.POST)
     public String addSection(@RequestParam Integer mountainGroup,
