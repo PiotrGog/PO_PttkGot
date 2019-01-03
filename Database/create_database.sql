@@ -53,8 +53,12 @@ CREATE TABLE IF NOT EXISTS sections(
 );
 
 INSERT INTO mountain_ranges (mountain_range_name) VALUES ("a");
-INSERT INTO mountain_groups (mountain_group_name, fk_mountain_range_id) VALUES ("B", 1);
-INSERT INTO mountain_groups (mountain_group_name, fk_mountain_range_id) VALUES ("C", 1);
+INSERT INTO mountain_ranges (mountain_range_name) VALUES ("b");
+INSERT INTO mountain_ranges (mountain_range_name) VALUES ("c");
+INSERT INTO mountain_ranges (mountain_range_name) VALUES ("d");
+
+INSERT INTO mountain_groups (mountain_group_name, fk_mountain_range_id) VALUES ("B", 2);
+INSERT INTO mountain_groups (mountain_group_name, fk_mountain_range_id) VALUES ("C", 2);
 
 INSERT INTO locations (location_name, altitude) VALUES ("A", 10);
 INSERT INTO locations (location_name, altitude) VALUES ("B", 110);
@@ -66,11 +70,11 @@ INSERT INTO locations (location_name, altitude) VALUES ("F", 150);
 INSERT INTO sections (points_altitude, points_distance, distance, fk_location_one_id, fk_location_two_id, fk_mountain_group_id)
 	VALUES (12, 12, 0, 1, 2, 2);
 
-INSERT INTO sections (points_altitude, points_distance, fk_location_one_id, fk_location_two_id, fk_mountain_group_id)
+INSERT INTO sections (points_altitude, points_distance, distance, fk_location_one_id, fk_location_two_id, fk_mountain_group_id)
 	VALUES (12, 12, 0, 1, 3, 2);
 
-INSERT INTO sections (points_altitude, points_distance, fk_location_one_id, fk_location_two_id, fk_mountain_group_id)
+INSERT INTO sections (points_altitude, points_distance, distance, fk_location_one_id, fk_location_two_id, fk_mountain_group_id)
 	VALUES (12, 12, 0, 1, 4, 2);
 
-INSERT INTO sections (points_altitude, points_distance, fk_location_one_id, fk_location_two_id, fk_mountain_group_id)
+INSERT INTO sections (points_altitude, points_distance, distance, fk_location_one_id, fk_location_two_id, fk_mountain_group_id)
 	VALUES (12, 12, 0, 1, 5, 2);
