@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html lang="pl-PL" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../static/css/sections.css" th:href="@{/css/sections.css}" rel="stylesheet"/>
+</head>
+<body>
+
+<form action="#" th:action="@{/sections/addSection}" method="post">
+    <table>
+        <tr>
+            <td>Pasmo górskie</td>
+            <td>
+                <select>
+                    <option th:each="mr : ${mountainRanges}"
+                            th:value="${mr}" th:text="${mr.getName()}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Grupa górskie</td>
+            <td>
+                <select name="mountainGroup">
+                    <option th:each="mg : ${mountainGroups}"
+                            th:value="${mg.getId()}" th:text="${mg.getName()}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Lokalizacja pierwsza</td>
+            <td>
+                <select name="locationOne">
+                    <option th:each="l : ${locations}"
+                            th:value="${l.getId()}" th:text="${l.getName()}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Lokalizacja druga</td>
+            <td>
+                <select name="locationTwo">
+                    <option th:each="l : ${locations}"
+                            th:value="${l.getId()}" th:text="${l.getName()}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Odległość</td>
+            <td>
+                <input name="distance" type="number">
+            </td>
+        </tr>
+        <tr>
+            <td>Punkty za wysokość</td>
+            <td>
+                <select name="pointsAltitude">
+                    <option th:each="i : ${#numbers.sequence(0, 20)}" th:value="${i}" th:text="${i}"
+                            th:selected="${i==1}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Punkty za odległość</td>
+            <td>
+                <select name="pointsDistance">
+                    <option th:each="i : ${#numbers.sequence(0, 20)}" th:value="${i}" th:text="${i}"
+                            th:selected="${i==1}"></option>
+                </select>
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Dodaj">
+</form>
+
+</body>
+</html>

@@ -9,7 +9,6 @@ import javax.persistence.*;
 @Table(name = "sections")
 public class Section {
     @Id
-    @UniqueElements
     @Column(name = "id_section")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;

@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS sections(
 	fk_location_two_id INT UNSIGNED NOT NULL,
 	fk_mountain_group_id INT UNSIGNED NOT NULL,
 
-	CHECK(fk_location_one_id!=fk_location_two_id),
+	CHECK(fk_location_one_id<>fk_location_two_id),
 
 	PRIMARY KEY(fk_location_one_id, fk_location_two_id),
 	FOREIGN KEY(fk_location_one_id) REFERENCES locations(id_location),
@@ -78,3 +78,6 @@ INSERT INTO sections (points_altitude, points_distance, distance, fk_location_on
 
 INSERT INTO sections (points_altitude, points_distance, distance, fk_location_one_id, fk_location_two_id, fk_mountain_group_id)
 	VALUES (12, 12, 0, 1, 5, 2);
+
+INSERT INTO sections (points_altitude, points_distance, distance, fk_location_one_id, fk_location_two_id, fk_mountain_group_id)
+	VALUES (12, 12, 0, 5, 5, 2);

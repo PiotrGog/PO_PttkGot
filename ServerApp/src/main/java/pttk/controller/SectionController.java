@@ -1,24 +1,35 @@
 package pttk.controller;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import pttk.Application;
+import pttk.model.Location;
+import pttk.model.MountainGroup;
 import pttk.model.Section;
 import pttk.repositories.LocationRepository;
+import pttk.repositories.MountainGroupRepository;
 import pttk.repositories.MountainRangeRepository;
 import pttk.repositories.SectionRepository;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
 @RequestMapping("/sections")
 public class SectionController {
+
     @Autowired
     private SectionRepository sectionRepository_;
 
     @Autowired
     private MountainRangeRepository mountainRangeRepository_;
+
+    @Autowired
+    private MountainGroupRepository mountainGroupRepository_;
 
     @Autowired
     private LocationRepository locationRepository_;
@@ -64,24 +75,62 @@ public class SectionController {
         return "section_edit";
     }
 
-    @RequestMapping(value = "/edit/{id}/save", method = RequestMethod.POST)
-    public String updateSection(@PathVariable("id") Integer id, @RequestParam("altitudePoints") String ap, Model model) {
-        Optional<Section> originalSection = null;//sectionRepository_.findById(id);
-        System.out.println("update");
-        if (originalSection.isPresent()) {
-//            originalSection.get().setPointsAltitude(ap);
-//            section.get().set
-//            model.addAttribute("mountainRanges", mountainRangeRepository_.findAll());
-//            model.addAttribute("locations", locationRepository_.findAll());
-//            model.addAttribute("mountainRange", section.get().getMountainGroup().getMountainRange());
-//            model.addAttribute("mountainGroup", section.get().getMountainGroup());
-//            model.addAttribute("localizationOne", section.get().getLocationOne());
-//            model.addAttribute("localizationTwo", section.get().getLocationTwo());
-//            model.addAttribute("distance", section.get().getDistance());
-//            model.addAttribute("altitudePoints", section.get().getPointsAltitude());
-//            model.addAttribute("distancePoints", section.get().getPointsDistance());
-            sectionRepository_.save(originalSection.get());
+    @RequestMapping(value = "/edit/save/{id}", method = RequestMethod.GET)
+    public String updateSection(@PathVariable("id") Integer id, @Valid Section section, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("sections", sectionRepository_.findAll());
+            return "sections";
         }
+
+        sectionRepository_.save(section);
+        model.addAttribute("sections", sectionRepository_.findAll());
+        return "sections";
+    }
+
+    @GetMapping(value = "/addSectionForm")
+    public String showAddSectionForm(Model model) {
+        System.out.println("showAddSectionForm");
+        model.addAttribute("mountainRanges", mountainRangeRepository_.findAll());
+        model.addAttribute("mountainGroups", mountainRangeRepository_.findAll());
+        model.addAttribute("locations", locationRepository_.findAll());
+        return "section_add_new";
+    }
+
+//    @PostMapping("/adduser")
+//    public String addUser(@Valid User user, BindingResult result, Model model) {
+//        if (result.hasErrors()) {
+//            return "add-user";
+//        }
+//
+//        userRepository.save(user);
+//        model.addAttribute("users", userRepository.findAll());
+//        return "index";
+//    }
+
+    @RequestMapping(value = "/addSection", method = RequestMethod.POST)
+    public String addSection(@RequestParam Integer mountainGroup,
+                             @RequestParam Integer locationOne,
+                             @RequestParam Integer locationTwo,
+                             @RequestParam Integer distance,
+                             @RequestParam Integer pointsAltitude,
+                             @RequestParam Integer pointsDistance,
+                             Model model) {
+        Application.log.info("mountainGroup=" + mountainGroup);
+        Application.log.info("locationOne=" + mountainGroup);
+        Application.log.info("locationOne=" + locationOne);
+        Application.log.info("locationTwo=" + locationTwo);
+        Application.log.info("distance=" + distance);
+        Application.log.info("pointsAltitude=" + pointsAltitude);
+        Application.log.info("pointsDistance=" + pointsDistance);
+        Section newSection = new Section();
+        newSection.setLocationOne(locationRepository_.findById(locationOne).get());
+        newSection.setLocationTwo(locationRepository_.findById(locationTwo).get());
+        newSection.setDistance(distance);
+        newSection.setPointsAltitude(pointsAltitude);
+        newSection.setPointsDistance(pointsDistance);
+        newSection.setMountainGroup(mountainGroupRepository_.findById(mountainGroup).get());
+        Application.log.info("added section = " + newSection);
+        sectionRepository_.save(newSection);
         model.addAttribute("sections", sectionRepository_.findAll());
         return "sections";
     }
