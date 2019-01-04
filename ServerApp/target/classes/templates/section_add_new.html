@@ -9,26 +9,40 @@
         /*<![CDATA[*/
         var mountainRanges = null;
         var mountainGroups = null;
-
-        // var mountainRangesSelector = null;
-        // var mountainGroupsSelector = null;
+        var data = [];
         function changeMountainRangesListener() {
             var mountainRangesSelector = document.getElementById("mountainRangesSelectList");
             var mountainGroupsSelector = document.getElementById("mountainGroupsSelectList");
-            // console.log(mountainRangesSelector.options.clea);
+
             console.log(mountainRangesSelector.innerHTML);
             var length = mountainGroupsSelector.options.length;
             for (i = 0; i < length; i++) {
                 mountainGroupsSelector.options[i] = null;
             }
-            for (i = 0; i < 5; i++) {
-                var option = document.createElement("option");
-                option.text = i.toString();
-                option.value = i.toString();
-                mountainGroupsSelector.add(option);
+
+            length = data.length;
+            for (i = 0; i < length; i++) {
+                console.log(typeof data[i].mountainRange.id);
+                console.log(data[i].mountainRange.id);
+                console.log(typeof mountainRangesSelector.options.selectedIndex);
+                console.log(mountainRangesSelector.options.selectedIndex);
+                console.log(data[i].mountainRange.id == mountainRangesSelector.options.selectedIndex);
+                if (data[i].mountainRange.id == mountainRangesSelector.options.selectedIndex) {
+                    console.log("aaaadddd");
+                    var option = document.createElement("option");
+                    option.text = data[i].name;
+                    option.value = data[i].id;
+                    mountainGroupsSelector.add(option);
+                }
             }
+            console.log(data);
         }
+
         /*]]>*/
+    </script>
+
+    <script th:each="item:${mountainGroups}" th:inline="javascript">
+        data.push([[${item}]]);
     </script>
 
 </head>
@@ -37,10 +51,10 @@
 
 <script>
     /*<![CDATA[*/
-        mountainRanges = "[[${mountainRanges}]]";
-        mountainGroups = "[[${mountainGroups}]]";
-        console.log(mountainRanges);
-        console.log(mountainGroups);
+    mountainRanges = "[[${mountainRanges}]]";
+    mountainGroups = "[[${mountainGroups}]]";
+    console.log(mountainRanges);
+    console.log(mountainGroups);
     /*]]>*/
 </script>
 
