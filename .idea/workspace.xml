@@ -2,33 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="93ec2d02-ac39-4557-b6f1-859bdc924ae8" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pttk/controller/EmployeeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pttk/controller/ServerResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pttk/repositories/EmployeeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServerApp/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServerApp/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServerApp/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServerApp/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServerApp/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServerApp/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServerApp/src/main/java/hello/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pttk/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServerApp/src/main/java/hello/GreetingController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServerApp/src/main/resources/templates/greeting.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServerApp/target/classes/templates/greeting.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EmployeeController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Email.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pttk/model/Email.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pttk/model/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/EmployeeState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pttk/model/EmployeeState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Pesel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pttk/model/Pesel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pttk/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/EmployeeRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/models/EmailTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pttk/model/EmailTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/models/PeselTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pttk/model/PeselTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -133,7 +108,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="857" />
     <option name="y" value="62" />
     <option name="width" value="1400" />
@@ -160,6 +135,11 @@
             <path>
               <item name="pttk_got" type="b2602c69:ProjectViewProjectNode" />
               <item name="PO_PttkGot" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pttk_got" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PO_PttkGot" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -182,15 +162,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="pttk" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pttk_got" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PO_PttkGot" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="pttk" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="pttk_got" type="b2602c69:ProjectViewProjectNode" />
@@ -200,15 +171,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="pttk" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pttk_got" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PO_PttkGot" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="pttk" type="462c0819:PsiDirectoryNode" />
-              <item name="repositories" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="pttk_got" type="b2602c69:ProjectViewProjectNode" />
@@ -428,7 +390,7 @@
       <updated>1546087756371</updated>
       <workItem from="1546087762124" duration="648000" />
       <workItem from="1546163981594" duration="11124000" />
-      <workItem from="1546598405072" duration="11109000" />
+      <workItem from="1546598405072" duration="12397000" />
     </task>
     <servers />
   </component>
@@ -465,11 +427,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22881000" />
+    <option name="totallyTimeSpent" value="24169000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -493,7 +454,7 @@
       <window_info anchor="bottom" id="Run" order="2" weight="0.4431456" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15625" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15625" />
       <window_info anchor="right" id="Bean Validation" order="3" />
       <window_info id="Web" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" />
