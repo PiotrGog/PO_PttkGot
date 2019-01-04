@@ -1,4 +1,4 @@
-package models;
+package pttk.model;
 
 import org.junit.jupiter.api.Test;
 

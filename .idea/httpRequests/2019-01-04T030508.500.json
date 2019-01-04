@@ -1,0 +1,7 @@
+{
+  "timestamp": "2019-01-04T14:05:08.620+0000",
+  "status": 500,
+  "error": "Internal Server Error",
+  "message": "No default constructor for entity:  : pttk.model.Email; nested exception is org.hibernate.InstantiationException: No default constructor for entity:  : pttk.model.Email",
+  "path": "/api/emp"
+}

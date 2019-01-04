@@ -1,20 +1,24 @@
-package models;
+package pttk.model;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Transient;
 
 @MappedSuperclass
 public abstract class User {
+    @Transient
     private static final String INVALID_SURNAME_MSG = "Invalid surname";
+    @Transient
     private static final String INVALID_NAME_MSG = "Invalid name";
+    @Transient
     private static final String NAME_REGEX = "[a-zA-Z]+";
 
 
     @Id
     private String login;
 
-    @Column
+    @Column(name="pass")
     private String password;
 
     @Column

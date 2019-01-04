@@ -1,0 +1,16 @@
+GET http://localhost:8080/api/emp
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-01-04T030508.500.json
+
+###
+
+GET http://localhost:8080/api/emp
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-01-04T030425.200.txt
+
+###
+

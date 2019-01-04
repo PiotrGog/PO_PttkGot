@@ -1,18 +1,23 @@
-package models;
+package pttk.model;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.Transient;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
 @Embeddable
 public class Email {
+    @Transient
     private static final String EMAIL_REGEX = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
+    @Transient
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile(EMAIL_REGEX, Pattern.CASE_INSENSITIVE);
 
     @Column
     private String email;
+
+    public Email() {}
 
     public Email(String email) throws IllegalArgumentException
     {

@@ -1,17 +1,20 @@
-package models;
+package pttk.model;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.Transient;
 import java.util.Objects;
 
 
 @Embeddable
 public class Pesel {
+    @Transient
     private final static int[] pesel_coefs = {9, 7, 3, 1};
 
     @Column
     private String pesel;
 
+    public Pesel() {}
 
     public Pesel(String pesel) throws IllegalArgumentException
     {
