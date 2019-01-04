@@ -4,15 +4,54 @@
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="../static/css/sections.css" th:href="@{/css/sections.css}" rel="stylesheet"/>
+
+    <script>
+        /*<![CDATA[*/
+        var mountainRanges = null;
+        var mountainGroups = null;
+
+        // var mountainRangesSelector = null;
+        // var mountainGroupsSelector = null;
+        function changeMountainRangesListener() {
+            var mountainRangesSelector = document.getElementById("mountainRangesSelectList");
+            var mountainGroupsSelector = document.getElementById("mountainGroupsSelectList");
+            // console.log(mountainRangesSelector.options.clea);
+            console.log(mountainRangesSelector.innerHTML);
+            var length = mountainGroupsSelector.options.length;
+            for (i = 0; i < length; i++) {
+                mountainGroupsSelector.options[i] = null;
+            }
+            for (i = 0; i < 5; i++) {
+                var option = document.createElement("option");
+                option.text = i.toString();
+                option.value = i.toString();
+                mountainGroupsSelector.add(option);
+            }
+        }
+        /*]]>*/
+    </script>
+
 </head>
 <body>
+
+
+<script>
+    /*<![CDATA[*/
+        mountainRanges = "[[${mountainRanges}]]";
+        mountainGroups = "[[${mountainGroups}]]";
+        console.log(mountainRanges);
+        console.log(mountainGroups);
+    /*]]>*/
+</script>
+
+<div id="test">dkfsajfkdljlf</div>
 
 <form action="#" th:action="@{/sections/addSection}" method="post">
     <table>
         <tr>
             <td>Pasmo górskie</td>
             <td>
-                <select>
+                <select id="mountainRangesSelectList" onchange="changeMountainRangesListener();">
                     <option th:each="mr : ${mountainRanges}"
                             th:value="${mr}" th:text="${mr.getName()}"></option>
                 </select>
@@ -21,7 +60,7 @@
         <tr>
             <td>Grupa górskie</td>
             <td>
-                <select name="mountainGroup">
+                <select id="mountainGroupsSelectList" name="mountainGroup">
                     <option th:each="mg : ${mountainGroups}"
                             th:value="${mg.getId()}" th:text="${mg.getName()}"></option>
                 </select>
