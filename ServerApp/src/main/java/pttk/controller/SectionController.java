@@ -138,4 +138,12 @@ public class SectionController {
         model.addAttribute("sections", sectionRepository_.findAll());
         return "sections";
     }
+
+    @RequestMapping(value = "/remove/{id}", method = RequestMethod.GET)
+    public String removeSection(@PathVariable("id") Integer id, Model model) {
+        Optional<Section> section = sectionRepository_.findById(id);
+        sectionRepository_.delete(section.get());
+        model.addAttribute("sections", sectionRepository_.findAll());
+        return "sections";
+    }
 }
