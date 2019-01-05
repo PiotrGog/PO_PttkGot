@@ -16,10 +16,17 @@ connection = engine.connect()
 
 Base.prepare(engine, reflect=True)
 
-Character_Specialization = Base.classes.Character_Specialization
-Race_Trump = Base.classes.Race_Trump
-Race_Class = Base.classes.Race_Class
+Mountain_Ranges = Base.classes.mountain_ranges
+Mountain_Groups = Base.classes.mountain_groups
+Locations = Base.classes.locations
+Sections = Base.class.sections
 
+
+mountainRangesList = [
+                    "TATRY I PODTATRZE", "BESKIDY ZACHODNIE", 
+                    "BESKIDY WSCHODNIE", "GÓRY ŚWIĘTOKRZYSKIE", 
+                    "SUDETY"
+                    ];
 
 # # FILL THE TEAMS TABLE
 with open('teams_names.txt') as f:

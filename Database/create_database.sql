@@ -57,8 +57,10 @@ INSERT INTO mountain_ranges (mountain_range_name) VALUES ("b");
 INSERT INTO mountain_ranges (mountain_range_name) VALUES ("c");
 INSERT INTO mountain_ranges (mountain_range_name) VALUES ("d");
 
-INSERT INTO mountain_groups (mountain_group_name, fk_mountain_range_id) VALUES ("B", 2);
-INSERT INTO mountain_groups (mountain_group_name, fk_mountain_range_id) VALUES ("C", 2);
+INSERT INTO mountain_groups (mountain_group_name, fk_mountain_range_id) 
+	VALUES ("B", 2);
+INSERT INTO mountain_groups (mountain_group_name, fk_mountain_range_id) 
+	VALUES ("C", 2);
 
 INSERT INTO locations (location_name, altitude) VALUES ("A", 10);
 INSERT INTO locations (location_name, altitude) VALUES ("B", 110);
@@ -81,3 +83,27 @@ INSERT INTO sections (points_altitude, points_distance, distance, fk_location_on
 
 INSERT INTO sections (points_altitude, points_distance, distance, fk_location_one_id, fk_location_two_id, fk_mountain_group_id)
 	VALUES (12, 12, 0, 5, 5, 2);
+
+
+INSERT INTO mountain_ranges (mountain_range_name) VALUES ("Beskid Sądecki");
+
+INSERT INTO mountain_groups (mountain_group_name, fk_mountain_range_id) 
+	VALUES ("BZ.09", 5);
+
+INSERT INTO locations (location_name, altitude) VALUES ("Jaworek", 110);
+INSERT INTO locations (location_name, altitude) VALUES ("Niemców", 120);
+INSERT INTO locations (location_name, altitude) VALUES ("Schronisko Prehyba", 150);
+INSERT INTO locations (location_name, altitude) VALUES ("Radziejów", 150);
+INSERT INTO locations (location_name, altitude) VALUES ("Rytra", 150);
+
+INSERT INTO sections (points_altitude, points_distance, distance, fk_location_one_id, fk_location_two_id, fk_mountain_group_id)
+	VALUES (14, 7, 7, 7, 8, 3);
+
+INSERT INTO sections (points_altitude, points_distance, distance, fk_location_one_id, fk_location_two_id, fk_mountain_group_id)
+	VALUES (4, 5, 45, 8, 9, 3);
+
+INSERT INTO sections (points_altitude, points_distance, distance, fk_location_one_id, fk_location_two_id, fk_mountain_group_id)
+	VALUES (17, 9, 11, 9, 10, 3);
+
+INSERT INTO sections (points_altitude, points_distance, distance, fk_location_one_id, fk_location_two_id, fk_mountain_group_id)
+	VALUES (13, 6, 8928, 10, 11, 3);

@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html lang="pl-PL" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="../static/css/sections.css" th:href="@{/css/sections.css}" rel="stylesheet" />
+</head>
+<body>
+    <form action="/sections/addSectionForm" method="get">
+        <p><input type="submit" value="Dodaj odcinek"/></p>
+    </form>
+
+    <table>
+        <tr>
+            <th> </th>
+            <th>Lokalizacja początkowa</th>
+            <th>Lokalizacja końcowa</th>
+            <th>Punkty</th>
+            <th> </th>
+        </tr>
+        <tr th:each="route : ${routes}">
+            <td>jkakfsjdaklfj</td>
+            <td th:text="${route[0]}">Onions</td>
+            <td th:text="${route[route.length-1]}">Onions</td>
+            <!--<td th:text="${section.mountainGroup.getMountainRange().getName()}">Onions</td>-->
+            <!--<td th:text="${section.getLocationOne().getName()}">Onions</td>-->
+            <!--<td th:text="${section.getLocationTwo().getName()}">Onions</td>-->
+            <!--<td th:text="${section.getPointsAltitude() + '/' + section.getPointsDistance()}">Onions</td>-->
+            <td>
+                <form action="#" th:action="@{/sections/details/} + ${section.getId()}" method="get">
+                    <p><input type="submit" value="Szczegóły"/></p>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        <!--<a href="../home.html" th:href="@{/}">Return to home</a>-->
+    </p>
+</body>
+</html>
