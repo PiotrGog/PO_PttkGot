@@ -20,16 +20,16 @@
         </tr>
         <tr th:each="route : ${routes}">
             <td>jkakfsjdaklfj</td>
-            <td th:text="${route[0]}">Onions</td>
-            <td th:text="${route[route.length-1]}">Onions</td>
+            <td th:text="${route.sections.get(0).getSecond().getLocationOne().getName()}">Onions</td>
+            <td th:text="${route.sections.get(route.sections.size()-1).getSecond().getLocationOne().getName()}">Onions</td>
             <!--<td th:text="${section.mountainGroup.getMountainRange().getName()}">Onions</td>-->
             <!--<td th:text="${section.getLocationOne().getName()}">Onions</td>-->
             <!--<td th:text="${section.getLocationTwo().getName()}">Onions</td>-->
             <!--<td th:text="${section.getPointsAltitude() + '/' + section.getPointsDistance()}">Onions</td>-->
             <td>
-                <form action="#" th:action="@{/sections/details/} + ${section.getId()}" method="get">
-                    <p><input type="submit" value="Szczegóły"/></p>
-                </form>
+                <!--<form action="#" th:action="@{/route/details/} + ${route.getId()}" method="get">-->
+                    <!--<p><input type="submit" value="Szczegóły"/></p>-->
+                <!--</form>-->
             </td>
         </tr>
     </table>
