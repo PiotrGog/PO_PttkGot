@@ -89,6 +89,23 @@
             <version>5.2.0</version>
         </dependency>
 
+
+	<dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.0.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <!-- update Hibernate dependency on Javassist
+                    to 3.23.1 for Java 11 compatibility -->
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>3.23.1-GA</version>
     </dependencies>
 
     <properties>
