@@ -20,7 +20,7 @@
 *.rar
 *.properties
 src/main/resources/application.properties
-.idea/
+*.idea/
 
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
