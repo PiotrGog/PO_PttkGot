@@ -2,7 +2,6 @@ package pttk.controller;
 
 import org.jgrapht.GraphPath;
 import org.jgrapht.alg.shortestpath.AllDirectedPaths;
-import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.SimpleDirectedWeightedGraph;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Pair;
@@ -13,15 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import pttk.model.Location;
-import pttk.model.Section;
 import pttk.service.CustomWeightedEdge;
 import pttk.service.GraphPathDecorator;
 import pttk.service.RouteService;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.function.BiFunction;
-import java.util.function.Function;
 
 @Controller
 @RequestMapping("/route")
@@ -36,24 +32,45 @@ public class RouteController {
                             @RequestParam Integer mountainGroup,
                             @RequestParam Integer locationStart,
                             @RequestParam Integer locationFinish,
-                            @RequestParam ArrayList<Integer> otherLocations,
+//                            @RequestParam(value = "localizationsList[]") List<Integer> localizationsList,
                             @RequestParam Integer pointsAltitude,
                             @RequestParam Integer pointsDistance,
-            Model model) {
+                            Model model) {
 
-        SimpleDirectedWeightedGraph<Integer, CustomWeightedEdge> graph = routeService_.buildGraph();
+//        System.out.println(localizationsList);
+        SimpleDirectedWeightedGraph<Integer, CustomWeightedEdge> graph =
+                routeService_.buildGraph(mountainRange, mountainGroup);
 
         AllDirectedPaths<Integer, CustomWeightedEdge> directedPaths = new AllDirectedPaths<>(graph);
 
+        Set<Integer> startLocations = null;
+        if (null == locationStart) {
+            startLocations = graph.vertexSet();
+        } else {
+            startLocations = new HashSet<>(Collections.singletonList(locationStart));
+        }
+
+        Set<Integer> finishLocations = null;
+        if (null == locationStart) {
+            finishLocations = graph.vertexSet();
+        } else {
+            finishLocations = new HashSet<>(Collections.singletonList(locationFinish));
+        }
+
         List<GraphPath<Integer, CustomWeightedEdge>> routes =
-                directedPaths.getAllPaths(7, 11, true, null);
+                directedPaths.getAllPaths(startLocations, finishLocations, true, null);
         paths = new ArrayList<>();
 
         int graphPathIndex = 1;
         for (GraphPath<Integer, CustomWeightedEdge> route : routes) {
+            List<CustomWeightedEdge> graphsEdges = route.getEdgeList();
+            if (!(2 <= graphsEdges.size()
+                    && !graphsEdges.get(0).getSection().getId().equals(graphsEdges.get(1).getSection().getId()))) {
+                continue;
+            }
             GraphPathDecorator newPath = new GraphPathDecorator();
             int sec = 1;
-            for (CustomWeightedEdge edge : route.getEdgeList()) {
+            for (CustomWeightedEdge edge : graphsEdges) {
                 newPath.sections.add(Pair.of(sec, edge.getSection()));
                 sec++;
             }
@@ -88,11 +105,11 @@ public class RouteController {
 
     @RequestMapping(value = "/details/{id}", method = RequestMethod.GET)
     public String findRouteDetails(@PathVariable Integer id, Model model) {
-        model.addAttribute("startLocation", paths.get(paths.size() - 1).getSecond()
+        model.addAttribute("startLocation", paths.get(id- 1).getSecond()
                 .locations.get(0).getSecond().getName());
         model.addAttribute("finishLocation", paths.get(id - 1).getSecond()
                 .locations.get(paths.get(id - 1).getSecond()
-                        .locations.size()-1).getSecond().getName());
+                        .locations.size() - 1).getSecond().getName());
         model.addAttribute("currentIndex", id);
         model.addAttribute("pathSections", paths.get(id - 1).getSecond());
         return "route_planning_found_details";
@@ -106,7 +123,6 @@ public class RouteController {
         model.addAttribute("locations", routeService_.findAllLocation());
         return "route_planning_criteria";
     }
-
 
 
 }

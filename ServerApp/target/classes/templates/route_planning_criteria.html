@@ -11,6 +11,8 @@
         var mountainGroups = null;
         var data = [];
 
+        var localizationsList = [];
+
         function changeMountainRangesListener() {
             var mountainRangesSelector = document.getElementById("mountainRangesSelectList");
             var mountainGroupsSelector = document.getElementById("mountainGroupsSelectList");
@@ -36,11 +38,6 @@
                     mountainGroupsSelector.add(option);
                 }
             }
-
-            var option = document.createElement("option");
-            option.text = "";
-            option.value = "";
-            mountainGroupsSelector.add(option);
 
             console.log(data);
         }
@@ -73,7 +70,7 @@
                 <select id="mountainRangesSelectList" name="mountainRange" onchange="changeMountainRangesListener();">
                     <option></option>
                     <option th:each="mr : ${mountainRanges}"
-                            th:value="${mr}" th:text="${mr.getName()}"></option>
+                            th:value="${mr.getId()}" th:text="${mr.getName()}"></option>
                 </select>
             </td>
         </tr>
@@ -111,7 +108,7 @@
             <td>
                 <div>Lokalizacje pośrednie</div>
                 <div>
-                    <select name="otherLocation">
+                    <select id="otherLocations" name="otherLocation">
                         <option></option>
                         <option th:each="l : ${locations}"
                                 th:value="${l.getId()}" th:text="${l.getName()}"></option>
@@ -119,22 +116,49 @@
                 </div>
             </td>
             <td>
+                <a href="javascript:add()">href</a>
+                <script type="text/javascript">
+                    // $.ajax({
+                    //     type : "POST",
+                    //     url : "/myurl",
+                    //     data : {
+                    //         myArray: a //notice that "myArray" matches the value for @RequestParam
+                    //                    //on the Java side
+                    //     },
+                    //     success : function(response) {
+                    //         // do something ...
+                    //     },
+                    //     error : function(e) {
+                    //         alert('Error: ' + e);
+                    //     }
+                    // });
+                    function add(){
+                        var otherLocations = document.getElementById("otherLocations");
+                        var tr = document.createElement("tr");
+                        var td = document.createElement("td");
+                        console.log(otherLocations);
+                        td.innerText = otherLocations.options[otherLocations.selectedIndex].text;
+                        tr.appendChild(td);
+                        document.getElementById("other_locations").appendChild(tr);
+                        localizationsList.push(otherLocations.options[otherLocations.selectedIndex].value);
+                    }
+                </script>
                 <table id="other_locations">
-                    <tr>
-                        <td>jsdklajfkldsa</td>
-                    </tr>
-                    <tr>
-                        <td>jsdklajfkldsa</td>
-                    </tr>
-                    <tr>
-                        <td>jsdklajfkldsa</td>
-                    </tr>
-                    <tr>
-                        <td>jsdklajfkldsa</td>
-                    </tr>
-                    <tr>
-                        <td>jsdklajfkldsa</td>
-                    </tr>
+                    <!--<tr>-->
+                        <!--<td>jsdklajfkldsa</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>jsdklajfkldsa</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>jsdklajfkldsa</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>jsdklajfkldsa</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>jsdklajfkldsa</td>-->
+                    <!--</tr>-->
                 </table>
             </td>
         </tr>

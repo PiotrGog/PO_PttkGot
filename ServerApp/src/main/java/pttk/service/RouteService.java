@@ -14,6 +14,8 @@ import pttk.repositories.MountainGroupRepository;
 import pttk.repositories.MountainRangeRepository;
 import pttk.repositories.SectionRepository;
 
+import java.util.List;
+
 
 @Service
 public class RouteService {
@@ -34,42 +36,48 @@ public class RouteService {
 
     /**
      * Return all mountain ranges from repository.
+     *
      * @return Iterable collection of MountainRange
      */
-    public Iterable<MountainRange> findAllMountainRange(){
+    public Iterable<MountainRange> findAllMountainRange() {
         return mountainRangeRepository_.findAll();
     }
 
     /**
      * Return all mountain group from repository.
+     *
      * @return Iterable collection of MountainGroup
      */
-    public Iterable<MountainGroup> findAllMountainGroup(){
+    public Iterable<MountainGroup> findAllMountainGroup() {
         return mountainGroupRepository_.findAll();
     }
 
     /**
      * Return all locations from repository.
+     *
      * @return Iterable collection of Location
      */
-    public Iterable<Location> findAllLocation(){
+    public Iterable<Location> findAllLocation() {
         return locationRepository_.findAll();
     }
 
     /**
      * Return all sections from repository.
+     *
      * @return Iterable collection of Section
      */
-    public Iterable<Section> findAllSection(){
+    public Iterable<Section> findAllSection() {
         return sectionRepository_.findAll();
     }
 
 
     /**
      * Function builds graph from locations and sections between that locations.
+     *
      * @return built graph from locations and sections in repository
      */
-    public SimpleDirectedWeightedGraph<Integer, CustomWeightedEdge> buildGraph() {
+    public SimpleDirectedWeightedGraph<Integer, CustomWeightedEdge> buildGraph(Integer mountainRange,
+                                                                               Integer mountainGroup) {
         SimpleDirectedWeightedGraph<Integer, CustomWeightedEdge> graph =
                 new SimpleDirectedWeightedGraph<>(CustomWeightedEdge.class);
         sections = findAllSection();
@@ -80,9 +88,12 @@ public class RouteService {
         }
 
         for (Section s : sections) {
-            CustomWeightedEdge edge = graph.addEdge(s.getLocationOne().getId(), s.getLocationTwo().getId());
-            edge.setSection(s);
-            graph.setEdgeWeight(edge, s.getDistance().doubleValue());
+            if ((null == mountainGroup || s.getMountainGroup().getId().equals(mountainGroup))
+                    && (null == mountainRange || s.getMountainGroup().getMountainRange().getId().equals(mountainRange))) {
+                CustomWeightedEdge edge = graph.addEdge(s.getLocationOne().getId(), s.getLocationTwo().getId());
+                edge.setSection(s);
+                graph.setEdgeWeight(edge, s.getDistance().doubleValue());
+            }
         }
 
         return graph;
@@ -91,17 +102,19 @@ public class RouteService {
 
     /**
      * Calculate altitude and distance points for graph path.
+     *
      * @param graphPath is found graph path inside graph.
      * @return Pair which first value is sum of altitude points, second - sum of distance points in found GraphPath
      */
-    public Pair<Integer, Integer> sumGraphPathPoints(GraphPath<Integer, CustomWeightedEdge> graphPath)
-    {
+    public Pair<Integer, Integer> sumGraphPathPoints(GraphPath<Integer, CustomWeightedEdge> graphPath) {
         int altitudePoints = 0;
         int distancePoints = 0;
         for (CustomWeightedEdge edge : graphPath.getEdgeList()) {
-            altitudePoints+=edge.getSection().getPointsAltitude();
-            distancePoints+=edge.getSection().getPointsDistance();
+            altitudePoints += edge.getSection().getPointsAltitude();
+            distancePoints += edge.getSection().getPointsDistance();
         }
         return Pair.of(altitudePoints, distancePoints);
     }
+
+
 }
