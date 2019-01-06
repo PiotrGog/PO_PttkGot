@@ -99,7 +99,7 @@ public class RouteController {
     }
 
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public String findRouteCriteria(Model model) {
         model.addAttribute("mountainRanges", routeService_.findAllMountainRange());
         model.addAttribute("mountainGroups", routeService_.findAllMountainGroup());

@@ -20,6 +20,11 @@
                 mountainGroupsSelector.options[i] = null;
             }
 
+            var option = document.createElement("option");
+            option.text = "";
+            option.value = "";
+            mountainGroupsSelector.add(option);
+
             length = data.length;
             for (i = 0; i < length; i++) {
                 console.log(typeof data[i].mountainRange.id);

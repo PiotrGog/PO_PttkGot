@@ -4,8 +4,66 @@
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="../static/css/sections.css" th:href="@{/css/sections.css}" rel="stylesheet"/>
+
+    <script>
+        /*<![CDATA[*/
+        var mountainRanges = null;
+        var mountainGroups = null;
+        var data = [];
+
+        function changeMountainRangesListener() {
+            var mountainRangesSelector = document.getElementById("mountainRangesSelectList");
+            var mountainGroupsSelector = document.getElementById("mountainGroupsSelectList");
+
+            console.log(mountainRangesSelector.innerHTML);
+            var length = mountainGroupsSelector.options.length;
+            for (i = 0; i < length; i++) {
+                mountainGroupsSelector.options[i] = null;
+            }
+
+            var option = document.createElement("option");
+            option.text = "";
+            option.value = "";
+            mountainGroupsSelector.add(option);
+
+            length = data.length;
+            for (i = 0; i < length; i++) {
+                console.log(typeof data[i].mountainRange.id);
+                console.log(data[i].mountainRange.id);
+                console.log(typeof mountainRangesSelector.options.selectedIndex);
+                console.log(mountainRangesSelector.options.selectedIndex);
+                console.log(data[i].mountainRange.id == mountainRangesSelector.options.selectedIndex);
+                if (data[i].mountainRange.id == mountainRangesSelector.options.selectedIndex) {
+                    console.log("aaaadddd");
+                    var option = document.createElement("option");
+                    option.text = data[i].name;
+                    option.value = data[i].id;
+                    mountainGroupsSelector.add(option);
+                }
+            }
+            console.log(data);
+        }
+
+        /*]]>*/
+    </script>
+
+    <script th:each="item:${mountainGroups}" th:inline="javascript">
+        data.push([[${item}]]);
+    </script>
+
+
 </head>
 <body>
+
+<script>
+    /*<![CDATA[*/
+    mountainRanges = "[[${mountainRanges}]]";
+    mountainGroups = "[[${mountainGroups}]]";
+    console.log(mountainRanges);
+    console.log(mountainGroups);
+    /*]]>*/
+</script>
+
 
 <form action="#" th:action="@{/sections/edit/save/{id}(id=${section.getId()})}" method="post">
     <!--<input type="hidden" name="id" th:value="${id}">-->
