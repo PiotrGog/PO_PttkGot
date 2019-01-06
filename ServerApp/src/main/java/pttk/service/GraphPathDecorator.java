@@ -10,6 +10,8 @@ public class GraphPathDecorator {
     public ArrayList<Pair<Integer, Location>> locations = null;
     public ArrayList<Pair<Integer, Section>> sections = null;
 
+    public Integer altitudePoints = 0;
+    public Integer distancePoints = 0;
     public GraphPathDecorator() {
         locations = new ArrayList<>();
         sections = new ArrayList<>();

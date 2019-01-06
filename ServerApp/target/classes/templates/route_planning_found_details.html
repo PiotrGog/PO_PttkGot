@@ -2,43 +2,46 @@
 <html lang="pl-PL" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link href="../static/css/sections.css" th:href="@{/css/sections.css}" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../static/css/sections.css" th:href="@{/css/sections.css}" rel="stylesheet"/>
 </head>
 <body>
-    <form action="/sections/addSectionForm" method="get">
-        <p><input type="submit" value="Dodaj odcinek"/></p>
-    </form>
+<div><a th:href="@{'/route/details/' + ${currentIndex+1}}">Następny</a></div>
+<div><a th:href="@{'/route/details/' + ${currentIndex-1}}">Poprzedni</a></div>
+<!--<div><a th:href="@{/route/details/} + ${route.getFirst()-1}">Poprzedni</a></div>-->
 
-    <table>
-        <tr>
-            <th> </th>
-            <th>Pasmo górskie</th>
-            <th>Grupa górska</th>
-            <th>Lokalizacja pierwsza</th>
-            <th>Lokalizacja druga</th>
-            <th>Punkty</th>
-        </tr>
-        <tr th:each="section : ${locali}">
-            <td>jkakfsjdaklfj</td>
-            <td th:text="${section.mountainGroup.getName()}">Onions</td>
-            <td th:text="${section.mountainGroup.getMountainRange().getName()}">Onions</td>
-            <td th:text="${section.getLocationOne().getName()}">Onions</td>
-            <td th:text="${section.getLocationTwo().getName()}">Onions</td>
-            <td th:text="${section.getPointsAltitude() + '/' + section.getPointsDistance()}">Onions</td>
-            <td>
-                <form action="#" th:action="@{/sections/details/} + ${section.getId()}" method="get">
-                    <p><input type="submit" value="Wyświetl"/></p>
-                </form>
-                <form action="#" th:action="@{/sections/edit/} + ${section.getId()}" method="get">
-                    <p><input type="submit" value="Edytuj"/></p>
-                </form>
-            </td>
-        </tr>
-    </table>
+<table>
+    <tr>
+        <th></th>
+        <th>Pasmo górskie</th>
+        <th>Grupa górska</th>
+        <th>Lokalizacja pierwsza</th>
+        <th>Lokalizacja druga</th>
+        <th>Punkty</th>
+    </tr>
+    <tr th:each="section : ${pathSections.sections}">
+        <td th:text="${section.getFirst()}"></td>
+        <!--<td th:text="${currentIndex}"></td>-->
+        <td th:text="${section.getSecond().getMountainGroup().getMountainRange().getName()}"></td>
+        <td th:text="${section.getSecond().getMountainGroup().getName()}"></td>
+        <td th:text="${section.getSecond().getLocationOne().getName()}"></td>
+        <td th:text="${section.getSecond().getLocationTwo().getName()}"></td>
+        <td th:text="${section.getSecond().getPointsAltitude() + '/'
+                            + section.getSecond().getPointsDistance()}"></td>
+    </tr>
+</table>
 
-    <p>
-        <!--<a href="../home.html" th:href="@{/}">Return to home</a>-->
-    </p>
+<p>
+    <div>
+        <label>Punkty za wysokość: <div th:text="${pathSections.altitudePoints}"></div></label>
+    </div>
+    <div>
+        <label>Punkty za odległość: <div th:text="${pathSections.distancePoints}"></div></label>
+    </div>
+</p>
+
+<p>
+    <!--<a href="../home.html" th:href="@{/}">Return to home</a>-->
+</p>
 </body>
 </html>

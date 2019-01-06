@@ -31,7 +31,10 @@ public class RouteService {
     @Autowired
     MountainGroupRepository mountainGroupRepository_;
 
-    //BUILD GRAPH
+    /**
+     * Function builds graph from locations and sections between that locations.
+     * @return built graph from locations and sections in repository
+     */
     public SimpleDirectedWeightedGraph<Integer, CustomWeightedEdge> buildGraph() {
         SimpleDirectedWeightedGraph<Integer, CustomWeightedEdge> graph =
                 new SimpleDirectedWeightedGraph<>(CustomWeightedEdge.class);
@@ -52,6 +55,11 @@ public class RouteService {
     }
 
 
+    /**
+     * Calculate altitude and distance points for graph path.
+     * @param graphPath is found graph path inside graph.
+     * @return Pair which first value is sum of altitude points, second - sum of distance points in found GraphPath
+     */
     public Pair<Integer, Integer> sumGraphPathPoints(GraphPath<Integer, CustomWeightedEdge> graphPath)
     {
         int altitudePoints = 0;

@@ -19,17 +19,14 @@
             <th> </th>
         </tr>
         <tr th:each="route : ${routes}">
-            <td>jkakfsjdaklfj</td>
-            <td th:text="${route.sections.get(0).getSecond().getLocationOne().getName()}">Onions</td>
-            <td th:text="${route.sections.get(route.sections.size()-1).getSecond().getLocationOne().getName()}">Onions</td>
-            <!--<td th:text="${section.mountainGroup.getMountainRange().getName()}">Onions</td>-->
-            <!--<td th:text="${section.getLocationOne().getName()}">Onions</td>-->
-            <!--<td th:text="${section.getLocationTwo().getName()}">Onions</td>-->
-            <!--<td th:text="${section.getPointsAltitude() + '/' + section.getPointsDistance()}">Onions</td>-->
+            <td th:text="${route.getFirst()}"></td>
+            <td th:text="${route.getSecond().locations.get(0).getSecond().getName()}"></td>
+            <td th:text="${route.getSecond().locations.get(route.getSecond().locations.size()-1).getSecond().getName()}"></td>
+            <td th:text="${route.getSecond().altitudePoints + '/' + route.getSecond().distancePoints}"></td>
             <td>
-                <!--<form action="#" th:action="@{/route/details/} + ${route.getId()}" method="get">-->
-                    <!--<p><input type="submit" value="Szczegóły"/></p>-->
-                <!--</form>-->
+                <form action="#" th:action="@{/route/details/} + ${route.getFirst()}" method="get">
+                    <p><input type="submit" value="Szczegóły"/></p>
+                </form>
             </td>
         </tr>
     </table>
