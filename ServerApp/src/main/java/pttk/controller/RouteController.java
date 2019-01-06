@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import pttk.model.Location;
 import pttk.model.Section;
 import pttk.service.CustomWeightedEdge;
@@ -26,18 +27,18 @@ import java.util.function.Function;
 @RequestMapping("/route")
 public class RouteController {
     @Autowired
-    RouteService routeService_;
+    private RouteService routeService_;
 
     List<Pair<Integer, GraphPathDecorator>> paths = null;
 
-    @RequestMapping(value = "/find", method = RequestMethod.GET)
-    public String findRoute(/*@RequestParam Integer mountainRange,
+    @RequestMapping(value = "/find", method = RequestMethod.POST)
+    public String findRoute(@RequestParam Integer mountainRange,
                             @RequestParam Integer mountainGroup,
                             @RequestParam Integer locationStart,
                             @RequestParam Integer locationFinish,
-                            @RequestParam ArrayList<Integer> locations,
+                            @RequestParam ArrayList<Integer> otherLocations,
                             @RequestParam Integer pointsAltitude,
-                            @RequestParam Integer pointsDistance,*/
+                            @RequestParam Integer pointsDistance,
             Model model) {
 
         SimpleDirectedWeightedGraph<Integer, CustomWeightedEdge> graph = routeService_.buildGraph();
@@ -86,10 +87,26 @@ public class RouteController {
     }
 
     @RequestMapping(value = "/details/{id}", method = RequestMethod.GET)
-    public String findRoute(@PathVariable Integer id, Model model) {
+    public String findRouteDetails(@PathVariable Integer id, Model model) {
+        model.addAttribute("startLocation", paths.get(paths.size() - 1).getSecond()
+                .locations.get(0).getSecond().getName());
+        model.addAttribute("finishLocation", paths.get(id - 1).getSecond()
+                .locations.get(paths.get(id - 1).getSecond()
+                        .locations.size()-1).getSecond().getName());
         model.addAttribute("currentIndex", id);
         model.addAttribute("pathSections", paths.get(id - 1).getSecond());
         return "route_planning_found_details";
     }
+
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String findRouteCriteria(Model model) {
+        model.addAttribute("mountainRanges", routeService_.findAllMountainRange());
+        model.addAttribute("mountainGroups", routeService_.findAllMountainGroup());
+        model.addAttribute("locations", routeService_.findAllLocation());
+        return "route_planning_criteria";
+    }
+
+
 
 }

@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html lang="pl-PL" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../static/css/sections.css" th:href="@{/css/sections.css}" rel="stylesheet"/>
+</head>
+<body>
+<form action="#" th:action="@{/route/find}" method="post">
+    <table>
+        <tr>
+            <td>Pasmo górskie</td>
+            <td>
+                <select id="mountainRangesSelectList" name="mountainRange" onchange="changeMountainRangesListener();">
+                    <option></option>
+                    <option th:each="mr : ${mountainRanges}"
+                            th:value="${mr}" th:text="${mr.getName()}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Grupa górska</td>
+            <td>
+                <select id="mountainGroupsSelectList" name="mountainGroup">
+                    <option></option>
+                    <option th:each="mg : ${mountainGroups}"
+                            th:value="${mg.getId()}" th:text="${mg.getName()}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Lokalizacja startowa</td>
+            <td>
+                <select name="locationStart">
+                    <option></option>
+                    <option th:each="l : ${locations}"
+                            th:value="${l.getId()}" th:text="${l.getName()}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Lokalizacja końcowa</td>
+            <td>
+                <select name="locationFinish">
+                    <option></option>
+                    <option th:each="l : ${locations}"
+                            th:value="${l.getId()}" th:text="${l.getName()}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div>Lokalizacje pośrednie</div>
+                <div>
+                    <select name="otherLocation">
+                        <option></option>
+                        <option th:each="l : ${locations}"
+                                th:value="${l.getId()}" th:text="${l.getName()}"></option>
+                    </select>
+                </div>
+            </td>
+            <td>
+                <table id="other_locations">
+                    <tr>
+                        <td>jsdklajfkldsa</td>
+                    </tr>
+                    <tr>
+                        <td>jsdklajfkldsa</td>
+                    </tr>
+                    <tr>
+                        <td>jsdklajfkldsa</td>
+                    </tr>
+                    <tr>
+                        <td>jsdklajfkldsa</td>
+                    </tr>
+                    <tr>
+                        <td>jsdklajfkldsa</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>Punkty za odległość</td>
+            <td><input name="pointsDistance" type="number"></td>
+        </tr>
+        <tr>
+            <td>Punkty za wysokość</td>
+            <td><input name="pointsAltitude" type="number"></td>
+        </tr>
+    </table>
+    <input type="submit" value="Znajdź">
+</form>
+<p>
+    <!--<a href="../home.html" th:href="@{/}">Return to home</a>-->
+</p>
+</body>
+</html>

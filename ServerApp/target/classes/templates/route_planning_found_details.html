@@ -8,7 +8,9 @@
 <body>
 <div><a th:href="@{'/route/details/' + ${currentIndex+1}}">Następny</a></div>
 <div><a th:href="@{'/route/details/' + ${currentIndex-1}}">Poprzedni</a></div>
-<!--<div><a th:href="@{/route/details/} + ${route.getFirst()-1}">Poprzedni</a></div>-->
+
+<p>Lokalizacja początkowa: <div th:text="${startLocation}"></div> </p>
+<p>Lokalizacja końcowa: <div th:text="${finishLocation}"></div> </p>
 
 <table>
     <tr>
@@ -32,13 +34,23 @@
 </table>
 
 <p>
-    <div>
-        <label>Punkty za wysokość: <div th:text="${pathSections.altitudePoints}"></div></label>
-    </div>
-    <div>
-        <label>Punkty za odległość: <div th:text="${pathSections.distancePoints}"></div></label>
-    </div>
+<div>
+    <label>Punkty za wysokość:
+        <div th:text="${pathSections.altitudePoints}"></div>
+    </label>
+</div>
+<div>
+    <label>Punkty za odległość:
+        <div th:text="${pathSections.distancePoints}"></div>
+    </label>
+</div>
 </p>
+
+<!--<p>-->
+<!--<div>-->
+    <!--<a href="/route/details">Zamknij</a>-->
+<!--</div>-->
+<!--</p>-->
 
 <p>
     <!--<a href="../home.html" th:href="@{/}">Return to home</a>-->

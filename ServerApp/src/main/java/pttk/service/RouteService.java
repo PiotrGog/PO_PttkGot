@@ -1,12 +1,13 @@
 package pttk.service;
 
 import org.jgrapht.GraphPath;
-import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.SimpleDirectedWeightedGraph;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 import pttk.model.Location;
+import pttk.model.MountainGroup;
+import pttk.model.MountainRange;
 import pttk.model.Section;
 import pttk.repositories.LocationRepository;
 import pttk.repositories.MountainGroupRepository;
@@ -20,16 +21,49 @@ public class RouteService {
     public Iterable<Location> locations = null;
 
     @Autowired
-    SectionRepository sectionRepository_;
+    private SectionRepository sectionRepository_;
 
     @Autowired
-    LocationRepository locationRepository_;
+    private LocationRepository locationRepository_;
 
     @Autowired
-    MountainRangeRepository mountainRangeRepository_;
+    private MountainRangeRepository mountainRangeRepository_;
 
     @Autowired
-    MountainGroupRepository mountainGroupRepository_;
+    private MountainGroupRepository mountainGroupRepository_;
+
+    /**
+     * Return all mountain ranges from repository.
+     * @return Iterable collection of MountainRange
+     */
+    public Iterable<MountainRange> findAllMountainRange(){
+        return mountainRangeRepository_.findAll();
+    }
+
+    /**
+     * Return all mountain group from repository.
+     * @return Iterable collection of MountainGroup
+     */
+    public Iterable<MountainGroup> findAllMountainGroup(){
+        return mountainGroupRepository_.findAll();
+    }
+
+    /**
+     * Return all locations from repository.
+     * @return Iterable collection of Location
+     */
+    public Iterable<Location> findAllLocation(){
+        return locationRepository_.findAll();
+    }
+
+    /**
+     * Return all sections from repository.
+     * @return Iterable collection of Section
+     */
+    public Iterable<Section> findAllSection(){
+        return sectionRepository_.findAll();
+    }
+
 
     /**
      * Function builds graph from locations and sections between that locations.
@@ -38,8 +72,8 @@ public class RouteService {
     public SimpleDirectedWeightedGraph<Integer, CustomWeightedEdge> buildGraph() {
         SimpleDirectedWeightedGraph<Integer, CustomWeightedEdge> graph =
                 new SimpleDirectedWeightedGraph<>(CustomWeightedEdge.class);
-        sections = sectionRepository_.findAll();
-        locations = locationRepository_.findAll();
+        sections = findAllSection();
+        locations = findAllLocation();
 
         for (Location l : locations) {
             graph.addVertex(l.getId());
