@@ -14,7 +14,9 @@ import pttk.repositories.MountainGroupRepository;
 import pttk.repositories.MountainRangeRepository;
 import pttk.repositories.SectionRepository;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BiFunction;
 
 
 @Service
@@ -116,5 +118,46 @@ public class RouteService {
         return Pair.of(altitudePoints, distancePoints);
     }
 
+    public List<Pair<Integer, GraphPathDecorator>> graphPathDecorate(List<GraphPath<Integer, CustomWeightedEdge>> routes)
+    {
+        List<Pair<Integer, GraphPathDecorator>> paths= new ArrayList<>();
+        int graphPathIndex = 1;
+        for (GraphPath<Integer, CustomWeightedEdge> route : routes) {
+            List<CustomWeightedEdge> graphsEdges = route.getEdgeList();
+            if (!(2 <= graphsEdges.size()
+                    && !graphsEdges.get(0).getSection().getId().equals(graphsEdges.get(1).getSection().getId()))) {
+                continue;
+            }
+            GraphPathDecorator newPath = new GraphPathDecorator();
+            int sec = 1;
+            for (CustomWeightedEdge edge : graphsEdges) {
+                newPath.sections.add(Pair.of(sec, edge.getSection()));
+                sec++;
+            }
+
+            BiFunction<Iterable<Location>, Integer, Location> fLoc = (x, y) -> {
+                for (Location l : x) {
+                    if (l.getId().equals(y))
+                        return l;
+                }
+                return null;
+            };
+
+            int loc = 1;
+            for (Integer vertex : route.getVertexList()) {
+                newPath.locations.add(Pair.of(loc, fLoc.apply(this.locations, vertex)));
+                loc++;
+            }
+
+
+            Pair<Integer, Integer> points = this.sumGraphPathPoints(route);
+            newPath.altitudePoints = points.getFirst();
+            newPath.distancePoints = points.getSecond();
+
+            paths.add(Pair.of(graphPathIndex, newPath));
+            graphPathIndex++;
+        }
+        return paths;
+    }
 
 }
