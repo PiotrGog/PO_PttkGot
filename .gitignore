@@ -24,3 +24,4 @@ hs_err_pid*
 
 #include below files/folders
 !/libs/*.jar
+*.out

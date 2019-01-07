@@ -2,37 +2,38 @@ package pttk.controller;
 
 import org.springframework.http.MediaType;
 import pttk.model.Employee;
+import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import pttk.repositories.EmployeeRepository;
 
 @Controller
-@RequestMapping(path = "/api")
+@RequestMapping(path = "/employees")
 public class EmployeeController {
 
     @Autowired
     EmployeeRepository employeeRepository;
 
-    @GetMapping(path = "/emp")
-    public @ResponseBody
-    Iterable<Employee> getAllEmployees() {
-        return employeeRepository.findAll();
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public String getAllEmployees(Model model) {
+        model.addAttribute("employees", employeeRepository.findAll());
+        return "employees";
     }
 
-    @GetMapping(path = "/emp/{name}")
+    @GetMapping(path = "/{name}")
     public @ResponseBody
     Iterable<Employee> getEmployeesByName(@PathVariable(value = "name") String name) {
         return employeeRepository.findAllByName(name);
     }
 
-    @GetMapping(path = "/emp/{surname}")
+    @GetMapping(path = "/{surname}")
     public @ResponseBody
     Iterable<Employee> getEmployeesBySurname(@PathVariable(value = "surname") String surname) {
         return employeeRepository.findAllBySurname(surname);
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = "/emp")
+    @RequestMapping(method = RequestMethod.POST, path = "")
     public @ResponseBody
     String addNewEmployee(@RequestBody Employee employee) {
         ServerResponse sr = new ServerResponse();
@@ -42,10 +43,10 @@ public class EmployeeController {
         } catch (IllegalArgumentException exc) {
             sr.setResponseMsg(exc.getMessage());
         }
-        return sr.toString();
+        return "employee_list";
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, path = "/emp/{login}")
+    @RequestMapping(method = RequestMethod.DELETE, path = "/{login}")
     public @ResponseBody
     String deleteEmployee(@PathVariable(value = "login") String login) {
         Employee empToUpdate = employeeRepository.findByLogin(login);
@@ -54,7 +55,7 @@ public class EmployeeController {
         return "OK";
     }
 
-    @RequestMapping(method = RequestMethod.PUT, path="/emp/{login}")
+    @RequestMapping(method = RequestMethod.PUT, path="/{login}")
     public @ResponseBody
     Employee modifyEmployee(@RequestBody Employee modified)
     {

@@ -80,13 +80,6 @@ public class SectionController {
                                 @RequestParam Integer pointsDistance,
                                 Model model) {
 
-        Application.log.info("mountainGroup=" + mountainGroup);
-        Application.log.info("locationOne=" + mountainGroup);
-        Application.log.info("locationOne=" + locationOne);
-        Application.log.info("locationTwo=" + locationTwo);
-        Application.log.info("distance=" + distance);
-        Application.log.info("pointsAltitude=" + pointsAltitude);
-        Application.log.info("pointsDistance=" + pointsDistance);
 
         Section newSection = new Section();
         newSection.setId(id);
@@ -96,7 +89,6 @@ public class SectionController {
         newSection.setPointsAltitude(pointsAltitude);
         newSection.setPointsDistance(pointsDistance);
         newSection.setMountainGroup(mountainGroupRepository_.findById(mountainGroup).get());
-        Application.log.info("updated section = " + newSection);
         sectionRepository_.save(newSection);
         model.addAttribute("sections", sectionRepository_.findAll());
         return "sections";
@@ -119,13 +111,7 @@ public class SectionController {
                              @RequestParam Integer pointsAltitude,
                              @RequestParam Integer pointsDistance,
                              Model model) {
-        Application.log.info("mountainGroup=" + mountainGroup);
-        Application.log.info("locationOne=" + mountainGroup);
-        Application.log.info("locationOne=" + locationOne);
-        Application.log.info("locationTwo=" + locationTwo);
-        Application.log.info("distance=" + distance);
-        Application.log.info("pointsAltitude=" + pointsAltitude);
-        Application.log.info("pointsDistance=" + pointsDistance);
+
         Section newSection = new Section();
         newSection.setLocationOne(locationRepository_.findById(locationOne).get());
         newSection.setLocationTwo(locationRepository_.findById(locationTwo).get());
@@ -133,7 +119,6 @@ public class SectionController {
         newSection.setPointsAltitude(pointsAltitude);
         newSection.setPointsDistance(pointsDistance);
         newSection.setMountainGroup(mountainGroupRepository_.findById(mountainGroup).get());
-        Application.log.info("added section = " + newSection);
         sectionRepository_.save(newSection);
         model.addAttribute("sections", sectionRepository_.findAll());
         return "sections";

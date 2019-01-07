@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html lang="pl-PL" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="../static/css/employees.css" th:href="@{/css/employees.css}" rel="stylesheet" />
+</head>
+<body>
+<table>
+    <tr>
+        <th>ID Pracownika</th>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+        <th>Pesel</th>
+        <th>Data zatrudnienia</th>
+
+        <th></th>
+    </tr>
+    <tr th:each="employee : ${employees}">
+        <td th:text="${employee.getEmp_id()}"></td>
+        <td th:text="${employee.getName()}"></td>
+        <td th:text="${employee.getSurname()}"></td>
+        <td th:text="${employee.getPesel()}"></td>
+        <td th:text="${employee.getHire_date()}"></td>
+        <td>
+            <form action="#" th:action="@{/sections/details/} + ${section.getId()}" method="get">
+                <p><input type="submit" value="Wyświetl"/></p>
+            </form>
+            <form action="#" th:action="@{/sections/edit/} + ${section.getId()}" method="get">
+                <p><input type="submit" value="Edytuj"/></p>
+            </form>
+        </td>
+    </tr>
+</table>
+
+<p>
+    <!--<a href="../home.html" th:href="@{/}">Return to home</a>-->
+</p>
+</body>
+</html>
