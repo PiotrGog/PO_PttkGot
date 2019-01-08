@@ -64,12 +64,16 @@
     /*]]>*/
 </script>
 
+<p class="header">
+    <img src="../static/images/pttk_logo.jpg" th:src="@{/images/pttk_logo.jpg}" width="100" alt="Logo Pttk">
+    Edytuj odcinek punktowany do GOT
+</p>
 
 <form action="#" th:action="@{/sections/edit/save/{id}(id=${section.getId()})}" method="post">
     <!--<input type="hidden" name="id" th:value="${id}">-->
-    <table>
+    <table class="sections_details">
         <tr>
-            <td>Pasmo górskie</td>
+            <td class="align_right">Pasmo górskie:</td>
             <td>
                 <select>
                     <option th:each="mr : ${mountainRanges}"
@@ -78,7 +82,7 @@
             </td>
         </tr>
         <tr>
-            <td>Grupa górskie</td>
+            <td class="align_right">Grupa górskie:</td>
             <td>
                 <select name="mountainGroup">
                     <option th:each="mg : ${mountainGroups}"
@@ -89,7 +93,7 @@
             </td>
         </tr>
         <tr>
-            <td>Lokalizacja pierwsza</td>
+            <td class="align_right">Lokalizacja pierwsza:</td>
             <td>
                 <select name="locationOne">
                     <option th:each="l : ${locations}"
@@ -100,7 +104,7 @@
             </td>
         </tr>
         <tr>
-            <td>Lokalizacja druga</td>
+            <td class="align_right">Lokalizacja druga:</td>
             <td>
                 <select name="locationTwo">
                     <option th:each="l : ${locations}"
@@ -110,13 +114,13 @@
             </td>
         </tr>
         <tr>
-            <td>Odległość</td>
+            <td class="align_right">Odległość:</td>
             <td>
                 <input name="distance" type="number" th:value="${section.getDistance()}">
             </td>
         </tr>
         <tr>
-            <td>Punkty za wysokość</td>
+            <td class="align_right">Punkty za wysokość:</td>
             <td>
                 <select name="pointsAltitude">
                     <option th:each="i : ${#numbers.sequence(0, 20)}" th:value="${i}" th:text="${i}"
@@ -125,7 +129,7 @@
             </td>
         </tr>
         <tr>
-            <td>Punkty za odległość</td>
+            <td class="align_right">Punkty za odległość:</td>
             <td>
                 <select name="pointsDistance">
                     <option th:each="i : ${#numbers.sequence(0, 20)}" th:value="${i}" th:text="${i}"

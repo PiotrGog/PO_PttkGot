@@ -26,8 +26,11 @@
         <th></th>
     </tr>
     <tr th:each="section : ${sections}">
-        <td style="text-align: center;"><input th:name="'section_checkbox'+${section.getId()}" type="checkbox" title=""
-                                               th:value="${section.getId()}"></td>
+        <td style="text-align: center;">
+            <input th:name="'section_checkbox'+${section.getId()}"
+                   type="checkbox" title=""
+                   th:value="${section.getId()}">
+        </td>
         <td th:text="${section.mountainGroup.getName()}"></td>
         <td th:text="${section.mountainGroup.getMountainRange().getName()}"></td>
         <td th:text="${section.getLocationOne().getName()}"></td>

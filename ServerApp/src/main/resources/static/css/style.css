@@ -3,11 +3,12 @@ p.header{
     border-bottom: 1px solid black;
     text-align: center;
     overflow: auto;
+    bottom: 10px;
 }
 
 p.header img.header{
     float:left;
-    width: 4vw;
+    padding: 10px;
 }
 
 table.section_table {
@@ -77,5 +78,5 @@ td.align_right{
 
 table.sections_details{
     padding: 20px;
-    border-spacing: 20px;
+    border-spacing: 10px 20px ;
 }
