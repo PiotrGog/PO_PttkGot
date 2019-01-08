@@ -1,9 +1,21 @@
 p.header{
     font-size: 2em;
+    border-bottom: 1px solid black;
+    text-align: center;
+    overflow: auto;
+}
+
+p.header img.header{
+    float:left;
+    width: 4vw;
 }
 
 table.section_table {
     border-collapse: collapse;
+    table-layout: auto;
+    width: 70%;
+    margin-left:15%;
+    margin-right:15%;
 }
 
 table.section_table td{
@@ -49,4 +61,21 @@ a.button_grey {
     color: initial;
     padding: 7px;
     border-spacing: 5px;
+}
+
+td.align_left{
+    text-align: left;
+    vertical-align: bottom;
+    font-size: 1.6em;
+}
+
+td.align_right{
+    text-align: right;
+    vertical-align: bottom;
+    font-size: 1.3em;
+}
+
+table.sections_details{
+    padding: 20px;
+    border-spacing: 20px;
 }

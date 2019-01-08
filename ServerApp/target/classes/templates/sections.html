@@ -7,7 +7,8 @@
 </head>
 <body>
 <p class="header">
-    <img src="../static/images/pttk_logo.jpg" th:src="@{/images/pttk_logo.jpg}" width="100" alt="Logo Pttk">
+    <img class="header" src="../static/images/pttk_logo.jpg"
+         th:src="@{/images/pttk_logo.jpg}" width="100" alt="Logo Pttk">
     Zarządzanie odcinkami punktowanymi do GOT
 </p>
 
@@ -16,7 +17,7 @@
 
 <table class="section_table">
     <tr>
-        <th>BUTTON</th>
+        <th><input type="checkbox" title=""></th>
         <th>Pasmo górskie</th>
         <th>Grupa górska</th>
         <th>Lokalizacja pierwsza</th>
@@ -25,7 +26,8 @@
         <th></th>
     </tr>
     <tr th:each="section : ${sections}">
-        <td>jkakfsjdaklfj</td>
+        <td style="text-align: center;"><input th:name="'section_checkbox'+${section.getId()}" type="checkbox" title=""
+                                               th:value="${section.getId()}"></td>
         <td th:text="${section.mountainGroup.getName()}"></td>
         <td th:text="${section.mountainGroup.getMountainRange().getName()}"></td>
         <td th:text="${section.getLocationOne().getName()}"></td>
@@ -34,12 +36,10 @@
         <td>
             <a th:href="@{/sections/details/} + ${section.getId()}" class="table_button">Wyświetl</a>
             <a th:href="@{/sections/edit/} + ${section.getId()}" class="table_button">Edytuj</a>
-            <!--<form action="#" th:action="@{/sections/details/} + ${section.getId()}" method="get">-->
-            <!--<p><input type="submit" value="Wyświetl"/></p>-->
-            <!--</form>-->
-            <!--<form action="#" th:action="@{/sections/edit/} + ${section.getId()}" method="get">-->
-            <!--<p><input type="submit" value="Edytuj"/></p>-->
-            <!--</form>-->
+            <a th:href="@{/sections/remove/} + ${section.getId()}">
+                <img src="../static/images/remove_symbol.jpg"
+                     th:src="@{/images/remove_symbol.jpg}" width=20 alt="Remove symbol">
+            </a>
         </td>
     </tr>
 </table>
