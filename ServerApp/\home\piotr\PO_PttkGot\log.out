@@ -1,26 +1,2 @@
 Application start
 Application start
-mountainGroup=1
-locationOne=1
-locationOne=4
-locationTwo=1
-distance=2
-pointsAltitude=1
-pointsDistance=1
-added section = id=null, location 1 D location two A mountain id=1, name=B, mountain range=id=2, name=b
-mountainGroup=1
-locationOne=1
-locationOne=1
-locationTwo=7
-distance=null
-pointsAltitude=1
-pointsDistance=1
-added section = id=null, location 1 A location two Jaworek mountain id=1, name=B, mountain range=id=2, name=b
-mountainGroup=1
-locationOne=1
-locationOne=1
-locationTwo=7
-distance=4321
-pointsAltitude=1
-pointsDistance=1
-added section = id=null, location 1 A location two Jaworek mountain id=1, name=B, mountain range=id=2, name=b

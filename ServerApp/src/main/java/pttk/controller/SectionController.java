@@ -140,7 +140,7 @@ public class SectionController {
         Application.log.info("added section = " + newSection);
         sectionRepository_.save(newSection);
         model.addAttribute("sections", sectionRepository_.findAll());
-        return "sections";
+        return "redirect:/sections";
     }
 
     @RequestMapping(value = "/remove/{id}", method = RequestMethod.GET)
@@ -148,6 +148,6 @@ public class SectionController {
         Optional<Section> section = sectionRepository_.findById(id);
         sectionRepository_.delete(section.get());
         model.addAttribute("sections", sectionRepository_.findAll());
-        return "sections";
+        return "redirect:/sections";
     }
 }
