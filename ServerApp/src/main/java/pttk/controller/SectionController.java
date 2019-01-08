@@ -71,7 +71,6 @@ public class SectionController {
 
     @RequestMapping(value = "/edit/save/{id}", method = RequestMethod.POST)
     public String updateSection(@PathVariable("id") Integer id,
-//    public String updateSection(@RequestParam("id") Integer id,
                                 @RequestParam Integer mountainGroup,
                                 @RequestParam Integer locationOne,
                                 @RequestParam Integer locationTwo,
@@ -109,6 +108,16 @@ public class SectionController {
         model.addAttribute("mountainGroups", mountainGroupRepository_.findAll());
         model.addAttribute("locations", locationRepository_.findAll());
         return "section_add_new";
+    }
+
+    @GetMapping(value = "/filterSectionsForm")
+    public String filterSectionForm(Model model) {
+        System.out.println("showAddSectionForm");
+//        model.addAttribute("mountainRanges", mountainRangeRepository_.findAll());
+//        model.addAttribute("mountainGroups", mountainGroupRepository_.findAll());
+//        model.addAttribute("locations", locationRepository_.findAll());
+//        return "section_add_new";
+        return "error";
     }
 
     @RequestMapping(value = "/addSection", method = RequestMethod.POST)

@@ -1,0 +1,52 @@
+p.header{
+    font-size: 2em;
+}
+
+table.section_table {
+    border-collapse: collapse;
+}
+
+table.section_table td{
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 8px;
+}
+
+table.section_table td.number{
+    text-align: right;
+}
+
+
+a.table_button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: initial;
+    padding: 7px;
+    border-spacing: 5px;
+}
+
+a.button_green {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    background-color: forestgreen;
+    text-decoration: none;
+    color: initial;
+    padding: 7px;
+    border-spacing: 5px;
+}
+
+a.button_grey {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: initial;
+    padding: 7px;
+    border-spacing: 5px;
+}
