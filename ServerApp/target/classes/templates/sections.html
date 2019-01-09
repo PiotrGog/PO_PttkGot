@@ -26,13 +26,13 @@
                     dataType: 'json',
                     success: function (data, status, jq) {
                         console.log("success");
-                        for(var i = 0; i<data.length; i++){
+                        for (var i = 0; i < data.length; i++) {
                             console.log(data[i]);
+                            $('table#sections_table tr#'+data[i]).remove();
                         }
-                        alert("second success");
-                        $("#sections_table > tr > td").each(function () {
-                            console.log(this.val());
-                        })
+                        // $("#sections_table > tr > td").each(function () {
+                        //     console.log(this.val());
+                        // })
                     }
                 });
 
@@ -79,26 +79,28 @@
         <th>Punkty</th>
         <th></th>
     </tr>
-    <tr th:each="section : ${sections}">
-        <td style="text-align: center;">
-            <input th:name="section_checkbox"
-                   type="checkbox" title=""
-                   th:value="${section.getId()}">
-        </td>
-        <td th:text="${section.mountainGroup.getName()}"></td>
-        <td th:text="${section.mountainGroup.getMountainRange().getName()}"></td>
-        <td th:text="${section.getLocationOne().getName()}"></td>
-        <td th:text="${section.getLocationTwo().getName()}"></td>
-        <td class="number" th:text="${section.getPointsAltitude() + '/' + section.getPointsDistance()}"></td>
-        <td>
-            <a th:href="@{/sections/details/} + ${section.getId()}" class="table_button">Wyświetl</a>
-            <a th:href="@{/sections/edit/} + ${section.getId()}" class="table_button">Edytuj</a>
-            <a th:href="@{/sections/remove/} + ${section.getId()}">
-                <img src="../static/images/remove_symbol.jpg"
-                     th:src="@{/images/remove_symbol.jpg}" width=20 alt="Remove symbol">
-            </a>
-        </td>
-    </tr>
+    <th:block th:each="section : ${sections}">
+        <tr th:id="${section.getId()}">
+            <td style="text-align: center;">
+                <input th:name="section_checkbox"
+                       type="checkbox" title=""
+                       th:value="${section.getId()}">
+            </td>
+            <td th:text="${section.mountainGroup.getName()}"></td>
+            <td th:text="${section.mountainGroup.getMountainRange().getName()}"></td>
+            <td th:text="${section.getLocationOne().getName()}"></td>
+            <td th:text="${section.getLocationTwo().getName()}"></td>
+            <td class="number" th:text="${section.getPointsAltitude() + '/' + section.getPointsDistance()}"></td>
+            <td>
+                <a th:href="@{/sections/details/} + ${section.getId()}" class="table_button">Wyświetl</a>
+                <a th:href="@{/sections/edit/} + ${section.getId()}" class="table_button">Edytuj</a>
+                <a th:href="@{/sections/remove/} + ${section.getId()}">
+                    <img src="../static/images/remove_symbol.jpg"
+                         th:src="@{/images/remove_symbol.jpg}" width=20 alt="Remove symbol">
+                </a>
+            </td>
+        </tr>
+    </th:block>
 </table>
 
 <a id="remove_checked" href="/sections/removeAll" class="button_grey">Usuń zaznaczone</a>
