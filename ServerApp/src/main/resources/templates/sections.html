@@ -4,6 +4,27 @@
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="../static/css/style.css" th:href="@{/css/style.css}" type="text/css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+        /*<![CDATA[*/
+
+        var are_checked = false;
+
+        function updateCheckboxInSectionList() {
+            var regex = new RegExp("section_checkbox");
+            var checkboxes = document.getElementsByTagName("input");
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (regex.test(checkboxes[i].name)) {
+                    checkboxes[i].checked = !are_checked;
+                }
+            }
+            are_checked = !are_checked;
+        }
+
+        /*]]>*/
+    </script>
+
 </head>
 <body>
 <p class="header">
@@ -17,7 +38,7 @@
 
 <table class="section_table">
     <tr>
-        <th><input type="checkbox" title=""></th>
+        <th><input id="mark_all" type="checkbox" title="" onchange="updateCheckboxInSectionList();"></th>
         <th>Pasmo górskie</th>
         <th>Grupa górska</th>
         <th>Lokalizacja pierwsza</th>
