@@ -10,6 +10,8 @@ import pttk.repositories.LocationRepository;
 import pttk.repositories.MountainGroupRepository;
 import pttk.repositories.MountainRangeRepository;
 import pttk.repositories.SectionRepository;
+
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -70,8 +72,7 @@ public class SectionController {
                                 @RequestParam Integer locationTwo,
                                 @RequestParam Integer distance,
                                 @RequestParam Integer pointsAltitude,
-                                @RequestParam Integer pointsDistance,
-                                Model model) {
+                                @RequestParam Integer pointsDistance) {
 
         Application.log.info("mountainGroup=" + mountainGroup);
         Application.log.info("locationOne=" + mountainGroup);
@@ -91,8 +92,7 @@ public class SectionController {
         newSection.setMountainGroup(mountainGroupRepository_.findById(mountainGroup).get());
         Application.log.info("updated section = " + newSection);
         sectionRepository_.save(newSection);
-        model.addAttribute("sections", sectionRepository_.findAll());
-        return "sections";
+        return "redirect:/sections";
     }
 
     @GetMapping(value = "/addSectionForm")
@@ -108,10 +108,6 @@ public class SectionController {
     @GetMapping(value = "/filterSectionsForm")
     public String filterSectionForm(Model model) {
         System.out.println("showAddSectionForm");
-//        model.addAttribute("mountainRanges", mountainRangeRepository_.findAll());
-//        model.addAttribute("mountainGroups", mountainGroupRepository_.findAll());
-//        model.addAttribute("locations", locationRepository_.findAll());
-//        return "section_add_new";
         return "error";
     }
 
@@ -121,8 +117,7 @@ public class SectionController {
                              @RequestParam Integer locationTwo,
                              @RequestParam Integer distance,
                              @RequestParam Integer pointsAltitude,
-                             @RequestParam Integer pointsDistance,
-                             Model model) {
+                             @RequestParam Integer pointsDistance) {
         Application.log.info("mountainGroup=" + mountainGroup);
         Application.log.info("locationOne=" + mountainGroup);
         Application.log.info("locationOne=" + locationOne);
@@ -139,24 +134,25 @@ public class SectionController {
         newSection.setMountainGroup(mountainGroupRepository_.findById(mountainGroup).get());
         Application.log.info("added section = " + newSection);
         sectionRepository_.save(newSection);
-        model.addAttribute("sections", sectionRepository_.findAll());
         return "redirect:/sections";
     }
 
     @RequestMapping(value = "/remove/{id}", method = RequestMethod.GET)
-    public String removeSection(@PathVariable("id") Integer id, Model model) {
+    public String removeSection(@PathVariable("id") Integer id) {
         Optional<Section> section = sectionRepository_.findById(id);
         sectionRepository_.delete(section.get());
-        model.addAttribute("sections", sectionRepository_.findAll());
         return "redirect:/sections";
     }
 
 
-    @RequestMapping(value = "/removeAll", method = RequestMethod.GET)
-    public String removeCheckedSection(@PathVariable("id") Integer id, Model model) {
-        Optional<Section> section = sectionRepository_.findById(id);
-        sectionRepository_.delete(section.get());
-        model.addAttribute("sections", sectionRepository_.findAll());
-        return "redirect:/sections";
+    @RequestMapping(value = "/removeAll", method = RequestMethod.POST, produces = "application/json")
+    @ResponseBody
+    public List<Integer> removeCheckedSection(@RequestBody List<Integer> sectionsToDelete) {
+        for (Integer i : sectionsToDelete) {
+            Application.log.info(i);
+            Optional<Section> section = sectionRepository_.findById(i);
+            sectionRepository_.delete(section.get());
+        }
+        return sectionsToDelete;
     }
 }

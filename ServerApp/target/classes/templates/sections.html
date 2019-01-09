@@ -8,6 +8,39 @@
 
     <script>
         /*<![CDATA[*/
+        $(document).ready(function () {
+            $("#remove_checked").click(function (e) {
+                e.preventDefault();
+                var $form = $(this);
+                var url = $form.attr("href");
+                console.log(url);
+                var sectionsToDelete = [];
+                $.each($("input[name='section_checkbox']:checked"), function () {
+                    sectionsToDelete.push($(this).val());
+                });
+
+                var posting = $.post({
+                    url: url,
+                    data: JSON.stringify(sectionsToDelete),
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    success: function (data, status, jq) {
+                        console.log("success");
+                        for(var i = 0; i<data.length; i++){
+                            console.log(data[i]);
+                        }
+                        alert("second success");
+                        $("#sections_table > tr > td").each(function () {
+                            console.log(this.val());
+                        })
+                    }
+                });
+
+
+                console.log("submit form");
+            });
+        });
+
 
         var are_checked = false;
 
@@ -36,7 +69,7 @@
 <a href="/sections/addSectionForm" class="button_green">Dodaj odcinek</a>
 <a href="/sections/filterSectionsForm" class="button_grey">Wyszukaj</a>
 
-<table class="section_table">
+<table id="sections_table" class="section_table">
     <tr>
         <th><input id="mark_all" type="checkbox" title="" onchange="updateCheckboxInSectionList();"></th>
         <th>Pasmo górskie</th>
@@ -48,7 +81,7 @@
     </tr>
     <tr th:each="section : ${sections}">
         <td style="text-align: center;">
-            <input th:name="'section_checkbox'+${section.getId()}"
+            <input th:name="section_checkbox"
                    type="checkbox" title=""
                    th:value="${section.getId()}">
         </td>
@@ -68,7 +101,7 @@
     </tr>
 </table>
 
-<a href="/sections/filterSectionsForm" class="button_grey">Usuń zaznaczone</a>
+<a id="remove_checked" href="/sections/removeAll" class="button_grey">Usuń zaznaczone</a>
 
 <p>
     <!--<a href="../home.html" th:href="@{/}">Return to home</a>-->

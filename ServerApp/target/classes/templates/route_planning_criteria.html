@@ -51,9 +51,8 @@
 
     <script type="text/javascript">
 
-        function remove(arg){
+        function remove(){
             console.log("remove call");
-            console.log(arg);
         }
 
         function add(){
@@ -67,7 +66,7 @@
             var a = document.createElement("a");
             var img = document.createElement("img");
             img.src="../static/images/minus.png";
-            a.href = "javascript:remove(this);";
+            a.href = "javascript:remove();";
             a.appendChild(img);
             img.setAttribute("src", "/images/minus.png");
             img.width=10;
