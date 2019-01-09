@@ -60,44 +60,23 @@ public class RouteController {
                 directedPaths.getAllPaths(startLocations, finishLocations, true, null);
         paths = new ArrayList<>();
 
-//        int graphPathIndex = 1;
-//        for (GraphPath<Integer, CustomWeightedEdge> route : routes) {
-//            List<CustomWeightedEdge> graphsEdges = route.getEdgeList();
-//            if (!(2 <= graphsEdges.size()
-//                    && !graphsEdges.get(0).getSection().getId().equals(graphsEdges.get(1).getSection().getId()))) {
-//                continue;
-//            }
-//            GraphPathDecorator newPath = new GraphPathDecorator();
-//            int sec = 1;
-//            for (CustomWeightedEdge edge : graphsEdges) {
-//                newPath.sections.add(Pair.of(sec, edge.getSection()));
-//                sec++;
-//            }
-//
-//            BiFunction<Iterable<Location>, Integer, Location> fLoc = (x, y) -> {
-//                for (Location l : x) {
-//                    if (l.getId().equals(y))
-//                        return l;
-//                }
-//                return null;
-//            };
-//
-//            int loc = 1;
-//            for (Integer vertex : route.getVertexList()) {
-//                newPath.locations.add(Pair.of(loc, fLoc.apply(routeService_.locations, vertex)));
-//                loc++;
-//            }
-//
-//
-//            Pair<Integer, Integer> points = routeService_.sumGraphPathPoints(route);
-//            newPath.altitudePoints = points.getFirst();
-//            newPath.distancePoints = points.getSecond();
-//
-//            paths.add(Pair.of(graphPathIndex, newPath));
-//            graphPathIndex++;
-//        }
 
-        paths = routeService_.graphPathDecorate(routes);
+
+        List<Pair<Integer, GraphPathDecorator>> tmpPaths = routeService_.graphPathDecorate(routes);
+
+        if(null!=pointsAltitude || null!=pointsDistance)
+        {
+            pointsAltitude = (null==pointsAltitude)?0:pointsAltitude;
+            pointsDistance = (null==pointsDistance)?0:pointsDistance;
+
+            for(int i = 0; i<tmpPaths.size(); i++){
+                if(pointsAltitude<=tmpPaths.get(i).getSecond().altitudePoints
+                        && pointsDistance<=tmpPaths.get(i).getSecond().distancePoints){
+                    paths.add(tmpPaths.get(i));
+                }
+            }
+        }
+
 
         model.addAttribute("routes", paths);
         return "route_planning_found";
