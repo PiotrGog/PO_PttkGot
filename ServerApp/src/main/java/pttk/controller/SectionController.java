@@ -150,4 +150,13 @@ public class SectionController {
         model.addAttribute("sections", sectionRepository_.findAll());
         return "redirect:/sections";
     }
+
+
+    @RequestMapping(value = "/removeAll", method = RequestMethod.GET)
+    public String removeCheckedSection(@PathVariable("id") Integer id, Model model) {
+        Optional<Section> section = sectionRepository_.findById(id);
+        sectionRepository_.delete(section.get());
+        model.addAttribute("sections", sectionRepository_.findAll());
+        return "redirect:/sections";
+    }
 }

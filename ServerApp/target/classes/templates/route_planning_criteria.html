@@ -49,6 +49,35 @@
         data.push([[${item}]]);
     </script>
 
+    <script type="text/javascript">
+
+        function remove(arg){
+            console.log("remove call");
+            console.log(arg);
+        }
+
+        function add(){
+            var otherLocations = document.getElementById("otherLocations");
+            var tr = document.createElement("tr");
+            var td = document.createElement("td");
+            console.log(otherLocations);
+            td.innerText = otherLocations.options[otherLocations.selectedIndex].text;
+            tr.appendChild(td);
+
+            var a = document.createElement("a");
+            var img = document.createElement("img");
+            img.src="../static/images/minus.png";
+            a.href = "javascript:remove(this);";
+            a.appendChild(img);
+            img.setAttribute("src", "/images/minus.png");
+            img.width=10;
+            td.appendChild(a);
+
+            document.getElementById("other_locations").appendChild(tr);
+            localizationsList.push(otherLocations.options[otherLocations.selectedIndex].value);
+        }
+    </script>
+
 </head>
 <body>
 
@@ -113,19 +142,10 @@
             <td class="align_right">
                 <div>Lokalizacje pośrednie:</div>
                 <div>
-                    <a href="javascript:add()">href</a>
-                    <script type="text/javascript">
-                        function add(){
-                            var otherLocations = document.getElementById("otherLocations");
-                            var tr = document.createElement("tr");
-                            var td = document.createElement("td");
-                            console.log(otherLocations);
-                            td.innerText = otherLocations.options[otherLocations.selectedIndex].text;
-                            tr.appendChild(td);
-                            document.getElementById("other_locations").appendChild(tr);
-                            localizationsList.push(otherLocations.options[otherLocations.selectedIndex].value);
-                        }
-                    </script>
+                    <a href="javascript:add()">
+                        <img class="header" src="../static/images/plus.png"
+                             th:src="@{/images/plus.png}" width="10" alt="Dodaj element">
+                    </a>
                     <select class="select_section_param" id="otherLocations" name="otherLocation">
                         <option></option>
                         <option th:each="l : ${locations}"
@@ -146,8 +166,15 @@
             <td class="align_right">Punkty za wysokość:</td>
             <td><input class="select_section_param" name="pointsAltitude" type="number"></td>
         </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <input class="select_section_param" type="submit" value="Znajdź">
+            </td>
+        </tr>
     </table>
-    <input type="submit" value="Znajdź">
+    <!--<input type="submit" value="Znajdź">-->
 </form>
 <p>
     <!--<a href="../home.html" th:href="@{/}">Return to home</a>-->
