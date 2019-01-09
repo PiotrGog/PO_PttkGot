@@ -3,7 +3,7 @@
 <head>
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link href="../static/css/style.css" th:href="@{/css/sections.css}" rel="stylesheet"/>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" type="text/css" rel="stylesheet"/>
 
     <script>
         /*<![CDATA[*/
@@ -62,12 +62,17 @@
     /*]]>*/
 </script>
 
+<p class="header">
+    <img class="header" src="../static/images/pttk_logo.jpg" th:src="@{/images/pttk_logo.jpg}" width="100" alt="Logo Pttk">
+    Planowanie trasy
+</p>
+
 <form action="#" th:action="@{/route/find}" method="post">
-    <table>
+    <table class="sections_details">
         <tr>
-            <td>Pasmo górskie</td>
+            <td class="align_right">Pasmo górskie:</td>
             <td>
-                <select id="mountainRangesSelectList" name="mountainRange" onchange="changeMountainRangesListener();">
+                <select class="select_section_param" id="mountainRangesSelectList" name="mountainRange" onchange="changeMountainRangesListener();">
                     <option></option>
                     <option th:each="mr : ${mountainRanges}"
                             th:value="${mr.getId()}" th:text="${mr.getName()}"></option>
@@ -75,9 +80,9 @@
             </td>
         </tr>
         <tr>
-            <td>Grupa górska</td>
+            <td class="align_right">Grupa górska:</td>
             <td>
-                <select id="mountainGroupsSelectList" name="mountainGroup">
+                <select class="select_section_param" id="mountainGroupsSelectList" name="mountainGroup">
                     <option></option>
                     <option th:each="mg : ${mountainGroups}"
                             th:value="${mg.getId()}" th:text="${mg.getName()}"></option>
@@ -85,9 +90,9 @@
             </td>
         </tr>
         <tr>
-            <td>Lokalizacja startowa</td>
+            <td class="align_right">Lokalizacja startowa:</td>
             <td>
-                <select name="locationStart">
+                <select class="select_section_param" name="locationStart">
                     <option></option>
                     <option th:each="l : ${locations}"
                             th:value="${l.getId()}" th:text="${l.getName()}"></option>
@@ -95,9 +100,9 @@
             </td>
         </tr>
         <tr>
-            <td>Lokalizacja końcowa</td>
+            <td class="align_right">Lokalizacja końcowa:</td>
             <td>
-                <select name="locationFinish">
+                <select class="select_section_param" name="locationFinish">
                     <option></option>
                     <option th:each="l : ${locations}"
                             th:value="${l.getId()}" th:text="${l.getName()}"></option>
@@ -105,10 +110,23 @@
             </td>
         </tr>
         <tr>
-            <td>
-                <div>Lokalizacje pośrednie</div>
+            <td class="align_right">
+                <div>Lokalizacje pośrednie:</div>
                 <div>
-                    <select id="otherLocations" name="otherLocation">
+                    <a href="javascript:add()">href</a>
+                    <script type="text/javascript">
+                        function add(){
+                            var otherLocations = document.getElementById("otherLocations");
+                            var tr = document.createElement("tr");
+                            var td = document.createElement("td");
+                            console.log(otherLocations);
+                            td.innerText = otherLocations.options[otherLocations.selectedIndex].text;
+                            tr.appendChild(td);
+                            document.getElementById("other_locations").appendChild(tr);
+                            localizationsList.push(otherLocations.options[otherLocations.selectedIndex].value);
+                        }
+                    </script>
+                    <select class="select_section_param" id="otherLocations" name="otherLocation">
                         <option></option>
                         <option th:each="l : ${locations}"
                                 th:value="${l.getId()}" th:text="${l.getName()}"></option>
@@ -116,59 +134,17 @@
                 </div>
             </td>
             <td>
-                <a href="javascript:add()">href</a>
-                <script type="text/javascript">
-                    // $.ajax({
-                    //     type : "POST",
-                    //     url : "/myurl",
-                    //     data : {
-                    //         myArray: a //notice that "myArray" matches the value for @RequestParam
-                    //                    //on the Java side
-                    //     },
-                    //     success : function(response) {
-                    //         // do something ...
-                    //     },
-                    //     error : function(e) {
-                    //         alert('Error: ' + e);
-                    //     }
-                    // });
-                    function add(){
-                        var otherLocations = document.getElementById("otherLocations");
-                        var tr = document.createElement("tr");
-                        var td = document.createElement("td");
-                        console.log(otherLocations);
-                        td.innerText = otherLocations.options[otherLocations.selectedIndex].text;
-                        tr.appendChild(td);
-                        document.getElementById("other_locations").appendChild(tr);
-                        localizationsList.push(otherLocations.options[otherLocations.selectedIndex].value);
-                    }
-                </script>
-                <table id="other_locations">
-                    <!--<tr>-->
-                        <!--<td>jsdklajfkldsa</td>-->
-                    <!--</tr>-->
-                    <!--<tr>-->
-                        <!--<td>jsdklajfkldsa</td>-->
-                    <!--</tr>-->
-                    <!--<tr>-->
-                        <!--<td>jsdklajfkldsa</td>-->
-                    <!--</tr>-->
-                    <!--<tr>-->
-                        <!--<td>jsdklajfkldsa</td>-->
-                    <!--</tr>-->
-                    <!--<tr>-->
-                        <!--<td>jsdklajfkldsa</td>-->
-                    <!--</tr>-->
+                <table class="other_localizations" id="other_locations">
                 </table>
             </td>
         </tr>
         <tr>
-            <td>Punkty za odległość</td>
-            <td><input name="pointsDistance" type="number"></td>
+            <td class="align_right">Punkty za odległość:</td>
+            <td><input class="select_section_param" name="pointsDistance" type="number"></td>
         </tr>
         <tr>
-            <td>Punkty za wysokość</td>
-            <td><input name="pointsAltitude" type="number"></td>
+            <td class="align_right">Punkty za wysokość:</td>
+            <td><input class="select_section_param" name="pointsAltitude" type="number"></td>
         </tr>
     </table>
     <input type="submit" value="Znajdź">

@@ -2,37 +2,40 @@
 <html lang="pl-PL" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link href="../static/css/style.css" th:href="@{/css/sections.css}" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" type="text/css" rel="stylesheet"/>
 </head>
 <body>
-    <form action="/sections/addSectionForm" method="get">
-        <p><input type="submit" value="Dodaj odcinek"/></p>
-    </form>
 
-    <table>
-        <tr>
-            <th> </th>
-            <th>Lokalizacja początkowa</th>
-            <th>Lokalizacja końcowa</th>
-            <th>Punkty</th>
-            <th> </th>
-        </tr>
-        <tr th:each="route : ${routes}">
-            <td th:text="${route.getFirst()}"></td>
-            <td th:text="${route.getSecond().locations.get(0).getSecond().getName()}"></td>
-            <td th:text="${route.getSecond().locations.get(route.getSecond().locations.size()-1).getSecond().getName()}"></td>
-            <td th:text="${route.getSecond().altitudePoints + '/' + route.getSecond().distancePoints}"></td>
-            <td>
-                <form action="#" th:action="@{/route/details/} + ${route.getFirst()}" method="get">
-                    <p><input type="submit" value="Szczegóły"/></p>
-                </form>
-            </td>
-        </tr>
-    </table>
+<p class="header">
+    <img class="header" src="../static/images/pttk_logo.jpg" th:src="@{/images/pttk_logo.jpg}" width="100"
+         alt="Logo Pttk">
+    Planowanie trasy
+</p>
 
-    <p>
-        <!--<a href="../home.html" th:href="@{/}">Return to home</a>-->
-    </p>
+<table>
+    <tr>
+        <th></th>
+        <th>Lokalizacja początkowa</th>
+        <th>Lokalizacja końcowa</th>
+        <th>Punkty</th>
+        <th></th>
+    </tr>
+    <tr th:each="route : ${routes}">
+        <td th:text="${route.getFirst()}"></td>
+        <td th:text="${route.getSecond().locations.get(0).getSecond().getName()}"></td>
+        <td th:text="${route.getSecond().locations.get(route.getSecond().locations.size()-1).getSecond().getName()}"></td>
+        <td th:text="${route.getSecond().altitudePoints + '/' + route.getSecond().distancePoints}"></td>
+        <td>
+            <form action="#" th:action="@{/route/details/} + ${route.getFirst()}" method="get">
+                <p><input type="submit" value="Szczegóły"/></p>
+            </form>
+        </td>
+    </tr>
+</table>
+
+<p>
+    <!--<a href="../home.html" th:href="@{/}">Return to home</a>-->
+</p>
 </body>
 </html>

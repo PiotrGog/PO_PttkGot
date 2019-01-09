@@ -1,3 +1,7 @@
+body{
+    padding: 2%;
+}
+
 p.header{
     font-size: 2em;
     border-bottom: 1px solid black;
@@ -78,5 +82,27 @@ td.align_right{
 
 table.sections_details{
     padding: 20px;
-    border-spacing: 10px 20px ;
+    border-spacing: 10px 20px;
+    table-layout: auto;
+    width: 50%;
+    margin-left:25%;
+    margin-right:25%;
+}
+
+select.select_section_param{
+    width: 50%;
+}
+
+table.other_localizations {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+table.other_localizations td{
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 8px;
 }

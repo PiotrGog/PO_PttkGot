@@ -9,7 +9,7 @@
 <p class="header">
     <img class="header" src="../static/images/pttk_logo.jpg"
          th:src="@{/images/pttk_logo.jpg}" width="100" alt="Logo Pttk">
-Zarządzanie odcinkami punktowanymi do GOT
+    Zarządzanie odcinkami punktowanymi do GOT
 </p>
 
 <a href="/sections/addSectionForm" class="button_green">Dodaj odcinek</a>
@@ -26,8 +26,11 @@ Zarządzanie odcinkami punktowanymi do GOT
         <th></th>
     </tr>
     <tr th:each="section : ${sections}">
-        <td style="text-align: center;"><input th:name="'section_checkbox'+${section.getId()}" type="checkbox" title=""
-                                               th:value="${section.getId()}"></td>
+        <td style="text-align: center;">
+            <input th:name="'section_checkbox'+${section.getId()}"
+                   type="checkbox" title=""
+                   th:value="${section.getId()}">
+        </td>
         <td th:text="${section.mountainGroup.getName()}"></td>
         <td th:text="${section.mountainGroup.getMountainRange().getName()}"></td>
         <td th:text="${section.getLocationOne().getName()}"></td>

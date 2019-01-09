@@ -3,7 +3,7 @@
 <head>
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link href="../static/css/style.css" th:href="@{/css/sections.css}" rel="stylesheet"/>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" type="text/css" rel="stylesheet"/>
 
     <script>
         /*<![CDATA[*/
@@ -65,7 +65,7 @@
 </script>
 
 <p class="header">
-    <img src="../static/images/pttk_logo.jpg" th:src="@{/images/pttk_logo.jpg}" width="100" alt="Logo Pttk">
+    <img class="header" src="../static/images/pttk_logo.jpg" th:src="@{/images/pttk_logo.jpg}" width="100" alt="Logo Pttk">
     Edytuj odcinek punktowany do GOT
 </p>
 
@@ -137,8 +137,16 @@
                 </select>
             </td>
         </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <input class="select_section_param" type="submit" value="Zapisz">
+            </td>
+        </tr>
     </table>
-    <input type="submit" value="Zapisz">
+    <!--<input type="submit" value="Zapisz"-->
+        <!--style="padding: 10px;float: right">-->
 </form>
 
 </body>
