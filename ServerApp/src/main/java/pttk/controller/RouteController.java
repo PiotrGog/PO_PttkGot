@@ -122,7 +122,7 @@ public class RouteController {
     @RequestMapping(value = "/localizationOthers", method = RequestMethod.POST)
     public ResponseEntity receiveLocationsCriteria(@RequestBody List<Integer> localizations){
         this.localizationsList = localizations;
-        return  ResponseEntity.ok(HttpStatus.OK);
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 
 }

@@ -52,14 +52,22 @@
 
     <script type="text/javascript">
 
-        function remove() {
+        function remove(id, val) {
             console.log("remove call");
+            console.log("element " + id);
+            console.log("value  " + val);
+
+            $("#" + id).remove();
+            // localizationsList.remove(val);
         }
 
         function add() {
             var otherLocations = document.getElementById("otherLocations");
             var tr = document.createElement("tr");
+            var id ="id_localization" + otherLocations.options[otherLocations.selectedIndex].value;
+            tr.id = id;
             var td = document.createElement("td");
+            console.log(id);
             console.log(otherLocations);
             td.innerText = otherLocations.options[otherLocations.selectedIndex].text;
             tr.appendChild(td);
@@ -67,7 +75,10 @@
             var a = document.createElement("a");
             var img = document.createElement("img");
             img.src = "../static/images/minus.png";
-            a.href = "javascript:remove();";
+            var hrefString = "javascript:remove(" + id +", " + otherLocations.options[otherLocations.selectedIndex].value + ");";
+            console.log(hrefString);
+            a.href = hrefString;
+
             a.appendChild(img);
             img.setAttribute("src", "/images/minus.png");
             img.width = 10;
@@ -92,7 +103,6 @@
                 });
             });
         });
-
 
 
     </script>
