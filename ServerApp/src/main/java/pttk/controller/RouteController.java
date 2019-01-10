@@ -5,6 +5,8 @@ import org.jgrapht.alg.shortestpath.AllDirectedPaths;
 import org.jgrapht.graph.SimpleDirectedWeightedGraph;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Pair;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -23,14 +25,15 @@ public class RouteController {
     @Autowired
     private RouteService routeService_;
 
-    List<Pair<Integer, GraphPathDecorator>> paths = null;
+    private List<Pair<Integer, GraphPathDecorator>> paths = null;
+
+    private List<Integer> localizationsList= null;
 
     @RequestMapping(value = "/find", method = RequestMethod.POST)
     public String findRoute(@RequestParam Integer mountainRange,
                             @RequestParam Integer mountainGroup,
                             @RequestParam Integer locationStart,
                             @RequestParam Integer locationFinish,
-                            @ModelAttribute(value = "localizationsList") List<Integer> localizationsList,
                             @RequestParam Integer pointsAltitude,
                             @RequestParam Integer pointsDistance,
                             Model model) {
@@ -38,8 +41,9 @@ public class RouteController {
         if (localizationsList == null) {
             Application.log.info("localizationsList is null");
         } else {
-            for (Integer i : localizationsList) {
-                System.out.println(i);
+            Application.log.info(localizationsList.size());
+            for (int i = 0 ; i<localizationsList.size(); i++) {
+                System.out.println(localizationsList.get(i));
             }
         }
 
@@ -84,7 +88,7 @@ public class RouteController {
             paths = tmpPaths;
         }
 
-
+        localizationsList = null;
         model.addAttribute("routes", paths);
         return "route_planning_found";
     }
@@ -111,8 +115,14 @@ public class RouteController {
     }
 
     @ModelAttribute(value = "localizationsList")
-    public List<Integer> localizations() {
+    public List<String> localizationsListModelAttribute() {
         return new ArrayList<>();
+    }
+
+    @RequestMapping(value = "/localizationOthers", method = RequestMethod.POST)
+    public ResponseEntity receiveLocationsCriteria(@RequestBody List<Integer> localizations){
+        this.localizationsList = localizations;
+        return  ResponseEntity.ok(HttpStatus.OK);
     }
 
 }

@@ -4,6 +4,7 @@
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="../static/css/style.css" th:href="@{/css/style.css}" type="text/css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <script>
         /*<![CDATA[*/
@@ -51,11 +52,11 @@
 
     <script type="text/javascript">
 
-        function remove(){
+        function remove() {
             console.log("remove call");
         }
 
-        function add(){
+        function add() {
             var otherLocations = document.getElementById("otherLocations");
             var tr = document.createElement("tr");
             var td = document.createElement("td");
@@ -65,16 +66,35 @@
 
             var a = document.createElement("a");
             var img = document.createElement("img");
-            img.src="../static/images/minus.png";
+            img.src = "../static/images/minus.png";
             a.href = "javascript:remove();";
             a.appendChild(img);
             img.setAttribute("src", "/images/minus.png");
-            img.width=10;
+            img.width = 10;
             td.appendChild(a);
 
             document.getElementById("other_locations").appendChild(tr);
             localizationsList.push(otherLocations.options[otherLocations.selectedIndex].value);
         }
+
+        $(document).ready(function () {
+            $("#find_button").click(function (e) {
+                e.preventDefault();
+                $.post({
+                    url: "/route/localizationOthers",
+                    data: JSON.stringify(localizationsList),
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    success: function () {
+                        console.log("wazne");
+                        $("#criteria_form").submit();
+                    }
+                });
+            });
+        });
+
+
+
     </script>
 
 </head>
@@ -91,16 +111,18 @@
 </script>
 
 <p class="header">
-    <img class="header" src="../static/images/pttk_logo.jpg" th:src="@{/images/pttk_logo.jpg}" width="100" alt="Logo Pttk">
+    <img class="header" src="../static/images/pttk_logo.jpg" th:src="@{/images/pttk_logo.jpg}" width="100"
+         alt="Logo Pttk">
     Planowanie trasy
 </p>
 
-<form action="#" th:action="@{/route/find}" method="post">
+<form id="criteria_form" action="#" th:action="@{/route/find}" method="post">
     <table class="sections_details">
         <tr>
             <td class="align_right">Pasmo górskie:</td>
             <td>
-                <select class="select_section_param" id="mountainRangesSelectList" name="mountainRange" onchange="changeMountainRangesListener();">
+                <select class="select_section_param" id="mountainRangesSelectList" name="mountainRange"
+                        onchange="changeMountainRangesListener();">
                     <option></option>
                     <option th:each="mr : ${mountainRanges}"
                             th:value="${mr.getId()}" th:text="${mr.getName()}"></option>
@@ -169,7 +191,7 @@
             <td>
             </td>
             <td>
-                <input class="select_section_param" type="submit" value="Znajdź">
+                <input id="find_button" class="select_section_param" type="button" value="Znajdź">
             </td>
         </tr>
     </table>
