@@ -6,7 +6,29 @@
     <link href="../static/css/style.css" th:href="@{/css/style.css}" type="text/css" rel="stylesheet"/>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        var elements = [];
+        $(document).ready(function () {
 
+            $("#add_to_table").click(function (e) {
+                e.preventDefault();
+                console.log("button on click");
+                var text = $("#table_text").val();
+                console.log(text);
+                elements.push(text);
+                $("#table_test").append("<tr><td>" + text + "</td></tr>");
+
+                $("#block").append('<tr><td><input type="text" th:field="*{string}"></td></tr>')
+
+            });
+
+            $("#send_table").click(function (e) {
+                e.preventDefault();
+                console.log("send table");
+
+            });
+        });
+    </script>
 </head>
 <body>
 
@@ -20,7 +42,7 @@
             var $form = $(this);
             var url = $form.attr("action");
             console.log(url)
-            $.each($("input[name='checkbox']:checked"), function(){
+            $.each($("input[name='checkbox']:checked"), function () {
                 favorite.push($(this).val());
             });
             var data = {
@@ -29,10 +51,10 @@
                 "list": favorite
             }
             var posting = $.post({
-                url : url,
+                url: url,
                 data: JSON.stringify(data),
-                contentType : 'application/json; charset=utf-8',
-                dataType : 'json',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
                 success: function (data, status, jq) {
                     console.log("success");
                     window.location.href = "/";
@@ -63,6 +85,52 @@
 </form>
 <div><label for="7">Label 7</label><input id="7" type="checkbox" name="checkbox" value="7"></div>
 <input type="button" id="button" value="aaaa">
+
+<div>
+    <input id="table_text" type="text">
+    <input id="add_to_table" type="button" value="Zatwierdz tekst">
+</div>
+
+<div>
+    <input id="send_table" type="button" value="Wyslij do kontrolera">
+</div>
+
+<div>
+    <table id="table_test">
+    </table>
+</div>
+
+<p>Inna tablica</p>
+<form method="post" action="/test/save" th:action="@{/test/save}" th:object="${stringContainer}">
+    <table id="block">
+        <th:block th:each="stringWrapper, iter : *{getStringList()}">
+            <tr>
+                <td>
+                    <input type="text" th:field="*{getStringList()[__${iter.index}__].string}">
+                </td>
+            </tr>
+        </th:block>
+        <!--<tr>-->
+        <!--<td>-->
+        <!--<input type="text" th:value="*{stringContainer}">-->
+        <!--</td>-->
+        <!--</tr>-->
+    </table>
+    <input type="submit" value="Zapisz">
+</form>
+
+
+<!--<form method="post" action="/test/save" th:action="@{/test/save}" th:object="${stringWrapper}">-->
+
+<!--<input type="text" th:field="*{string}">-->
+
+<!--&lt;!&ndash;<tr>&ndash;&gt;-->
+<!--&lt;!&ndash;<td>&ndash;&gt;-->
+<!--&lt;!&ndash;<input type="text" th:value="*{stringContainer}">&ndash;&gt;-->
+<!--&lt;!&ndash;</td>&ndash;&gt;-->
+<!--&lt;!&ndash;</tr>&ndash;&gt;-->
+<!--<input type="submit" value="Zapisz">-->
+<!--</form>-->
 
 </body>
 </html>
