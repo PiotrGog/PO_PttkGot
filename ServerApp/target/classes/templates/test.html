@@ -102,34 +102,34 @@
 
 <p>Inna tablica</p>
 <form method="post" action="/test/save" th:action="@{/test/save}" th:object="${stringContainer}">
-<table id="block">
-<th:block  th:each="stringWrapper, iter : *{getStringList()}">
-<tr>
-<td>
-<input type="text" th:field="*{getStringList()[__${iter.index}__].string}">
-</td>
-</tr>
-</th:block>
-<!--<tr>-->
-<!--<td>-->
-<!--<input type="text" th:value="*{stringContainer}">-->
-<!--</td>-->
-<!--</tr>-->
-</table>
-<input type="submit" value="Zapisz">
+    <table id="block">
+        <th:block th:each="stringWrapper, iter : *{getStringList()}">
+            <tr>
+                <td>
+                    <input type="text" th:field="*{getStringList()[__${iter.index}__].string}">
+                </td>
+            </tr>
+        </th:block>
+        <!--<tr>-->
+        <!--<td>-->
+        <!--<input type="text" th:value="*{stringContainer}">-->
+        <!--</td>-->
+        <!--</tr>-->
+    </table>
+    <input type="submit" value="Zapisz">
 </form>
 
 
 <!--<form method="post" action="/test/save" th:action="@{/test/save}" th:object="${stringWrapper}">-->
 
-    <!--<input type="text" th:field="*{string}">-->
+<!--<input type="text" th:field="*{string}">-->
 
-    <!--&lt;!&ndash;<tr>&ndash;&gt;-->
-    <!--&lt;!&ndash;<td>&ndash;&gt;-->
-    <!--&lt;!&ndash;<input type="text" th:value="*{stringContainer}">&ndash;&gt;-->
-    <!--&lt;!&ndash;</td>&ndash;&gt;-->
-    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
-    <!--<input type="submit" value="Zapisz">-->
+<!--&lt;!&ndash;<tr>&ndash;&gt;-->
+<!--&lt;!&ndash;<td>&ndash;&gt;-->
+<!--&lt;!&ndash;<input type="text" th:value="*{stringContainer}">&ndash;&gt;-->
+<!--&lt;!&ndash;</td>&ndash;&gt;-->
+<!--&lt;!&ndash;</tr>&ndash;&gt;-->
+<!--<input type="submit" value="Zapisz">-->
 <!--</form>-->
 
 </body>

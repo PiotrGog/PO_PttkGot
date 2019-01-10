@@ -7,10 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import pttk.Application;
 import pttk.model.Location;
 import pttk.service.CustomWeightedEdge;
 import pttk.service.GraphPathDecorator;
@@ -32,10 +30,18 @@ public class RouteController {
                             @RequestParam Integer mountainGroup,
                             @RequestParam Integer locationStart,
                             @RequestParam Integer locationFinish,
-//                            @RequestParam(value = "localizationsList[]") List<Integer> localizationsList,
+                            @ModelAttribute(value = "localizationsList") List<Integer> localizationsList,
                             @RequestParam Integer pointsAltitude,
                             @RequestParam Integer pointsDistance,
                             Model model) {
+
+        if (localizationsList == null) {
+            Application.log.info("localizationsList is null");
+        } else {
+            for (Integer i : localizationsList) {
+                System.out.println(i);
+            }
+        }
 
         SimpleDirectedWeightedGraph<Integer, CustomWeightedEdge> graph =
                 routeService_.buildGraph(mountainRange, mountainGroup);
@@ -61,20 +67,21 @@ public class RouteController {
         paths = new ArrayList<>();
 
 
-
         List<Pair<Integer, GraphPathDecorator>> tmpPaths = routeService_.graphPathDecorate(routes);
 
-        if(null!=pointsAltitude || null!=pointsDistance)
-        {
-            pointsAltitude = (null==pointsAltitude)?0:pointsAltitude;
-            pointsDistance = (null==pointsDistance)?0:pointsDistance;
+        if (null != pointsAltitude || null != pointsDistance) {
+            pointsAltitude = (null == pointsAltitude) ? 0 : pointsAltitude;
+            pointsDistance = (null == pointsDistance) ? 0 : pointsDistance;
 
-            for(int i = 0; i<tmpPaths.size(); i++){
-                if(pointsAltitude<=tmpPaths.get(i).getSecond().altitudePoints
-                        && pointsDistance<=tmpPaths.get(i).getSecond().distancePoints){
+            for (int i = 0; i < tmpPaths.size(); i++) {
+                if (pointsAltitude <= tmpPaths.get(i).getSecond().altitudePoints
+                        && pointsDistance <= tmpPaths.get(i).getSecond().distancePoints) {
                     paths.add(tmpPaths.get(i));
                 }
             }
+        }
+        else {
+            paths = tmpPaths;
         }
 
 
@@ -84,7 +91,7 @@ public class RouteController {
 
     @RequestMapping(value = "/details/{id}", method = RequestMethod.GET)
     public String findRouteDetails(@PathVariable Integer id, Model model) {
-        model.addAttribute("startLocation", paths.get(id- 1).getSecond()
+        model.addAttribute("startLocation", paths.get(id - 1).getSecond()
                 .locations.get(0).getSecond().getName());
         model.addAttribute("finishLocation", paths.get(id - 1).getSecond()
                 .locations.get(paths.get(id - 1).getSecond()
@@ -103,5 +110,9 @@ public class RouteController {
         return "route_planning_criteria";
     }
 
+    @ModelAttribute(value = "localizationsList")
+    public List<Integer> localizations() {
+        return new ArrayList<>();
+    }
 
 }
