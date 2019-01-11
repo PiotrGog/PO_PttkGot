@@ -10,18 +10,15 @@ import pttk.repositories.LocationRepository;
 import pttk.repositories.MountainGroupRepository;
 import pttk.repositories.MountainRangeRepository;
 import pttk.repositories.SectionRepository;
+import pttk.service.SectionFilter;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Controller
 @RequestMapping("/sections")
 public class SectionController {
-
-    
-
-
-
 
     @Autowired
     private SectionRepository sectionRepository_;
@@ -35,9 +32,67 @@ public class SectionController {
     @Autowired
     private LocationRepository locationRepository_;
 
+    private SectionFilter sectionFilter_ = new SectionFilter();
+
+
+    @RequestMapping(value = "/filter", method = RequestMethod.POST)
+    public String acceptFilter(@ModelAttribute(value = "sectionFilter") SectionFilter sectionFilter) {
+        sectionFilter_ = sectionFilter;
+        Application.log.info(sectionFilter_);
+        return "redirect:/sections";
+    }
+
+
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String listSections(Model model) {
-        model.addAttribute("sections", sectionRepository_.findAll());
+        Iterable<Section> sections = sectionRepository_.findAll();
+        ArrayList<Section> filteredSections = new ArrayList<>();
+        for (Section s : sections) {
+            if (null != sectionFilter_.getAltitudePointsMaxFilter()
+                    && !(sectionFilter_.getAltitudePointsMaxFilter() >= s.getPointsAltitude())) {
+                continue;
+            }
+
+            if (null != sectionFilter_.getAltitudePointsMinFilter()
+                    && !(sectionFilter_.getAltitudePointsMinFilter() <= s.getPointsAltitude())) {
+                continue;
+            }
+
+            if (null !=  sectionFilter_.getDistancePointsMaxFilter()
+                    && !(sectionFilter_.getDistancePointsMaxFilter() >= s.getPointsDistance())) {
+                continue;
+            }
+
+            if (null != sectionFilter_.getDistancePointsMinFilter()
+                    && !(sectionFilter_.getDistancePointsMinFilter() <= s.getPointsDistance())) {
+                continue;
+            }
+
+            if (null != sectionFilter_.getMountainGroupFilter()
+                    && !sectionFilter_.getMountainGroupFilter().equals(s.getMountainGroup().getId())) {
+                continue;
+            }
+
+            if (null != sectionFilter_.getMountainRangeFilter()
+                    && !sectionFilter_.getMountainRangeFilter().equals(s.getMountainGroup().getMountainRange().getId())) {
+                continue;
+            }
+
+            if (null != sectionFilter_.getLocalizationOneFilter()
+                    && !(sectionFilter_.getLocalizationOneFilter().equals(s.getLocationOne().getId())
+                        || sectionFilter_.getLocalizationOneFilter().equals(s.getLocationTwo().getId()))) {
+                continue;
+            }
+
+            if (null != sectionFilter_.getLocalizationTwoFilter()
+                    && !(sectionFilter_.getLocalizationTwoFilter().equals(s.getLocationOne().getId())
+                    || sectionFilter_.getLocalizationTwoFilter().equals(s.getLocationTwo().getId()))) {
+                continue;
+            }
+
+            filteredSections.add(s);
+        }
+        model.addAttribute("sections", filteredSections);
         return "sections";
     }
 
@@ -112,8 +167,10 @@ public class SectionController {
 
     @GetMapping(value = "/filterSectionsForm")
     public String filterSectionForm(Model model) {
-        System.out.println("showAddSectionForm");
-        return "error";
+        model.addAttribute("mountainRanges", mountainRangeRepository_.findAll());
+        model.addAttribute("mountainGroups", mountainGroupRepository_.findAll());
+        model.addAttribute("locations", locationRepository_.findAll());
+        return "section_filter";
     }
 
     @RequestMapping(value = "/addSection", method = RequestMethod.POST)
@@ -160,4 +217,10 @@ public class SectionController {
         }
         return sectionsToDelete;
     }
+
+    @ModelAttribute(value = "sectionFilter")
+    public SectionFilter filter() {
+        return this.sectionFilter_;
+    }
+
 }

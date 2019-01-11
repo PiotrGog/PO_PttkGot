@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html lang="pl-PL" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" type="text/css" rel="stylesheet"/>
+
+    <script>
+        /*<![CDATA[*/
+        var mountainRanges = null;
+        var mountainGroups = null;
+        var data = [];
+
+        function changeMountainRangesListener() {
+            var mountainRangesSelector = document.getElementById("mountainRangesSelectList");
+            var mountainGroupsSelector = document.getElementById("mountainGroupsSelectList");
+
+            console.log(mountainRangesSelector.innerHTML);
+            var length = mountainGroupsSelector.options.length;
+            for (i = 0; i < length; i++) {
+                mountainGroupsSelector.options[i] = null;
+            }
+
+            var option = document.createElement("option");
+            option.text = "";
+            option.value = "";
+            mountainGroupsSelector.add(option);
+
+            length = data.length;
+            for (i = 0; i < length; i++) {
+                console.log(typeof data[i].mountainRange.id);
+                console.log(data[i].mountainRange.id);
+                console.log(typeof mountainRangesSelector.options.selectedIndex);
+                console.log(mountainRangesSelector.options.selectedIndex);
+                console.log(data[i].mountainRange.id == mountainRangesSelector.options.selectedIndex);
+                if (data[i].mountainRange.id == mountainRangesSelector.options.selectedIndex) {
+                    console.log("aaaadddd");
+                    var option = document.createElement("option");
+                    option.text = data[i].name;
+                    option.value = data[i].id;
+                    mountainGroupsSelector.add(option);
+                }
+            }
+            console.log(data);
+        }
+
+        /*]]>*/
+    </script>
+
+    <!--<script th:each="item:${mountainGroups}" th:inline="javascript">-->
+        <!--data.push([[${item}]]);-->
+    <!--</script>-->
+
+
+</head>
+<body>
+
+<script>
+    /*<![CDATA[*/
+    mountainRanges = "[[${mountainRanges}]]";
+    mountainGroups = "[[${mountainGroups}]]";
+    console.log(mountainRanges);
+    console.log(mountainGroups);
+    /*]]>*/
+</script>
+
+<p class="header">
+    <img class="header" src="../static/images/pttk_logo.jpg" th:src="@{/images/pttk_logo.jpg}" width="100" alt="Logo Pttk">
+    Edytuj odcinek punktowany do GOT
+</p>
+
+<form action="#" th:action="@{/sections/filter}" method="post" th:object="${sectionFilter}">
+    <!--<input type="hidden" name="id" th:value="${id}">-->
+    <table class="sections_details">
+        <tr>
+            <td class="align_right">Pasmo górskie:</td>
+            <td>
+                <select  th:field="*{mountainRangeFilter}">
+                    <option th:each="mr : ${mountainRanges}"
+                            th:value="${mr.getId()}"
+                            th:text="${mr.getName()}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="align_right">Grupa górskie:</td>
+            <td>
+                <select name="mountainGroup" th:field="*{mountainGroupFilter}">
+                    <option th:each="mg : ${mountainGroups}"
+                            th:value="${mg.getId()}"
+                            th:text="${mg.getName()}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="align_right">Lokalizacja pierwsza:</td>
+            <td>
+                <select name="locationOne"
+                        th:field="*{localizationOneFilter}">
+                    <option th:each="l : ${locations}"
+                            th:value="${l.getId()}"
+                            th:text="${l.getName()}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="align_right">Lokalizacja druga:</td>
+            <td>
+                <select name="locationTwo"
+                        th:field="*{localizationTwoFilter}">
+                    <option th:each="l : ${locations}"
+                            th:value="${l.getId()}"
+                            th:text="${l.getName()}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="align_right">Odległość minimalna:</td>
+            <td>
+                <input name="distance" type="number" min="0" th:field="*{distanceMinFilter}">
+            </td>
+        </tr>
+        <tr>
+            <td class="align_right">Odległość maksymalna:</td>
+            <td>
+                <input name="distance" type="number" min="0" th:field="*{distanceMaxFilter}">
+            </td>
+        </tr>
+        <tr>
+            <td class="align_right">Punkty za wysokość (min):</td>
+            <td>
+                <input name="pointsAltitude" type="number" min="0" th:field="*{altitudePointsMinFilter}">
+            </td>
+        </tr>
+        <tr>
+            <td class="align_right">Punkty za wysokość (max):</td>
+            <td>
+                <input name="pointsAltitude" type="number" min="0" th:field="*{altitudePointsMaxFilter}">
+            </td>
+        </tr>
+        <tr>
+            <td class="align_right">Punkty za odległość (min):</td>
+            <td>
+                <input name="pointsAltitude" type="number" min="0" th:field="*{distancePointsMinFilter}">
+            </td>
+        </tr>
+        <tr>
+            <td class="align_right">Punkty za odległość (max):</td>
+            <td>
+                <input name="pointsAltitude" type="number" min="0" th:field="*{distancePointsMaxFilter}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <input class="select_section_param" type="submit" value="Filtruj">
+            </td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

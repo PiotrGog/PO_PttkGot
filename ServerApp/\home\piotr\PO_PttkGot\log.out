@@ -1,2 +1,3 @@
 Application start
 Application start
+SectionFilter{mountainRangeFilter='1', mountainGroupFilter='1', localizationOneFilter='1', localizationTwoFilter='1', distanceMaxFilter=null, distanceMinFilter=null, distancePointsMaxFilter=null, distancePointsMinFilter=null, altitudePointsMaxFilter=null, altitudePointsMinFilter=null}
