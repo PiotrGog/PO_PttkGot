@@ -29,6 +29,12 @@ public class RouteController {
 
     private List<Integer> localizationsList= null;
 
+    @RequestMapping(value = "/find", method = RequestMethod.GET)
+    public String findRoute(Model model) {
+        model.addAttribute("routes", paths);
+        return "route_planning_found";
+    }
+
     @RequestMapping(value = "/find", method = RequestMethod.POST)
     public String findRoute(@RequestParam Integer mountainRange,
                             @RequestParam Integer mountainGroup,

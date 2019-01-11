@@ -49,8 +49,14 @@
 
         function add() {
             var otherLocations = document.getElementById("otherLocations");
+
+            var selectedItem = otherLocations.options[otherLocations.selectedIndex].value;
+            if (0 <= $.inArray(selectedItem, localizationsList)) {
+                return;
+            }
+
             var tr = document.createElement("tr");
-            var id ="id_localization" + otherLocations.options[otherLocations.selectedIndex].value;
+            var id = "id_localization" + otherLocations.options[otherLocations.selectedIndex].value;
             tr.id = id;
             var td = document.createElement("td");
             console.log(id);
@@ -69,14 +75,12 @@
 
             document.getElementById("other_locations").appendChild(tr);
 
-            var selectedItem = otherLocations.options[otherLocations.selectedIndex].value;
-
             localizationsList.push(selectedItem);
 
             a.addEventListener('click', function (e) {
                 e.preventDefault();
                 console.log("click");
-                $("#"+id).remove();
+                $("#" + id).remove();
 
                 var index = localizationsList.indexOf(selectedItem);
                 if (index > -1) {
@@ -121,6 +125,7 @@
     <img class="header" src="../static/images/pttk_logo.jpg" th:src="@{/images/pttk_logo.jpg}" width="100"
          alt="Logo Pttk">
     Planowanie trasy
+    <a style="float: right;" href="/" class="button_grey">Zakończ</a>
 </p>
 
 <form id="criteria_form" action="#" th:action="@{/route/find}" method="post">
@@ -175,7 +180,6 @@
                              th:src="@{/images/plus.png}" width="10" alt="Dodaj element">
                     </a>
                     <select class="select_section_param" id="otherLocations" name="otherLocation">
-                        <option></option>
                         <option th:each="l : ${locations}"
                                 th:value="${l.getId()}" th:text="${l.getName()}"></option>
                     </select>

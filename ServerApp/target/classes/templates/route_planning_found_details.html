@@ -10,15 +10,26 @@
     <img class="header" src="../static/images/pttk_logo.jpg" th:src="@{/images/pttk_logo.jpg}" width="100"
          alt="Logo Pttk">
     Planowanie trasy
+    <a style="float: right;" href="/route/find" class="button_grey">Powrót</a>
 </p>
 
-<div><a th:href="@{'/route/details/' + ${currentIndex+1}}">Następny</a></div>
-<div><a th:href="@{'/route/details/' + ${currentIndex-1}}">Poprzedni</a></div>
+<th:block th:if="${currentIndex>1}">
+    <div style="float: left"><a th:href="@{'/route/details/' + ${currentIndex-1}}">Poprzedni</a></div>
+</th:block>
+<th:block th:if="${currentIndex<3}">
+    <div style="float: right"><a th:href="@{'/route/details/' + ${currentIndex+1}}">Następny</a></div>
+</th:block>
+<div style="font-size: 1.5em" align="center">Szczegóły trasy</div>
 
-<p>Lokalizacja początkowa: <div th:text="${startLocation}"></div> </p>
-<p>Lokalizacja końcowa: <div th:text="${finishLocation}"></div> </p>
 
-<table>
+<p><label>Lokalizacja początkowa: </label>
+    <th:block th:text="${startLocation}"></th:block>
+</p>
+<p><label>Lokalizacja końcowa: </label>
+    <th:block th:text="${finishLocation}"></th:block>
+</p>
+
+<table class="section_table">
     <tr>
         <th></th>
         <th>Pasmo górskie</th>
@@ -42,19 +53,19 @@
 <p>
 <div>
     <label>Punkty za wysokość:
-        <div th:text="${pathSections.altitudePoints}"></div>
+        <th:block th:text="${pathSections.altitudePoints}"></th:block>
     </label>
 </div>
 <div>
     <label>Punkty za odległość:
-        <div th:text="${pathSections.distancePoints}"></div>
+        <th:block th:text="${pathSections.distancePoints}"></th:block>
     </label>
 </div>
 </p>
 
 <!--<p>-->
 <!--<div>-->
-    <!--<a href="/route/details">Zamknij</a>-->
+<!--<a href="/route/details">Zamknij</a>-->
 <!--</div>-->
 <!--</p>-->
 
