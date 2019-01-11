@@ -106,7 +106,8 @@
                 <select class="select_section_param" id="mountainRangesSelectList" name="mountainRange"
                         onchange="changeMountainRangesListener();">
                     <option th:each="mr : ${mountainRanges}"
-                            th:value="${mr.getId()}" th:text="${mr.getName()}"></option>
+                            th:value="${mr.getId()}"
+                            th:text="${mr.getName()}"></option>
                 </select>
             </td>
         </tr>
@@ -114,8 +115,17 @@
             <td class="align_right">Grupa górskie:</td>
             <td>
                 <select class="select_section_param" id="mountainGroupsSelectList" name="mountainGroup">
-                    <option th:each="mg : ${mountainGroups}"
-                            th:value="${mg.getId()}" th:text="${mg.getName()}"></option>
+                    <th:block th:each="mg : ${mountainGroups}">
+                        <option th:if="${mg.getMountainRange().getId()==#mountainRangesSelectList.selected}"
+                                th:value="${mg.getId()}"
+                                th:text="${mg.getName()}"></option>
+                    </th:block>
+
+
+
+                    <!--<option th:each="mg : ${mountainGroups}"-->
+                            <!--th:value="${mg.getId()}"-->
+                            <!--th:text="${mg.getName()}"></option>-->
                 </select>
             </td>
         </tr>
