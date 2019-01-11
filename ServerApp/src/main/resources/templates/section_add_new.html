@@ -112,20 +112,12 @@
             </td>
         </tr>
         <tr>
-            <td class="align_right">Grupa górskie:</td>
+            <td class="align_right">Grupa górska:</td>
             <td>
                 <select class="select_section_param" id="mountainGroupsSelectList" name="mountainGroup">
-                    <th:block th:each="mg : ${mountainGroups}">
-                        <option th:if="${mg.getMountainRange().getId()==#mountainRangesSelectList.selected}"
-                                th:value="${mg.getId()}"
-                                th:text="${mg.getName()}"></option>
-                    </th:block>
-
-
-
-                    <!--<option th:each="mg : ${mountainGroups}"-->
-                            <!--th:value="${mg.getId()}"-->
-                            <!--th:text="${mg.getName()}"></option>-->
+                    <option th:each="mg : ${mountainGroups}"
+                            th:value="${mg.getId()}"
+                            th:text="${mg.getName()}"></option>
                 </select>
             </td>
         </tr>
@@ -182,6 +174,10 @@
     </table>
 
 </form>
+
+<script>
+    changeMountainRangesListener();
+</script>
 
 </body>
 </html>

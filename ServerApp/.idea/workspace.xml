@@ -17,24 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="sections.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/sections.html">
+      <file leaf-file-name="section_add_new.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/section_add_new.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="68" column="10" lean-forward="true" selection-start-line="63" selection-start-column="5" selection-end-line="68" selection-end-column="10" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+            <state relative-caret-position="597">
+              <caret line="180" lean-forward="true" selection-start-line="180" selection-end-line="180" />
             </state>
           </provider>
         </entry>
@@ -120,10 +107,10 @@
         <option value="$PROJECT_DIR$/src/main/java/pttk/controller/SectionController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/section_filter.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/section_edit.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/section_add_new.html" />
         <option value="$PROJECT_DIR$/src/main/java/pttk/model/Section.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/style.css" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/sections.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/section_add_new.html" />
       </list>
     </option>
   </component>
@@ -400,12 +387,12 @@
       <workItem from="1546719805817" duration="16284000" />
       <workItem from="1546808954947" duration="8275000" />
       <workItem from="1547125563583" duration="24949000" />
-      <workItem from="1547195631939" duration="13720000" />
+      <workItem from="1547195631939" duration="15353000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="194683000" />
+    <option name="totallyTimeSpent" value="196316000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="27" width="1865" height="1053" extended-state="6" />
@@ -428,7 +415,7 @@
       <window_info id="Image Layers" order="3" />
       <window_info anchor="bottom" id="Java Enterprise" order="10" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info active="true" anchor="bottom" id="Run Dashboard" order="14" sideWeight="0.6477212" visible="true" weight="0.3400853" />
+      <window_info active="true" anchor="bottom" id="Run Dashboard" order="14" sideWeight="0.6477212" visible="true" weight="0.23134328" />
       <window_info anchor="bottom" id="Version Control" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4997319" weight="0.19509594" />
       <window_info anchor="bottom" id="Spring" order="7" />
@@ -853,10 +840,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/section_add_new.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/sections.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-581">
-          <caret line="118" column="106" selection-start-line="118" selection-start-column="106" selection-end-line="118" selection-end-column="106" />
+        <state relative-caret-position="216">
+          <caret line="64" column="24" lean-forward="true" selection-start-line="64" selection-start-column="24" selection-end-line="64" selection-end-column="24" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -867,14 +857,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/sections.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/section_add_new.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="68" column="10" lean-forward="true" selection-start-line="63" selection-start-column="5" selection-end-line="68" selection-end-column="10" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="597">
+          <caret line="180" lean-forward="true" selection-start-line="180" selection-end-line="180" />
         </state>
       </provider>
     </entry>
