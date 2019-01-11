@@ -4,12 +4,16 @@
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="../static/css/style.css" th:href="@{/css/style.css}" type="text/css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 
     <script>
         /*<![CDATA[*/
         var mountainRanges = null;
         var mountainGroups = null;
         var data = [];
+
         function changeMountainRangesListener() {
             var mountainRangesSelector = document.getElementById("mountainRangesSelectList");
             var mountainGroupsSelector = document.getElementById("mountainGroupsSelectList");
@@ -34,7 +38,7 @@
                 console.log(data[i].mountainRange.id == mountainRangesSelector.options.selectedIndex);
                 if (data[i].mountainRange.id == mountainRangesSelector.options.selectedIndex) {
                     console.log("aaaadddd");
-                    var option = document.createElement("option");
+                    option = document.createElement("option");
                     option.text = data[i].name;
                     option.value = data[i].id;
                     mountainGroupsSelector.add(option);
@@ -48,6 +52,48 @@
 
     <script th:each="item:${mountainGroups}" th:inline="javascript">
         data.push([[${item}]]);
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#new_section_form").validate({
+                rules: {
+                    mountainGroups: "required",
+                    mountainRange: "required",
+                    locationOne: "required",
+                    locationTwo: "required",
+                    distance: {
+                        required: true,
+                        min: 1
+
+                    },
+                    pointsAltitude: "required",
+                    pointsDistance: "required"
+                },
+                messages: {
+                    mountainGroups: "Podaj grupę górską",
+                    mountainRange: "Podaj pasmo górskie",
+                    locationOne: "Podaj lokalizację początkową",
+                    locationTwo: "Podaj lokalizację końcową",
+                    distance: "Podaj dodatnią odległość [m]",
+                    pointsAltitude: "Podaj liczbę punktów za wysokość",
+                    pointsDistance: "Podaj liczbę punktów za odległość"
+                },
+                // Make sure the form is submitted to the destination defined
+                // in the "action" attribute of the form when valid
+                submitHandler: function(form) {
+                    form.submit();
+                }
+
+            })
+            // click(function (e) {
+            //     e.preventDefault();
+            //     var form = $("#new_section_form");
+            //     if($form.input[name=""])
+            // })
+        })
+
+
     </script>
 
 </head>
@@ -64,16 +110,18 @@
 </script>
 
 <p class="header">
-    <img class="header" src="../static/images/pttk_logo.jpg" th:src="@{/images/pttk_logo.jpg}" width="100" alt="Logo Pttk">
+    <img class="header" src="../static/images/pttk_logo.jpg" th:src="@{/images/pttk_logo.jpg}" width="100"
+         alt="Logo Pttk">
     Dodaj odcinek punktowany do GOT
 </p>
 
-<form th:action="@{/sections/addSection}" method="post">
+<form id="new_section_form" th:action="@{/sections/addSection}" method="post">
     <table class="sections_details">
         <tr>
             <td class="align_right">Pasmo górskie:</td>
             <td>
-                <select class="select_section_param" id="mountainRangesSelectList" onchange="changeMountainRangesListener();">
+                <select class="select_section_param" id="mountainRangesSelectList" name="mountainRange"
+                        onchange="changeMountainRangesListener();">
                     <option th:each="mr : ${mountainRanges}"
                             th:value="${mr}" th:text="${mr.getName()}"></option>
                 </select>
@@ -135,6 +183,7 @@
             </td>
             <td>
                 <input class="select_section_param" type="submit" value="Dodaj">
+                <!--<input id="submit_button" class="select_section_param" type="button" value="Dodaj">-->
             </td>
         </tr>
     </table>
