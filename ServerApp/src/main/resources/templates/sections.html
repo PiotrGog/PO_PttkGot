@@ -28,7 +28,7 @@
                         console.log("success");
                         for (var i = 0; i < data.length; i++) {
                             console.log(data[i]);
-                            $('table#sections_table tr#'+data[i]).remove();
+                            $('table#sections_table tr#' + data[i]).remove();
                         }
                     }
                 });
@@ -61,9 +61,15 @@
     <img class="header" src="../static/images/pttk_logo.jpg"
          th:src="@{/images/pttk_logo.jpg}" width="100" alt="Logo Pttk">
     Zarządzanie odcinkami punktowanymi do GOT
+<!--<div style="float: right;">-->
+    <!--<div>Jak Kowalski</div>-->
+    <!--<div>-->
+        <!--<a href="/" class="button_grey">Zakończ</a>-->
+    <!--</div>-->
+<!--</div>-->
 </p>
 
-<a href="/sections/addSectionForm" class="button_green">Dodaj odcinek</a>
+<a style="float: right;" href="/sections/addSectionForm" class="button_green">Dodaj odcinek</a>
 <a href="/sections/filterSectionsForm" class="button_grey">Wyszukaj</a>
 
 <table id="sections_table" class="section_table">

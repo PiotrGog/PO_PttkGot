@@ -11,7 +11,7 @@ p.header{
 }
 
 p.header img.header{
-    float:left;
+    /*float:left;*/
     padding: 10px;
 }
 
