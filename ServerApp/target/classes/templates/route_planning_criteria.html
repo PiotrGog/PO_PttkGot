@@ -14,33 +14,28 @@
 
         var localizationsList = [];
 
-        function changeMountainRangesListener() {
-            var mountainRangesSelector = document.getElementById("mountainRangesSelectList");
-            var mountainGroupsSelector = document.getElementById("mountainGroupsSelectList");
 
-            console.log(mountainRangesSelector.innerHTML);
-            var length = mountainGroupsSelector.options.length;
-            for (i = 0; i < length; i++) {
-                mountainGroupsSelector.options[i] = null;
-            }
+        function changeMountainRangesListener() {
+            var mountainRangesSelector = $("#mountainRangesSelectList");
+            var mountainGroupsSelector = $("#mountainGroupsSelectList");
+
+            mountainGroupsSelector.find('option')
+                .remove()
+                .end();
+
+            var option = new Option("", "", true, true);
+            mountainGroupsSelector.append(option);
 
             length = data.length;
             for (i = 0; i < length; i++) {
-                console.log(typeof data[i].mountainRange.id);
                 console.log(data[i].mountainRange.id);
-                console.log(typeof mountainRangesSelector.options.selectedIndex);
-                console.log(mountainRangesSelector.options.selectedIndex);
-                console.log(data[i].mountainRange.id == mountainRangesSelector.options.selectedIndex);
-                if (data[i].mountainRange.id == mountainRangesSelector.options.selectedIndex) {
+                console.log(mountainRangesSelector.val());
+                if (data[i].mountainRange.id == mountainRangesSelector.val()) {
                     console.log("aaaadddd");
-                    var option = document.createElement("option");
-                    option.text = data[i].name;
-                    option.value = data[i].id;
-                    mountainGroupsSelector.add(option);
+                    option = new Option(data[i].name, data[i].id, false, false);
+                    mountainGroupsSelector.append(option);
                 }
             }
-
-            console.log(data);
         }
 
         /*]]>*/
@@ -51,15 +46,6 @@
     </script>
 
     <script type="text/javascript">
-
-        function remove(id, val) {
-            console.log("remove call");
-            console.log("element " + id);
-            console.log("value  " + val);
-
-            $("#" + id).remove();
-            // localizationsList.remove(val);
-        }
 
         function add() {
             var otherLocations = document.getElementById("otherLocations");
@@ -75,17 +61,28 @@
             var a = document.createElement("a");
             var img = document.createElement("img");
             img.src = "../static/images/minus.png";
-            var hrefString = "javascript:remove(" + id +", " + otherLocations.options[otherLocations.selectedIndex].value + ");";
-            console.log(hrefString);
-            a.href = hrefString;
-
+            a.href = "";
             a.appendChild(img);
             img.setAttribute("src", "/images/minus.png");
             img.width = 10;
             td.appendChild(a);
 
             document.getElementById("other_locations").appendChild(tr);
-            localizationsList.push(otherLocations.options[otherLocations.selectedIndex].value);
+
+            var selectedItem = otherLocations.options[otherLocations.selectedIndex].value;
+
+            localizationsList.push(selectedItem);
+
+            a.addEventListener('click', function (e) {
+                e.preventDefault();
+                console.log("click");
+                $("#"+id).remove();
+
+                var index = localizationsList.indexOf(selectedItem);
+                if (index > -1) {
+                    localizationsList.splice(index, 1);
+                }
+            })
         }
 
         $(document).ready(function () {
