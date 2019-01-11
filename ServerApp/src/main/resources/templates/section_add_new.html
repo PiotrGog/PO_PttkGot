@@ -15,36 +15,26 @@
         var data = [];
 
         function changeMountainRangesListener() {
-            var mountainRangesSelector = document.getElementById("mountainRangesSelectList");
-            var mountainGroupsSelector = document.getElementById("mountainGroupsSelectList");
+            var mountainRangesSelector = $("#mountainRangesSelectList");
+            var mountainGroupsSelector = $("#mountainGroupsSelectList");
 
-            console.log(mountainRangesSelector.innerHTML);
-            var length = mountainGroupsSelector.options.length;
-            for (i = 0; i < length; i++) {
-                mountainGroupsSelector.options[i] = null;
-            }
+            mountainGroupsSelector.find('option')
+                .remove()
+                .end();
 
-            var option = document.createElement("option");
-            option.text = "";
-            option.value = "";
-            mountainGroupsSelector.add(option);
+            var option = new Option("", "", true, true);
+            mountainGroupsSelector.append(option);
 
             length = data.length;
             for (i = 0; i < length; i++) {
-                console.log(typeof data[i].mountainRange.id);
                 console.log(data[i].mountainRange.id);
-                console.log(typeof mountainRangesSelector.options.selectedIndex);
-                console.log(mountainRangesSelector.options.selectedIndex);
-                console.log(data[i].mountainRange.id == mountainRangesSelector.options.selectedIndex);
-                if (data[i].mountainRange.id == mountainRangesSelector.options.selectedIndex) {
+                console.log(mountainRangesSelector.val());
+                if (data[i].mountainRange.id == mountainRangesSelector.val()) {
                     console.log("aaaadddd");
-                    option = document.createElement("option");
-                    option.text = data[i].name;
-                    option.value = data[i].id;
-                    mountainGroupsSelector.add(option);
+                    option = new Option(data[i].name, data[i].id, false, false);
+                    mountainGroupsSelector.append(option);
                 }
             }
-            console.log(data);
         }
 
         /*]]>*/
@@ -79,18 +69,11 @@
                     pointsAltitude: "Podaj liczbę punktów za wysokość",
                     pointsDistance: "Podaj liczbę punktów za odległość"
                 },
-                // Make sure the form is submitted to the destination defined
-                // in the "action" attribute of the form when valid
                 submitHandler: function(form) {
                     form.submit();
                 }
 
             })
-            // click(function (e) {
-            //     e.preventDefault();
-            //     var form = $("#new_section_form");
-            //     if($form.input[name=""])
-            // })
         })
 
 
@@ -123,7 +106,7 @@
                 <select class="select_section_param" id="mountainRangesSelectList" name="mountainRange"
                         onchange="changeMountainRangesListener();">
                     <option th:each="mr : ${mountainRanges}"
-                            th:value="${mr}" th:text="${mr.getName()}"></option>
+                            th:value="${mr.getId()}" th:text="${mr.getName()}"></option>
                 </select>
             </td>
         </tr>
