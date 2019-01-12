@@ -85,13 +85,22 @@ public class RouteController {
 
             for (int i = 0; i < tmpPaths.size(); i++) {
                 if (pointsAltitude <= tmpPaths.get(i).getSecond().altitudePoints
-                        && pointsDistance <= tmpPaths.get(i).getSecond().distancePoints) {
+                        && pointsDistance <= tmpPaths.get(i).getSecond().distancePoints
+                        && tmpPaths.get(i).getSecond().hasLocations(localizationsList)) {
                     paths.add(tmpPaths.get(i));
                 }
             }
         }
         else {
             paths = tmpPaths;
+        }
+
+        tmpPaths = paths;
+        paths = new ArrayList<>();
+        for (int i = 0; i < tmpPaths.size(); i++) {
+            if (tmpPaths.get(i).getSecond().hasLocations(localizationsList)) {
+                paths.add(tmpPaths.get(i));
+            }
         }
 
         localizationsList = null;
