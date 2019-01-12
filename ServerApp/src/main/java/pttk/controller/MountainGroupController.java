@@ -10,11 +10,22 @@ import pttk.repositories.MountainGroupRepository;
 
 import java.util.ArrayList;
 
+/**
+ * MountainGroupController class
+ * Class used to test access to mountain group repository
+ */
+
 @Controller
 public class MountainGroupController {
     @Autowired
     private MountainGroupRepository mountainGroupRepository_;
 
+    /**
+     * Method called for get request method. Method is used to test access to mountain groups
+     * and print simple data about them.
+     * @param model for attributes used in view
+     * @return mountain_ranges view
+     */
     @RequestMapping(value = "/mountaingroups", method = RequestMethod.GET)
     public String listMountainGroups(Model model) {
         ArrayList<String> str = new ArrayList<>();

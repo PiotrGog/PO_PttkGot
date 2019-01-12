@@ -139,5 +139,4 @@ public class RouteController {
         this.localizationsList = localizations;
         return ResponseEntity.ok(HttpStatus.OK);
     }
-
 }

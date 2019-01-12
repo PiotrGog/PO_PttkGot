@@ -19,6 +19,10 @@ import java.util.List;
 import java.util.function.BiFunction;
 
 
+/**
+ * RouteService class contains needed repositories and useful methods
+ * which are called from RouteController class.
+ */
 @Service
 public class RouteService {
     public Iterable<Section> sections = null;
@@ -118,6 +122,11 @@ public class RouteService {
         return Pair.of(altitudePoints, distancePoints);
     }
 
+    /**
+     * Pack GraphPack with CustomWeightedEdge into GraphPackDecorator
+     * @param routes list of GraphPaths with CustomWeightedEdge
+     * @return List<Pair<Integer, GraphPathDecorator>> where GraphPathDecorator is class which packs GraphPaths from routes parameter
+     */
     public List<Pair<Integer, GraphPathDecorator>> graphPathDecorate(List<GraphPath<Integer, CustomWeightedEdge>> routes)
     {
         List<Pair<Integer, GraphPathDecorator>> paths= new ArrayList<>();
