@@ -77,7 +77,7 @@
         <tr>
             <td class="align_right">Grupa górskie:</td>
             <td>
-                <select name="mountainGroup">
+                <select class="select_section_param" name="mountainGroup">
                     <th:block th:each="mg : ${mountainGroups}">
                     <option th:if="${mg.getMountainRange().getId()==section.getMountainGroup().getMountainRange().getId()}"
                             th:value="${mg.getId()}"
@@ -90,7 +90,7 @@
         <tr>
             <td class="align_right">Lokalizacja pierwsza:</td>
             <td>
-                <select name="locationOne">
+                <select class="select_section_param" name="locationOne">
                     <option th:each="l : ${locations}"
                             th:value="${l.getId()}"
                             th:text="${l.getName()}"
@@ -101,7 +101,7 @@
         <tr>
             <td class="align_right">Lokalizacja druga:</td>
             <td>
-                <select name="locationTwo">
+                <select class="select_section_param" name="locationTwo">
                     <option th:each="l : ${locations}"
                             th:value="${l.getId()}" th:text="${l.getName()}"
                             th:selected="${l.getId()==section.getLocationTwo().getId()}"></option>
@@ -111,13 +111,13 @@
         <tr>
             <td class="align_right">Odległość:</td>
             <td>
-                <input name="distance" type="number" th:value="${section.getDistance()}">
+                <input class="select_section_param" name="distance" type="number" th:value="${section.getDistance()}">
             </td>
         </tr>
         <tr>
             <td class="align_right">Punkty za wysokość:</td>
             <td>
-                <select name="pointsAltitude">
+                <select class="select_section_param" name="pointsAltitude">
                     <option th:each="i : ${#numbers.sequence(0, 20)}" th:value="${i}" th:text="${i}"
                             th:selected="${i==section.getPointsAltitude()}"></option>
                 </select>
@@ -126,7 +126,7 @@
         <tr>
             <td class="align_right">Punkty za odległość:</td>
             <td>
-                <select name="pointsDistance">
+                <select class="select_section_param" name="pointsDistance">
                     <option th:each="i : ${#numbers.sequence(0, 20)}" th:value="${i}" th:text="${i}"
                             th:selected="${i==section.getPointsDistance()}"></option>
                 </select>
