@@ -103,7 +103,7 @@ and make sure the snapshot repository is enabled:
 ```
 <repositories>
   <repository>
-    <id>maven-snapshots</id>
+    <sectionId>maven-snapshots</sectionId>
     <url>http://oss.sonatype.org/content/repositories/snapshots</url>
     <layout>default</layout>
     <releases>

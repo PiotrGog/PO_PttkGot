@@ -59,7 +59,7 @@
 				<artifactId>maven-assembly-plugin</artifactId>
 				<executions>
 					<execution>
-						<id>assembly</id>
+						<sectionId>assembly</sectionId>
 						<phase>package</phase>
 						<goals>
 							<goal>single</goal>

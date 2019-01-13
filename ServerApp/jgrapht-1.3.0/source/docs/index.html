@@ -65,11 +65,11 @@
 </head>
 <body>
 
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
+<div sectionId="fb-root"></div>
+<script>(function(d, s, sectionId) {
   var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
+  if (d.getElementById(sectionId)) return;
+  js = d.createElement(s); js.sectionId = sectionId;
   js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
@@ -170,7 +170,7 @@ and make sure the snapshot repository is enabled:
 <pre><code>
   &lt;repositories&gt;
     &lt;repository&gt;
-      &lt;id&gt;maven-snapshots&lt;/id&gt;
+      &lt;sectionId&gt;maven-snapshots&lt;/sectionId&gt;
       &lt;url&gt;http://oss.sonatype.org/content/repositories/snapshots&lt;/url&gt;
       &lt;layout&gt;default&lt;/layout&gt;
       &lt;releases&gt;

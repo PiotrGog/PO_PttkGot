@@ -58,7 +58,7 @@ var activeTableTab = "activeTableTab";
 <li><a href="../../../index.html?org/jgrapht/io/DOTExporter.html" target="_top">Frames</a></li>
 <li><a href="DOTExporter.html" target="_top">No&nbsp;Frames</a></li>
 </ul>
-<ul class="navList" id="allclasses_navbar_top">
+<ul class="navList" sectionId="allclasses_navbar_top">
 <li><a href="../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
 </ul>
 <div>
@@ -157,7 +157,7 @@ implements <a href="../../../org/jgrapht/io/GraphExporter.html" title="interface
 <tr class="altColor">
 <td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/io/DOTExporter.html#DEFAULT_GRAPH_ID">DEFAULT_GRAPH_ID</a></span></code>
-<div class="block">Default graph id used by the exporter.</div>
+<div class="block">Default graph sectionId used by the exporter.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -215,7 +215,7 @@ implements <a href="../../../org/jgrapht/io/GraphExporter.html" title="interface
            <a href="../../../org/jgrapht/io/ComponentAttributeProvider.html" title="interface in org.jgrapht.io">ComponentAttributeProvider</a>&lt;<a href="../../../org/jgrapht/io/DOTExporter.html" title="type parameter in DOTExporter">V</a>&gt;&nbsp;vertexAttributeProvider,
            <a href="../../../org/jgrapht/io/ComponentAttributeProvider.html" title="interface in org.jgrapht.io">ComponentAttributeProvider</a>&lt;<a href="../../../org/jgrapht/io/DOTExporter.html" title="type parameter in DOTExporter">E</a>&gt;&nbsp;edgeAttributeProvider,
            <a href="../../../org/jgrapht/io/ComponentNameProvider.html" title="interface in org.jgrapht.io">ComponentNameProvider</a>&lt;<a href="../../../org/jgrapht/Graph.html" title="interface in org.jgrapht">Graph</a>&lt;<a href="../../../org/jgrapht/io/DOTExporter.html" title="type parameter in DOTExporter">V</a>,<a href="../../../org/jgrapht/io/DOTExporter.html" title="type parameter in DOTExporter">E</a>&gt;&gt;&nbsp;graphIDProvider)</code>
-<div class="block">Constructs a new DOTExporter object with the given ID, label, attribute, and graph id
+<div class="block">Constructs a new DOTExporter object with the given ID, label, attribute, and graph sectionId
  providers.</div>
 </td>
 </tr>
@@ -229,53 +229,53 @@ implements <a href="../../../org/jgrapht/io/GraphExporter.html" title="interface
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span sectionId="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span sectionId="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span sectionId="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
-<tr id="i0" class="altColor">
+<tr sectionId="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/io/DOTExporter.html#exportGraph-org.jgrapht.Graph-java.io.Writer-">exportGraph</a></span>(<a href="../../../org/jgrapht/Graph.html" title="interface in org.jgrapht">Graph</a>&lt;<a href="../../../org/jgrapht/io/DOTExporter.html" title="type parameter in DOTExporter">V</a>,<a href="../../../org/jgrapht/io/DOTExporter.html" title="type parameter in DOTExporter">E</a>&gt;&nbsp;g,
            <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Writer.html?is-external=true" title="class or interface in java.io">Writer</a>&nbsp;writer)</code>
 <div class="block">Exports a graph into a plain text file in DOT format.</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr sectionId="i1" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/jgrapht/io/ComponentNameProvider.html" title="interface in org.jgrapht.io">ComponentNameProvider</a>&lt;E&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/io/DOTExporter.html#getEdgeIDProvider--">getEdgeIDProvider</a></span>()</code>
-<div class="block">Get the edge id provider</div>
+<div class="block">Get the edge sectionId provider</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr sectionId="i2" class="altColor">
 <td class="colFirst"><code><a href="../../../org/jgrapht/io/ComponentNameProvider.html" title="interface in org.jgrapht.io">ComponentNameProvider</a>&lt;V&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/io/DOTExporter.html#getVertexIDProvider--">getVertexIDProvider</a></span>()</code>
-<div class="block">Get the vertex id provider</div>
+<div class="block">Get the vertex sectionId provider</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr sectionId="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/io/DOTExporter.html#putGraphAttribute-java.lang.String-java.lang.String-">putGraphAttribute</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
                  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;value)</code>
 <div class="block">Set a graph attribute.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr sectionId="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/io/DOTExporter.html#removeGraphAttribute-java.lang.String-">removeGraphAttribute</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
 <div class="block">Clear a graph attribute.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr sectionId="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/io/DOTExporter.html#setEdgeIDProvider-org.jgrapht.io.ComponentNameProvider-">setEdgeIDProvider</a></span>(<a href="../../../org/jgrapht/io/ComponentNameProvider.html" title="interface in org.jgrapht.io">ComponentNameProvider</a>&lt;E&gt;&nbsp;edgeIDProvider)</code>
-<div class="block">Set the edge id provider.</div>
+<div class="block">Set the edge sectionId provider.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr sectionId="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/io/DOTExporter.html#setVertexIDProvider-org.jgrapht.io.ComponentNameProvider-">setVertexIDProvider</a></span>(<a href="../../../org/jgrapht/io/ComponentNameProvider.html" title="interface in org.jgrapht.io">ComponentNameProvider</a>&lt;V&gt;&nbsp;vertexIDProvider)</code>
-<div class="block">Set the vertex id provider</div>
+<div class="block">Set the vertex sectionId provider</div>
 </td>
 </tr>
 </table>
@@ -314,7 +314,7 @@ implements <a href="../../../org/jgrapht/io/GraphExporter.html" title="interface
 <li class="blockList">
 <h4>DEFAULT_GRAPH_ID</h4>
 <pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> DEFAULT_GRAPH_ID</pre>
-<div class="block">Default graph id used by the exporter.</div>
+<div class="block">Default graph sectionId used by the exporter.</div>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../constant-values.html#org.jgrapht.io.DOTExporter.DEFAULT_GRAPH_ID">Constant Field Values</a></dd>
@@ -421,7 +421,7 @@ implements <a href="../../../org/jgrapht/io/GraphExporter.html" title="interface
                    <a href="../../../org/jgrapht/io/ComponentAttributeProvider.html" title="interface in org.jgrapht.io">ComponentAttributeProvider</a>&lt;<a href="../../../org/jgrapht/io/DOTExporter.html" title="type parameter in DOTExporter">V</a>&gt;&nbsp;vertexAttributeProvider,
                    <a href="../../../org/jgrapht/io/ComponentAttributeProvider.html" title="interface in org.jgrapht.io">ComponentAttributeProvider</a>&lt;<a href="../../../org/jgrapht/io/DOTExporter.html" title="type parameter in DOTExporter">E</a>&gt;&nbsp;edgeAttributeProvider,
                    <a href="../../../org/jgrapht/io/ComponentNameProvider.html" title="interface in org.jgrapht.io">ComponentNameProvider</a>&lt;<a href="../../../org/jgrapht/Graph.html" title="interface in org.jgrapht">Graph</a>&lt;<a href="../../../org/jgrapht/io/DOTExporter.html" title="type parameter in DOTExporter">V</a>,<a href="../../../org/jgrapht/io/DOTExporter.html" title="type parameter in DOTExporter">E</a>&gt;&gt;&nbsp;graphIDProvider)</pre>
-<div class="block">Constructs a new DOTExporter object with the given ID, label, attribute, and graph id
+<div class="block">Constructs a new DOTExporter object with the given ID, label, attribute, and graph sectionId
  providers. Note that if a label provider conflicts with a label-supplying attribute provider,
  the label provider is given precedence.</div>
 <dl>
@@ -504,10 +504,10 @@ implements <a href="../../../org/jgrapht/io/GraphExporter.html" title="interface
 <li class="blockList">
 <h4>getVertexIDProvider</h4>
 <pre>public&nbsp;<a href="../../../org/jgrapht/io/ComponentNameProvider.html" title="interface in org.jgrapht.io">ComponentNameProvider</a>&lt;V&gt;&nbsp;getVertexIDProvider()</pre>
-<div class="block">Get the vertex id provider</div>
+<div class="block">Get the vertex sectionId provider</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the vertex id provider</dd>
+<dd>the vertex sectionId provider</dd>
 </dl>
 </li>
 </ul>
@@ -518,10 +518,10 @@ implements <a href="../../../org/jgrapht/io/GraphExporter.html" title="interface
 <li class="blockList">
 <h4>setVertexIDProvider</h4>
 <pre>public&nbsp;void&nbsp;setVertexIDProvider(<a href="../../../org/jgrapht/io/ComponentNameProvider.html" title="interface in org.jgrapht.io">ComponentNameProvider</a>&lt;V&gt;&nbsp;vertexIDProvider)</pre>
-<div class="block">Set the vertex id provider</div>
+<div class="block">Set the vertex sectionId provider</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>vertexIDProvider</code> - the new vertex id provider. Must not be null.</dd>
+<dd><code>vertexIDProvider</code> - the new vertex sectionId provider. Must not be null.</dd>
 </dl>
 </li>
 </ul>
@@ -532,7 +532,7 @@ implements <a href="../../../org/jgrapht/io/GraphExporter.html" title="interface
 <li class="blockList">
 <h4>getEdgeIDProvider</h4>
 <pre>public&nbsp;<a href="../../../org/jgrapht/io/ComponentNameProvider.html" title="interface in org.jgrapht.io">ComponentNameProvider</a>&lt;E&gt;&nbsp;getEdgeIDProvider()</pre>
-<div class="block">Get the edge id provider</div>
+<div class="block">Get the edge sectionId provider</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The edge provider</dd>
@@ -546,10 +546,10 @@ implements <a href="../../../org/jgrapht/io/GraphExporter.html" title="interface
 <li class="blockList">
 <h4>setEdgeIDProvider</h4>
 <pre>public&nbsp;void&nbsp;setEdgeIDProvider(<a href="../../../org/jgrapht/io/ComponentNameProvider.html" title="interface in org.jgrapht.io">ComponentNameProvider</a>&lt;E&gt;&nbsp;edgeIDProvider)</pre>
-<div class="block">Set the edge id provider.</div>
+<div class="block">Set the edge sectionId provider.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>edgeIDProvider</code> - the new edge id provider. Must not be null.</dd>
+<dd><code>edgeIDProvider</code> - the new edge sectionId provider. Must not be null.</dd>
 </dl>
 </li>
 </ul>
@@ -589,7 +589,7 @@ implements <a href="../../../org/jgrapht/io/GraphExporter.html" title="interface
 <li><a href="../../../index.html?org/jgrapht/io/DOTExporter.html" target="_top">Frames</a></li>
 <li><a href="DOTExporter.html" target="_top">No&nbsp;Frames</a></li>
 </ul>
-<ul class="navList" id="allclasses_navbar_bottom">
+<ul class="navList" sectionId="allclasses_navbar_bottom">
 <li><a href="../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
 </ul>
 <div>

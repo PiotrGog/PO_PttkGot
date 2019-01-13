@@ -1,9 +1,16 @@
 package pttk.model;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.UniqueElements;
+import pttk.validators.PeselConstraint;
+
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @MappedSuperclass
 public abstract class User {
@@ -14,26 +21,37 @@ public abstract class User {
     @Transient
     private static final String NAME_REGEX = "[a-zA-Z]+";
 
-
-    @Id
+    @NotNull
+    @Length(min = 1, max = 15)
     private String login;
 
-    @Column(name="pass")
+    @Column(name = "pass")
+    @NotNull
+    @Length(min = 1, max = 15)
     private String password;
 
     @Column
+    @NotNull
+    @Pattern(regexp = "^[A-Za-z0-9]*$", message = "Imię powinno zawierać tylko znaki alfabetu")
+    @Length(min = 1, max = 20)
     private String name;
 
     @Column
+    @NotNull
+    @Pattern(regexp = "^[A-Za-z0-9]*$", message = "Nazwisko powinno zawierać tylko znaki alfabetu")
+    @Length(min = 1, max = 20)
     private String surname;
 
     @Column(unique = true, nullable = false)
-    private Email email;
+    @javax.validation.constraints.Email(message = "Błędny adres email")
+    private String email;
 
     @Column(unique = true, nullable = false)
-    private Pesel pesel;
+    @PeselConstraint(message = "Błedny numer pesel")
+    private String pesel;
 
-    public User(){}
+    public User() {
+    }
 
     public String getLogin() {
         return login;
@@ -56,10 +74,7 @@ public abstract class User {
     }
 
     public void setName(String name) {
-        if(isNameValid(name))
-            this.name = name;
-        else
-            throw new IllegalArgumentException(INVALID_NAME_MSG);
+        this.name = name;
     }
 
     public String getSurname() {
@@ -67,35 +82,24 @@ public abstract class User {
     }
 
     public void setSurname(String surname) {
-        if(isNameValid(surname))
-            this.surname = surname;
-        else throw new IllegalArgumentException(INVALID_SURNAME_MSG);
+        this.surname = surname;
     }
 
-    public Email getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(Email email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public void setEmail(String email) {
-        this.email = new Email(email);
-    }
 
-    public Pesel getPesel() {
-        return pesel;
-    }
-
-    public void setPesel(Pesel pesel) {
+    public void setPesel(String pesel) {
         this.pesel = pesel;
     }
 
-
-    private boolean isNameValid(String name)
-    {
-        return name.matches(NAME_REGEX);
+    public String getPesel() {
+        return pesel;
     }
 
 

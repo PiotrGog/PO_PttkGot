@@ -1,50 +1,21 @@
-package pttk.model;
+package pttk.validators;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.Transient;
-import java.util.Objects;
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 
+public class PeselValidator implements
+        ConstraintValidator<PeselConstraint, String> {
 
-@Embeddable
-public class Pesel {
-    @Transient
     private final static int[] pesel_coefs = {9, 7, 3, 1};
 
-    @Column
-    private String pesel;
-
-    public Pesel() {}
-
-    public Pesel(String pesel) throws IllegalArgumentException
-    {
-        setPesel(pesel);
-    }
-
-    public String getPesel() {
-        return pesel;
-    }
-
-    public void setPesel(String pesel) throws IllegalArgumentException
-    {
-        if(isValid(pesel))
-            this.pesel = pesel;
-        else
-            throw new IllegalArgumentException("Wrong pesel");
+    @Override
+    public void initialize(PeselConstraint pesel) {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Pesel pesel1 = (Pesel) o;
-        return Objects.equals(pesel, pesel1.pesel);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(pesel);
+    public boolean isValid(String contactField,
+                           ConstraintValidatorContext cxt) {
+        return contactField != null && isValid(contactField);
     }
 
     private boolean isValid(String pesel)
@@ -79,4 +50,5 @@ public class Pesel {
         }
         return sum%10;
     }
+
 }

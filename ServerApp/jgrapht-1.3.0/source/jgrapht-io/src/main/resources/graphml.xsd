@@ -123,11 +123,11 @@
 				<xs:attribute name="key" type="xs:NMTOKEN" use="required">
 					<xs:annotation>
 						<xs:documentation source="http://graphml.graphdrawing.org/"
-							xml:lang="en">refers to the id attribute of a &lt;key>.
+							xml:lang="en">refers to the sectionId attribute of a &lt;key>.
 						</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
-				<xs:attribute name="id" type="xs:NMTOKEN" use="optional">
+				<xs:attribute name="sectionId" type="xs:NMTOKEN" use="optional">
 					<xs:annotation>
 						<xs:documentation source="http://graphml.graphdrawing.org/"
 							xml:lang="en">identifies this &lt;data>.
@@ -210,7 +210,7 @@
 			<xs:element ref="desc" minOccurs="0" />
 			<xs:element ref="default" minOccurs="0" />
 		</xs:sequence>
-		<xs:attribute name="id" type="xs:NMTOKEN" use="required">
+		<xs:attribute name="sectionId" type="xs:NMTOKEN" use="required">
 			<xs:annotation>
 				<xs:documentation source="http://graphml.graphdrawing.org/"
 					xml:lang="en">identifies this &lt;key>.
@@ -312,7 +312,7 @@
 				</xs:documentation>
 			</xs:annotation>
 		</xs:attributeGroup>
-		<xs:attribute name="id" type="xs:NMTOKEN">
+		<xs:attribute name="sectionId" type="xs:NMTOKEN">
 			<xs:annotation>
 				<xs:documentation source="http://graphml.graphdrawing.org/"
 					xml:lang="en">
@@ -364,7 +364,7 @@
 				</xs:documentation>
 			</xs:annotation>
 		</xs:attributeGroup>
-		<xs:attribute name="id" type="xs:NMTOKEN" use="required">
+		<xs:attribute name="sectionId" type="xs:NMTOKEN" use="required">
 			<xs:annotation>
 				<xs:documentation source="http://graphml.graphdrawing.org/"
 					xml:lang="en">
@@ -428,7 +428,7 @@
 				</xs:documentation>
 			</xs:annotation>
 		</xs:attributeGroup>
-		<xs:attribute name="id" type="xs:NMTOKEN">
+		<xs:attribute name="sectionId" type="xs:NMTOKEN">
 			<xs:annotation>
 				<xs:documentation source="http://graphml.graphdrawing.org/"
 					xml:lang="en">
@@ -448,7 +448,7 @@
 			<xs:annotation>
 				<xs:documentation source="http://graphml.graphdrawing.org/"
 					xml:lang="en">
-					points to the id attribute of the source &lt;node>.
+					points to the sectionId attribute of the source &lt;node>.
 				</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
@@ -456,7 +456,7 @@
 			<xs:annotation>
 				<xs:documentation source="http://graphml.graphdrawing.org/"
 					xml:lang="en">
-					points to the id attribute of the target &lt;node>.
+					points to the sectionId attribute of the target &lt;node>.
 				</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
@@ -502,7 +502,7 @@
 				</xs:documentation>
 			</xs:annotation>
 		</xs:attributeGroup>
-		<xs:attribute name="id" type="xs:NMTOKEN">
+		<xs:attribute name="sectionId" type="xs:NMTOKEN">
 			<xs:annotation>
 				<xs:documentation source="http://graphml.graphdrawing.org/"
 					xml:lang="en">
@@ -548,7 +548,7 @@
 				</xs:documentation>
 			</xs:annotation>
 		</xs:attributeGroup>
-		<xs:attribute name="id" type="xs:NMTOKEN">
+		<xs:attribute name="sectionId" type="xs:NMTOKEN">
 			<xs:annotation>
 				<xs:documentation source="http://graphml.graphdrawing.org/"
 					xml:lang="en">
@@ -569,7 +569,7 @@
 			<xs:annotation>
 				<xs:documentation source="http://graphml.graphdrawing.org/"
 					xml:lang="en">
-					points to the id of the node, to which this endpoint is
+					points to the sectionId of the node, to which this endpoint is
 					connected.
 				</xs:documentation>
 			</xs:annotation>
@@ -761,12 +761,12 @@
 			<xs:annotation>
 				<xs:documentation source="http://graphml.graphdrawing.org/"
 					xml:lang="en">
-					Ensures: existence and uniqueness of the id attributes of
+					Ensures: existence and uniqueness of the sectionId attributes of
 					each &lt;key> element in this document.
 				</xs:documentation>
 			</xs:annotation>
 			<xs:selector xpath=".//g:key" />
-			<xs:field xpath="@id" />
+			<xs:field xpath="@sectionId" />
 		</xs:key>
 
 
@@ -774,13 +774,13 @@
 			<xs:annotation>
 				<xs:documentation source="http://graphml.graphdrawing.org/"
 					xml:lang="en">
-					Ensures: uniqueness of the id attributes of
+					Ensures: uniqueness of the sectionId attributes of
 					each &lt;graph>
 					element in this document.
 				</xs:documentation>
 			</xs:annotation>
 			<xs:selector xpath=".//g:graph" />
-			<xs:field xpath="@id" />
+			<xs:field xpath="@sectionId" />
 		</xs:unique>
 
 		<xs:keyref name="data_key_ref" refer="key_id_key">
@@ -789,7 +789,7 @@
 					xml:lang="en">
 					Ensures: for the key attribute of each &lt;data> in this
 					document,
-					the existence of an id attribute of
+					the existence of an sectionId attribute of
 					&lt;key> which matches
 					the value of it.
 				</xs:documentation>
@@ -828,51 +828,51 @@
 			<xs:annotation>
 				<xs:documentation source="http://graphml.graphdrawing.org/"
 					xml:lang="en">
-					Ensures: existence and uniqueness of the id attributes of
+					Ensures: existence and uniqueness of the sectionId attributes of
 					each &lt;node> element in this graph.
 				</xs:documentation>
 			</xs:annotation>
 			<xs:selector xpath=".//g:node" />
-			<xs:field xpath="@id" />
+			<xs:field xpath="@sectionId" />
 		</xs:key>
 
 		<xs:unique name="edge_id_unique">
 			<xs:annotation>
 				<xs:documentation source="http://graphml.graphdrawing.org/"
 					xml:lang="en">
-					Ensures: uniqueness of the id attributes of
+					Ensures: uniqueness of the sectionId attributes of
 					each &lt;edge>
 					element in this graph.
 				</xs:documentation>
 			</xs:annotation>
 			<xs:selector xpath=".//g:edge" />
-			<xs:field xpath="@id" />
+			<xs:field xpath="@sectionId" />
 		</xs:unique>
 
 		<xs:unique name="hyperedge_id_unique">
 			<xs:annotation>
 				<xs:documentation source="http://graphml.graphdrawing.org/"
 					xml:lang="en">
-					Ensures: uniqueness of the id attributes of
+					Ensures: uniqueness of the sectionId attributes of
 					each
 					&lt;hyperedge> element in this graph.
 				</xs:documentation>
 			</xs:annotation>
 			<xs:selector xpath=".//g:hyperedge" />
-			<xs:field xpath="@id" />
+			<xs:field xpath="@sectionId" />
 		</xs:unique>
 
 		<xs:unique name="endpoint_id_unique">
 			<xs:annotation>
 				<xs:documentation source="http://graphml.graphdrawing.org/"
 					xml:lang="en">
-					Ensures: uniqueness of the id attributes of
+					Ensures: uniqueness of the sectionId attributes of
 					each
 					&lt;endpoint> element in this graph.
 				</xs:documentation>
 			</xs:annotation>
 			<xs:selector xpath=".//g:endpoint" />
-			<xs:field xpath="@id" />
+			<xs:field xpath="@sectionId" />
 		</xs:unique>
 
 		<xs:keyref name="edge_source_ref" refer="node_id_key">
@@ -881,7 +881,7 @@
 					xml:lang="en">
 					Ensures: for the source attribute of each &lt;edge> in
 					this graph,
-					the existence of an id attribute of
+					the existence of an sectionId attribute of
 					&lt;node> which
 					matches the value of it.
 				</xs:documentation>
@@ -896,7 +896,7 @@
 					xml:lang="en">
 					Ensures: for the target attribute of each &lt;edge> in
 					this graph,
-					the existence of an id attribute of
+					the existence of an sectionId attribute of
 					&lt;node> which
 					matches the value of it.
 				</xs:documentation>
@@ -911,7 +911,7 @@
 					xml:lang="en">
 					Ensures: for the node attribute of each &lt;endpoint> in
 					this graph,
-					the existence of an id attribute of
+					the existence of an sectionId attribute of
 					&lt;node> which
 					matches the value of it.
 				</xs:documentation>
@@ -1282,11 +1282,11 @@
 				Definition of the attribute group graph.parseinfo.attrib.
 				This group consists of the seven attributes
 				- parse.nodeids (fixed to
-				'canonical' meaning that the id attribute
+				'canonical' meaning that the sectionId attribute
 				of &lt;node> follows the
 				pattern 'n[number]),
 				- parse.edgeids (fixed to 'canonical' meaning
-				that the id attribute
+				that the sectionId attribute
 				of &lt;edge> follows the pattern 'e[number]),
 				-
 				parse.order (required; one of the values 'nodesfirst',

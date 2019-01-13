@@ -7,8 +7,8 @@
 </head>
 <body>
 
-<form action="#" th:action="@{/sections/edit/save/{id}(id=${section.getId()})}" method="post">
-    <!--<input type="hidden" name="id" th:value="${id}">-->
+<form action="#" th:action="@{/sections/edit/save/{sectionId}(sectionId=${section.getSectionId()})}" method="post">
+    <!--<input type="hidden" name="sectionId" th:value="${sectionId}">-->
     <table>
         <tr>
             <td>Pasmo górskie</td>

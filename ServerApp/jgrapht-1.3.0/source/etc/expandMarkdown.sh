@@ -5,7 +5,7 @@
 # Usage:
 #
 #    export TRAVIS_BUILD_DIR=/path/to/jgrapht-clone
-#    expandMarkdown.sh [ github-user-id/repository-name/branch-name ]
+#    expandMarkdown.sh [ github-user-sectionId/repository-name/branch-name ]
 #
 # If the argument is omitted, then jgrapht/jgrapht/master is implicit.
 

@@ -1,40 +1,77 @@
 <!DOCTYPE HTML>
 <html lang="pl-PL" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link href="../static/css/employees.css" th:href="@{/css/employees.css}" rel="stylesheet" />
+    <title>Zarządzaj Pracownikami</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../static/css/employees.css" th:href="@{/css/employees.css}" rel="stylesheet"/>
+    <link href="../static/css/egot_template.css" th:href="@{/css/egot_template.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
 </head>
 <body>
-<table>
-    <tr>
-        <th>ID Pracownika</th>
-        <th>Imię</th>
-        <th>Nazwisko</th>
-        <th>Pesel</th>
-        <th>Data zatrudnienia</th>
+<header class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Elektroniczna Górska Odznaka Turystyczna
+    </a>
+</header>
+<header class="navbar navbar-light" id="current_app_page">
+    <a class="">Zarządzanie Pracownikami</a>
+</header>
 
-        <th></th>
-    </tr>
-    <tr th:each="employee : ${employees}">
-        <td th:text="${employee.getEmp_id()}"></td>
-        <td th:text="${employee.getName()}"></td>
-        <td th:text="${employee.getSurname()}"></td>
-        <td th:text="${employee.getPesel()}"></td>
-        <td th:text="${employee.getHire_date()}"></td>
-        <td>
-            <form action="#" th:action="@{/sections/details/} + ${section.getId()}" method="get">
-                <p><input type="submit" value="Wyświetl"/></p>
-            </form>
-            <form action="#" th:action="@{/sections/edit/} + ${section.getId()}" method="get">
-                <p><input type="submit" value="Edytuj"/></p>
-            </form>
-        </td>
-    </tr>
-</table>
+<main>
 
-<p>
-    <!--<a href="../home.html" th:href="@{/}">Return to home</a>-->
-</p>
+    <div class="row">
+        <form class="form-inline col-8" onsubmit="reloadPage()">
+            <input class="form-control col-6" type="search" placeholder="Wyszukaj" aria-label="Search"
+                   name="keywords">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Wyszukaj</button>
+        </form>
+        <form action="#" th:action="@{'/employees/add'}" method="get">
+            <button class="btn btn-success  btn-lg" type="submit">Dodaj pracownika</button>
+        </form>
+    </div>
+
+
+    <!--If database is not empty-->
+    <div  class="card" id="employees_table" th:if="${!isDBEmpty}">
+        <table class="table table-hover col">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Imię</th>
+                <th scope="col">Nazwisko</th>
+                <th scope="col">Pesel</th>
+                <th scope="col">Status</th>
+                <th scope="col">Data zatrudnienia</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="employee : ${employees}">
+                <td th:text="${employee.getEmpId()}"></td>
+                <td th:text="${employee.getName()}"></td>
+                <td th:text="${employee.getSurname()}"></td>
+                <td th:text="${employee.getPesel()}"></td>
+                <td th:text="${employee.getStringState()}"></td>
+                <td th:text="${employee.getSimpleHire_date()}"></td>
+                <td>
+                    <form action="#" th:action="@{'/employees/' + ${employee.getEmpId()} + '/details'}" method="get">
+                        <label for="details_input" class="btn btn-outline-info">Szczegóły</label>
+                        <input type="submit" id="details_input" style="display:none"/>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div th:sectionId="employee_not_found" th:if="${isDBEmpty}">
+        <p>Empty database</p>
+    </div>
+    <footer class="foot">
+        ©Jakub Binkowski
+    </footer>
+</main>
+
 </body>
 </html>

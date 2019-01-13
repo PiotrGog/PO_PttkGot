@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../static/css/egot_template.css" th:href="@{/css/egot_template.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Dodawanie Pracownika</title>
+</head>
+<body>
+
+<header class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Elektroniczna Górska Odznaka Turystyczna
+    </a>
+</header>
+<header class="navbar navbar-light" id="current_app_page">
+    <form class="back_button navbar-form navbar-left"
+          action="#" th:action="@{'/employees/'}" method="get">
+        <button type="submit" class="btn btn-info" aria-label="Left Align">< Powrót
+        </button>
+        <a class="">Dodaj nowego pracownika</a>
+    </form>
+</header>
+
+<main>
+    <div id="add_employee_form" class="row justify-content-center">
+        <form class="col-8" action="#" th:action="@{/employees/add}" th:object="${employee}" method="post">
+            <div class="card">
+                <div class="form-group">
+                    <label for="input_login">Login</label>
+                    <input type="text" class="form-control" th:field="*{login}" id="input_login"/>
+                    <small class="form-text text-muted" th:if="${#fields.hasErrors('login')}" th:errors="*{login}">
+                        Błędny
+                        login
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label for="input_login">Email</label>
+                    <input type="email" class="form-control" th:field="*{email}" id="input_email"/>
+                    <small class="form-text text-muted" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+                        Błędny
+                        adres email
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label for="input_login">Hasło</label>
+                    <input type="password" class="form-control" th:field="*{password}" id="input_password"/>
+                    <small class="form-text text-muted" th:if="${#fields.hasErrors('password')}"
+                           th:errors="*{password}">
+                        Błędne hasło
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label for="input_login">Imię</label>
+                    <input type="text" class="form-control" th:field="*{name}" id="input_name"/>
+                    <small class="form-text text-muted" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Błędne
+                        imię
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label for="input_login">Nazwisko</label>
+                    <input type="text" class="form-control" th:field="*{surname}" id="input_surname"/>
+                    <small class="form-text text-muted" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">
+                        Błędne nazwisko
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label for="input_login">Pesel</label>
+                    <input type="text" class="form-control" th:field="*{pesel}" id="input_pesel"/>
+                    <small class="form-text text-muted" th:if="${#fields.hasErrors('pesel')}" th:errors="*{pesel}">
+                        Błędny
+                        pesel
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label for="input_login">Data zatrudnienia</label>
+                    <input type="date" class="form-control" th:field="*{hire_date}" id="input_hire_date"/>
+                    <small class="form-text text-muted" th:if="${#fields.hasErrors('hire_date')}"
+                           th:errors="*{hire_date}">
+                        Błędny pesel
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label for="input_state">Status pracownika</label>
+                    <select id="input_state" th:field="*{state}">
+                        <option value=true>aktywny</option>
+                        <option value=false>niekatywny</option>
+                    </select>
+                    <small class="form-text text-muted" th:if="${#fields.hasErrors('state')}" th:errors="*{state}">Wrong
+                        state
+                    </small>
+                </div>
+            </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success col-4">Dodaj pracownika</button>
+                    <button type="reset" class="btn btn-warning">Resetuj</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>
+<!--<footer class="foot">-->
+<!--©Jakub Binkowski-->
+<!--</footer>-->
+</body>
+</html>

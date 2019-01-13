@@ -58,7 +58,7 @@ var activeTableTab = "activeTableTab";
 <li><a href="../../../index.html?org/jgrapht/traverse/AbstractGraphIterator.html" target="_top">Frames</a></li>
 <li><a href="AbstractGraphIterator.html" target="_top">No&nbsp;Frames</a></li>
 </ul>
-<ul class="navList" id="allclasses_navbar_top">
+<ul class="navList" sectionId="allclasses_navbar_top">
 <li><a href="../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
 </ul>
 <div>
@@ -204,97 +204,97 @@ implements <a href="../../../org/jgrapht/traverse/GraphIterator.html" title="int
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span sectionId="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span sectionId="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span sectionId="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
-<tr id="i0" class="altColor">
+<tr sectionId="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/traverse/AbstractGraphIterator.html#addTraversalListener-org.jgrapht.event.TraversalListener-">addTraversalListener</a></span>(<a href="../../../org/jgrapht/event/TraversalListener.html" title="interface in org.jgrapht.event">TraversalListener</a>&lt;<a href="../../../org/jgrapht/traverse/AbstractGraphIterator.html" title="type parameter in AbstractGraphIterator">V</a>,<a href="../../../org/jgrapht/traverse/AbstractGraphIterator.html" title="type parameter in AbstractGraphIterator">E</a>&gt;&nbsp;l)</code>
 <div class="block">Adds the specified traversal listener to this iterator.</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr sectionId="i1" class="rowColor">
 <td class="colFirst"><code>protected <a href="../../../org/jgrapht/event/EdgeTraversalEvent.html" title="class in org.jgrapht.event">EdgeTraversalEvent</a>&lt;<a href="../../../org/jgrapht/traverse/AbstractGraphIterator.html" title="type parameter in AbstractGraphIterator">E</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/traverse/AbstractGraphIterator.html#createEdgeTraversalEvent-E-">createEdgeTraversalEvent</a></span>(<a href="../../../org/jgrapht/traverse/AbstractGraphIterator.html" title="type parameter in AbstractGraphIterator">E</a>&nbsp;edge)</code>
 <div class="block">Create an edge traversal event.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr sectionId="i2" class="altColor">
 <td class="colFirst"><code>protected <a href="../../../org/jgrapht/event/VertexTraversalEvent.html" title="class in org.jgrapht.event">VertexTraversalEvent</a>&lt;<a href="../../../org/jgrapht/traverse/AbstractGraphIterator.html" title="type parameter in AbstractGraphIterator">V</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/traverse/AbstractGraphIterator.html#createVertexTraversalEvent-V-">createVertexTraversalEvent</a></span>(<a href="../../../org/jgrapht/traverse/AbstractGraphIterator.html" title="type parameter in AbstractGraphIterator">V</a>&nbsp;vertex)</code>
 <div class="block">Create a vertex traversal event.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr sectionId="i3" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/traverse/AbstractGraphIterator.html#fireConnectedComponentFinished-org.jgrapht.event.ConnectedComponentTraversalEvent-">fireConnectedComponentFinished</a></span>(<a href="../../../org/jgrapht/event/ConnectedComponentTraversalEvent.html" title="class in org.jgrapht.event">ConnectedComponentTraversalEvent</a>&nbsp;e)</code>
 <div class="block">Informs all listeners that the traversal of the current connected component finished.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr sectionId="i4" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/traverse/AbstractGraphIterator.html#fireConnectedComponentStarted-org.jgrapht.event.ConnectedComponentTraversalEvent-">fireConnectedComponentStarted</a></span>(<a href="../../../org/jgrapht/event/ConnectedComponentTraversalEvent.html" title="class in org.jgrapht.event">ConnectedComponentTraversalEvent</a>&nbsp;e)</code>
 <div class="block">Informs all listeners that a traversal of a new connected component has started.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr sectionId="i5" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/traverse/AbstractGraphIterator.html#fireEdgeTraversed-org.jgrapht.event.EdgeTraversalEvent-">fireEdgeTraversed</a></span>(<a href="../../../org/jgrapht/event/EdgeTraversalEvent.html" title="class in org.jgrapht.event">EdgeTraversalEvent</a>&lt;<a href="../../../org/jgrapht/traverse/AbstractGraphIterator.html" title="type parameter in AbstractGraphIterator">E</a>&gt;&nbsp;e)</code>
 <div class="block">Informs all listeners that a the specified edge was visited.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr sectionId="i6" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/traverse/AbstractGraphIterator.html#fireVertexFinished-org.jgrapht.event.VertexTraversalEvent-">fireVertexFinished</a></span>(<a href="../../../org/jgrapht/event/VertexTraversalEvent.html" title="class in org.jgrapht.event">VertexTraversalEvent</a>&lt;<a href="../../../org/jgrapht/traverse/AbstractGraphIterator.html" title="type parameter in AbstractGraphIterator">V</a>&gt;&nbsp;e)</code>
 <div class="block">Informs all listeners that a the specified vertex was finished.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr sectionId="i7" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/traverse/AbstractGraphIterator.html#fireVertexTraversed-org.jgrapht.event.VertexTraversalEvent-">fireVertexTraversed</a></span>(<a href="../../../org/jgrapht/event/VertexTraversalEvent.html" title="class in org.jgrapht.event">VertexTraversalEvent</a>&lt;<a href="../../../org/jgrapht/traverse/AbstractGraphIterator.html" title="type parameter in AbstractGraphIterator">V</a>&gt;&nbsp;e)</code>
 <div class="block">Informs all listeners that a the specified vertex was visited.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr sectionId="i8" class="altColor">
 <td class="colFirst"><code><a href="../../../org/jgrapht/Graph.html" title="interface in org.jgrapht">Graph</a>&lt;<a href="../../../org/jgrapht/traverse/AbstractGraphIterator.html" title="type parameter in AbstractGraphIterator">V</a>,<a href="../../../org/jgrapht/traverse/AbstractGraphIterator.html" title="type parameter in AbstractGraphIterator">E</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/traverse/AbstractGraphIterator.html#getGraph--">getGraph</a></span>()</code>
 <div class="block">Get the graph being traversed.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr sectionId="i9" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/traverse/AbstractGraphIterator.html#isCrossComponentTraversal--">isCrossComponentTraversal</a></span>()</code>
 <div class="block">Test whether this iterator is set to traverse the graph across connected components.</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr sectionId="i10" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/traverse/AbstractGraphIterator.html#isReuseEvents--">isReuseEvents</a></span>()</code>
 <div class="block">Tests whether the <code>reuseEvents</code> flag is set.</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr sectionId="i11" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/traverse/AbstractGraphIterator.html#remove--">remove</a></span>()</code>
 <div class="block">Unsupported.</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr sectionId="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/traverse/AbstractGraphIterator.html#removeTraversalListener-org.jgrapht.event.TraversalListener-">removeTraversalListener</a></span>(<a href="../../../org/jgrapht/event/TraversalListener.html" title="interface in org.jgrapht.event">TraversalListener</a>&lt;<a href="../../../org/jgrapht/traverse/AbstractGraphIterator.html" title="type parameter in AbstractGraphIterator">V</a>,<a href="../../../org/jgrapht/traverse/AbstractGraphIterator.html" title="type parameter in AbstractGraphIterator">E</a>&gt;&nbsp;l)</code>
 <div class="block">Removes the specified traversal listener from this iterator.</div>
 </td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr sectionId="i13" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/traverse/AbstractGraphIterator.html#setCrossComponentTraversal-boolean-">setCrossComponentTraversal</a></span>(boolean&nbsp;crossComponentTraversal)</code>
 <div class="block">Sets the cross component traversal flag - indicates whether to traverse the graph across
  connected components.</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
+<tr sectionId="i14" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/traverse/AbstractGraphIterator.html#setReuseEvents-boolean-">setReuseEvents</a></span>(boolean&nbsp;reuseEvents)</code>
 <div class="block">Sets a value the <code>reuseEvents</code> flag.</div>
@@ -693,7 +693,7 @@ implements <a href="../../../org/jgrapht/traverse/GraphIterator.html" title="int
 <li><a href="../../../index.html?org/jgrapht/traverse/AbstractGraphIterator.html" target="_top">Frames</a></li>
 <li><a href="AbstractGraphIterator.html" target="_top">No&nbsp;Frames</a></li>
 </ul>
-<ul class="navList" id="allclasses_navbar_bottom">
+<ul class="navList" sectionId="allclasses_navbar_bottom">
 <li><a href="../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
 </ul>
 <div>

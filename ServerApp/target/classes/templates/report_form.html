@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../static/css/egot_template.css" th:href="@{/css/egot_template.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Zgłaszanie wycieczki</title>
+</head>
+<body>
+
+
+<header class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Elektroniczna Górska Odznaka Turystyczna
+    </a>
+</header>
+<header class="navbar navbar-light" id="current_app_page">
+    <form class="back_button navbar-form navbar-left" action="#" method="get">
+        <button type="submit" class="btn btn-info" aria-label="Left Align">< Powrót
+        </button>
+        <a class="">Zgłoś wycieczkę do potwierdzenia</a>
+    </form>
+</header>
+
+<main>
+    <!--Trip option form-->
+    <div id="select_trip" class="row justify-content-center ">
+        <form onsubmit="reloadReportPage()" method="get" class="col-6">
+            <input type="hidden" name="tourist_id">
+            <select class="form-control" name="trip" onchange="this.form.submit()">
+                <option disabled selected value>Wybierz wycieczkę</option>
+                <option th:each="trip : ${trips}" th:value="${trip.getTripId()}"
+                        th:text="${trip.getName()} + ' ' + ${trip.getSimpleDate()}">
+                </option>
+            </select>
+        </form>
+    </div>
+
+    <!--Report filling with evidences-->
+    <div id="add_pictures" th:switch="${report_wrapper != null}" class="row justify-content-center">
+        <div th:case="true" class="col-8">
+            <form action="#" th:action="@{'/report/' + ${tourist_id} + '/commit'}" th:object="${report_wrapper}"
+                  method="post" class="">
+                <ul class="list-group ">
+                    <li class="list-group-item" th:each="reportItem, status : ${report_wrapper.reports}">
+                        <div class="form-group row">
+                            <label class="col-sm-8 col-form-label" for="add_image"
+                                   th:text="${reportItem.getRouteSection().getSection().getSectionInfo()}"></label>
+                            <input type="file" id="add_image" th:field="*{reports[__${status.index}__].evidenceIm}"/>
+                            <input type="hidden" id="save_trip" th:field="*{reports[__${status.index}__].trip}"/>
+                            <input type="hidden" id="save_RS" th:field="*{reports[__${status.index}__].routeSection}"/>
+                        </div>
+                    </li>
+                </ul>
+                <div class="text-center">
+                    <label for="details_input" class="btn btn-success">Dodaj zgłoszenie</label>
+                    <input type="submit" id="details_input" style="display:none"/>
+                </div>
+            </form>
+        </div>
+        <div th:case="false" class="col-8 text-center">Brak odcinków do potwierdzenia</div>
+    </div>
+</main>
+<footer class="foot">
+    ©Jakub Binkowski
+</footer>
+</body>
+</html>

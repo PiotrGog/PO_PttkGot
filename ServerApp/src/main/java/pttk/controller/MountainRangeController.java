@@ -36,7 +36,7 @@ public class MountainRangeController {
 //    @RequestMapping(value = "/mountainranges/add", method = RequestMethod.POST)
 //    public String addPerson(@ModelAttribute("person") MountainRange p) {
 //
-//        if (p.getId() == 0) {
+//        if (p.getSectionId() == 0) {
 //            //new person, add it
 //            this.mountainRangeService_.addMountainRage(p);
 //        } else {

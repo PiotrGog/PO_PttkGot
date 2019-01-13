@@ -238,7 +238,7 @@ Changes to JGraphT in each version:
     - Add new vertex cover algorithms and package (contributed by Joris Kinable and Nils Olberg)
     - Improved GraphML support (contributed by Dimitrios Michail)
     - Add common `GraphExporter` and `GraphImporter` interfaces (contributed by Dimitrios Michail)
-    - DOT importer id fix (contributed by Dimitrios Michail)
+    - DOT importer sectionId fix (contributed by Dimitrios Michail)
     - Add `CSVExporter` and `CSVImporter` (contributed by Dimitrios Michail)
     - Add `MinimumSTCutAlgorithm` (contributed by Joris Kinable)
     - Capture trivial paths in `AllDirectedPaths` (contributed by Andrew Gainer-Dewar)

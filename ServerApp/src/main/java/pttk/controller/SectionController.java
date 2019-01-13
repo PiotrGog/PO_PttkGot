@@ -1,21 +1,15 @@
 package pttk.controller;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import pttk.Application;
-import pttk.model.Location;
-import pttk.model.MountainGroup;
 import pttk.model.Section;
 import pttk.repositories.LocationRepository;
 import pttk.repositories.MountainGroupRepository;
 import pttk.repositories.MountainRangeRepository;
 import pttk.repositories.SectionRepository;
 
-import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
@@ -82,7 +76,7 @@ public class SectionController {
 
 
         Section newSection = new Section();
-        newSection.setId(id);
+        newSection.setSectionId(id);
         newSection.setLocationOne(locationRepository_.findById(locationOne).get());
         newSection.setLocationTwo(locationRepository_.findById(locationTwo).get());
         newSection.setDistance(distance);

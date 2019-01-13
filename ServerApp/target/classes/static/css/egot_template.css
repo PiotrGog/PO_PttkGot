@@ -1,0 +1,81 @@
+html {
+    min-height: 100% !important;
+}
+
+body
+{
+    margin: 0;
+    padding: 0;
+    font-family: "Calibri Light", serif;
+    background-color: bisque;
+        min-height: 100vh !important;
+}
+
+main{
+    background-color: bisque;
+    min-height:100vh;
+}
+
+
+[hidden] {
+    display: none !important;
+}
+
+h1, h2 {
+    margin: 0;
+    padding-top: 0;
+    display: inline-block;
+}
+
+h2 {
+    padding-left: 0.5em;
+}
+
+.foot {
+    background-color: bisque;
+    text-align: center;
+}
+
+
+.bckg
+{
+    background-color: bisque;
+}
+
+.back_button {
+    display: inline-block
+
+}
+
+div
+{
+    padding: 20px;
+}
+
+.forms_details {
+    width: 60%;
+    margin-top: 10px;
+    align-content: center;
+    padding: 30px;
+}
+
+#egot_header {
+    background-color: #4E4E4E;
+    text-align: left;
+    font-weight: bold;
+    color: #EEEEEF;
+    padding: 1em;
+}
+
+#current_app_page {
+    background-color: whitesmoke;
+    text-align: left;
+    padding: 0.5em;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 32px;
+}

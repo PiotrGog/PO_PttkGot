@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <!--<link href="../static/css/employee_details.css" th:href="@{/css/employee_details.css}" rel="stylesheet"/>-->
+    <link href="../static/css/egot_template.css" th:href="@{/css/egot_template.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+<header class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Elektroniczna Górska Odznaka Turystyczna
+    </a>
+</header>
+<header class="navbar navbar-light" id="current_app_page">
+    <form class="back_button navbar-form navbar-left"
+          action="#" th:action="@{'/employees/'}" method="get">
+        <button type="submit" class="btn btn-info" aria-label="Left Align">< Powrót
+        </button>
+        <a class="">Dane Pracownika</a>
+    </form>
+</header>
+
+<main>
+    <div class="row justify-content-center">
+        <div class="card col-5" id="employee_details">
+            <dl class="dl-horizontal">
+                <dt>Id:</dt>
+                <dd th:text="${employee.getEmpId()}">...</dd>
+
+                <dt>Login:</dt>
+                <dd th:text="${employee.getLogin()}">...</dd>
+
+                <dt>Imię:</dt>
+                <dd th:text="${employee.getName()}">...</dd>
+
+                <dt>Nazwisko:</dt>
+                <dd th:text="${employee.getSurname()}">...</dd>
+
+                <dt>PESEL:</dt>
+                <dd th:text="${employee.getPesel()}">...</dd>
+
+                <dt>Email:</dt>
+                <dd th:text="${employee.getEmail()}">...</dd>
+
+                <dt>Data zatrudnienia:</dt>
+                <dd th:text="${employee.getHire_date().toString()}">...</dd>
+            </dl>
+        </div>
+        <div class="text_center" id="employee_options">
+            <form class="back_button " action="#" th:action="@{'/employees/' + ${employee.getEmpId()} + '/update'}"
+                  method="get">
+                <button type="submit" class="btn btn-warning" aria-label="Left Align" th:value="${action}">Edytuj
+                </button>
+            </form>
+            <form class="back_button " action="#" th:action="@{'/employees/' + ${employee.getEmpId()}+'/update_state'}"
+                  method="get">
+                <button type="submit" class="btn btn-danger" aria-label="Left Align" th:value="${action}">Zmień status
+                </button>
+            </form>
+        </div>
+    </div>
+</main>
+
+<footer class="foot">
+    ©Jakub Binkowski
+</footer>
+</body>
+</html>

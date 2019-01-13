@@ -3,6 +3,7 @@ package pttk.model;
 import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "mountain_groups")
@@ -20,6 +21,9 @@ public class MountainGroup {
     @ManyToOne
     @JoinColumn(name = "fk_mountain_range_id")
     private MountainRange mountainRange;
+
+    @ManyToMany(mappedBy = "rights")
+    private Set<Leader> leaders;
 
     public Integer getId() {
         return id;
@@ -39,6 +43,14 @@ public class MountainGroup {
 
     public MountainRange getMountainRange() {
         return mountainRange;
+    }
+
+    public Set<Leader> getLeaders() {
+        return leaders;
+    }
+
+    public void setLeaders(Set<Leader> leaders) {
+        this.leaders = leaders;
     }
 
     public void setMountainRange(MountainRange mountainRange) {

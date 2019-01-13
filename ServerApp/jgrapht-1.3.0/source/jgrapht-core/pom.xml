@@ -77,7 +77,7 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<executions>
 					<execution>
-						<id>default-test</id>
+						<sectionId>default-test</sectionId>
 						<configuration>
 							<excludes>
 								<exclude>**/perf/**</exclude>

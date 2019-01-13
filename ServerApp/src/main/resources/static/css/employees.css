@@ -1,0 +1,10 @@
+table {
+    width: 80%;
+
+}
+
+#employees_table {
+    width: 80%;
+    align-content: center;
+    padding: 20px;
+}

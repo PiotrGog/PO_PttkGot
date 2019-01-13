@@ -140,7 +140,7 @@
  					</dependencies>
 					<executions>
 						<execution>
-							<id>integration-test</id>
+							<sectionId>integration-test</sectionId>
 							<goals>
 								<goal>integration-test</goal>
 								<goal>verify</goal>
@@ -246,7 +246,7 @@
 
 	<profiles>
 		<profile>
-			<id>checkstyle</id>
+			<sectionId>checkstyle</sectionId>
 			<build>
 				<plugins>
 					<plugin>
@@ -262,7 +262,7 @@
 						</dependencies>
 						<executions>
 							<execution>
-								<id>checkstyle</id>
+								<sectionId>checkstyle</sectionId>
 								<phase>validate</phase>
 								<goals>
 									<goal>check</goal>
@@ -278,7 +278,7 @@
 			</build>
 		</profile>
 		<profile>
-			<id>release-sign-artifacts</id>
+			<sectionId>release-sign-artifacts</sectionId>
 			<activation>
 				<property>
 					<name>performRelease</name>
@@ -293,7 +293,7 @@
 						<version>1.1</version>
 						<executions>
 							<execution>
-								<id>sign-artifacts</id>
+								<sectionId>sign-artifacts</sectionId>
 								<phase>verify</phase>
 								<goals>
 									<goal>sign</goal>

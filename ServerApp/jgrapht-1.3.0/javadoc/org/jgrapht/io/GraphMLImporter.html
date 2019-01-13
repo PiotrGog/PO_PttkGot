@@ -58,7 +58,7 @@ var activeTableTab = "activeTableTab";
 <li><a href="../../../index.html?org/jgrapht/io/GraphMLImporter.html" target="_top">Frames</a></li>
 <li><a href="GraphMLImporter.html" target="_top">No&nbsp;Frames</a></li>
 </ul>
-<ul class="navList" id="allclasses_navbar_top">
+<ul class="navList" sectionId="allclasses_navbar_top">
 <li><a href="../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
 </ul>
 <div>
@@ -141,38 +141,38 @@ implements <a href="../../../org/jgrapht/io/GraphImporter.html" title="interface
      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
      xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns 
      http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"&gt;
-   &lt;key id="d0" for="node" attr.name="color" attr.type="string"&gt;
+   &lt;key sectionId="d0" for="node" attr.name="color" attr.type="string"&gt;
      &lt;default&gt;yellow&lt;/default&gt;
    &lt;/key&gt;
-   &lt;key id="d1" for="edge" attr.name="weight" attr.type="double"/&gt;
-   &lt;graph id="G" edgedefault="undirected"&gt;
-     &lt;node id="n0"&gt;
+   &lt;key sectionId="d1" for="edge" attr.name="weight" attr.type="double"/&gt;
+   &lt;graph sectionId="G" edgedefault="undirected"&gt;
+     &lt;node sectionId="n0"&gt;
        &lt;data key="d0"&gt;green&lt;/data&gt;
      &lt;/node&gt;
-     &lt;node id="n1"/&gt;
-     &lt;node id="n2"&gt;
+     &lt;node sectionId="n1"/&gt;
+     &lt;node sectionId="n2"&gt;
        &lt;data key="d0"&gt;blue&lt;/data&gt;
      &lt;/node&gt;
-     &lt;node id="n3"&gt;
+     &lt;node sectionId="n3"&gt;
        &lt;data key="d0"&gt;red&lt;/data&gt;
      &lt;/node&gt;
-     &lt;node id="n4"/&gt;
-     &lt;node id="n5"&gt;
+     &lt;node sectionId="n4"/&gt;
+     &lt;node sectionId="n5"&gt;
        &lt;data key="d0"&gt;turquoise&lt;/data&gt;
      &lt;/node&gt;
-     &lt;edge id="e0" source="n0" target="n2"&gt;
+     &lt;edge sectionId="e0" source="n0" target="n2"&gt;
        &lt;data key="d1"&gt;1.0&lt;/data&gt;
      &lt;/edge&gt;
-     &lt;edge id="e1" source="n0" target="n1"&gt;
+     &lt;edge sectionId="e1" source="n0" target="n1"&gt;
        &lt;data key="d1"&gt;1.0&lt;/data&gt;
      &lt;/edge&gt;
-     &lt;edge id="e2" source="n1" target="n3"&gt;
+     &lt;edge sectionId="e2" source="n1" target="n3"&gt;
        &lt;data key="d1"&gt;2.0&lt;/data&gt;
      &lt;/edge&gt;
-     &lt;edge id="e3" source="n3" target="n2"/&gt;
-     &lt;edge id="e4" source="n2" target="n4"/&gt;
-     &lt;edge id="e5" source="n3" target="n5"/&gt;
-     &lt;edge id="e6" source="n5" target="n4"&gt;
+     &lt;edge sectionId="e3" source="n3" target="n2"/&gt;
+     &lt;edge sectionId="e4" source="n2" target="n4"/&gt;
+     &lt;edge sectionId="e5" source="n3" target="n5"/&gt;
+     &lt;edge sectionId="e6" source="n5" target="n4"&gt;
        &lt;data key="d1"&gt;1.1&lt;/data&gt;
      &lt;/edge&gt;
    &lt;/graph&gt;
@@ -278,85 +278,85 @@ implements <a href="../../../org/jgrapht/io/GraphImporter.html" title="interface
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span sectionId="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span sectionId="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span sectionId="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
-<tr id="i0" class="altColor">
+<tr sectionId="i0" class="altColor">
 <td class="colFirst"><code><a href="../../../org/jgrapht/io/EdgeProvider.html" title="interface in org.jgrapht.io">EdgeProvider</a>&lt;V,E&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/io/GraphMLImporter.html#getEdgeProvider--">getEdgeProvider</a></span>()</code>
 <div class="block">Get the edge provider</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr sectionId="i1" class="rowColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/io/GraphMLImporter.html#getEdgeWeightAttributeName--">getEdgeWeightAttributeName</a></span>()</code>
 <div class="block">Get the attribute name for edge weights</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr sectionId="i2" class="altColor">
 <td class="colFirst"><code><a href="../../../org/jgrapht/io/ComponentUpdater.html" title="interface in org.jgrapht.io">ComponentUpdater</a>&lt;<a href="../../../org/jgrapht/Graph.html" title="interface in org.jgrapht">Graph</a>&lt;V,E&gt;&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/io/GraphMLImporter.html#getGraphUpdater--">getGraphUpdater</a></span>()</code>
 <div class="block">Get the graph updater.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr sectionId="i3" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/jgrapht/io/VertexProvider.html" title="interface in org.jgrapht.io">VertexProvider</a>&lt;V&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/io/GraphMLImporter.html#getVertexProvider--">getVertexProvider</a></span>()</code>
 <div class="block">Get the vertex provider</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr sectionId="i4" class="altColor">
 <td class="colFirst"><code><a href="../../../org/jgrapht/io/ComponentUpdater.html" title="interface in org.jgrapht.io">ComponentUpdater</a>&lt;V&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/io/GraphMLImporter.html#getVertexUpdater--">getVertexUpdater</a></span>()</code>
 <div class="block">Get the vertex updater</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr sectionId="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/io/GraphMLImporter.html#importGraph-org.jgrapht.Graph-java.io.Reader-">importGraph</a></span>(<a href="../../../org/jgrapht/Graph.html" title="interface in org.jgrapht">Graph</a>&lt;<a href="../../../org/jgrapht/io/GraphMLImporter.html" title="type parameter in GraphMLImporter">V</a>,<a href="../../../org/jgrapht/io/GraphMLImporter.html" title="type parameter in GraphMLImporter">E</a>&gt;&nbsp;graph,
            <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Reader.html?is-external=true" title="class or interface in java.io">Reader</a>&nbsp;input)</code>
 <div class="block">Import a graph.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr sectionId="i6" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/io/GraphMLImporter.html#isSchemaValidation--">isSchemaValidation</a></span>()</code>
 <div class="block">Whether the importer validates the input</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr sectionId="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/io/GraphMLImporter.html#setEdgeProvider-org.jgrapht.io.EdgeProvider-">setEdgeProvider</a></span>(<a href="../../../org/jgrapht/io/EdgeProvider.html" title="interface in org.jgrapht.io">EdgeProvider</a>&lt;V,E&gt;&nbsp;edgeProvider)</code>
 <div class="block">Set the edge provider.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr sectionId="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/io/GraphMLImporter.html#setEdgeWeightAttributeName-java.lang.String-">setEdgeWeightAttributeName</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;edgeWeightAttributeName)</code>
 <div class="block">Set the attribute name to use for edge weights.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr sectionId="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/io/GraphMLImporter.html#setGraphUpdater-org.jgrapht.io.ComponentUpdater-">setGraphUpdater</a></span>(<a href="../../../org/jgrapht/io/ComponentUpdater.html" title="interface in org.jgrapht.io">ComponentUpdater</a>&lt;<a href="../../../org/jgrapht/Graph.html" title="interface in org.jgrapht">Graph</a>&lt;V,E&gt;&gt;&nbsp;graphUpdater)</code>
 <div class="block">Set the graph updater.</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr sectionId="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/io/GraphMLImporter.html#setSchemaValidation-boolean-">setSchemaValidation</a></span>(boolean&nbsp;schemaValidation)</code>
 <div class="block">Set whether the importer should validate the input</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr sectionId="i11" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/io/GraphMLImporter.html#setVertexProvider-org.jgrapht.io.VertexProvider-">setVertexProvider</a></span>(<a href="../../../org/jgrapht/io/VertexProvider.html" title="interface in org.jgrapht.io">VertexProvider</a>&lt;V&gt;&nbsp;vertexProvider)</code>
 <div class="block">Set the vertex provider</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr sectionId="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/jgrapht/io/GraphMLImporter.html#setVertexUpdater-org.jgrapht.io.ComponentUpdater-">setVertexUpdater</a></span>(<a href="../../../org/jgrapht/io/ComponentUpdater.html" title="interface in org.jgrapht.io">ComponentUpdater</a>&lt;V&gt;&nbsp;vertexUpdater)</code>
 <div class="block">Set the vertex updater.</div>
@@ -700,7 +700,7 @@ implements <a href="../../../org/jgrapht/io/GraphImporter.html" title="interface
 <li><a href="../../../index.html?org/jgrapht/io/GraphMLImporter.html" target="_top">Frames</a></li>
 <li><a href="GraphMLImporter.html" target="_top">No&nbsp;Frames</a></li>
 </ul>
-<ul class="navList" id="allclasses_navbar_bottom">
+<ul class="navList" sectionId="allclasses_navbar_bottom">
 <li><a href="../../../allclasses-noframe.html">All&nbsp;Classes</a></li>
 </ul>
 <div>

@@ -1,8 +1,7 @@
 package pttk.model;
 
-import org.hibernate.validator.constraints.UniqueElements;
-
 import javax.persistence.*;
+import java.util.Set;
 
 
 @Entity
@@ -11,7 +10,7 @@ public class Section {
     @Id
     @Column(name = "id_section")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Integer sectionId;
 
     @Column(name = "points_altitude")
     private Integer pointsAltitude;
@@ -34,12 +33,30 @@ public class Section {
     @JoinColumn(name = "fk_mountain_group_id")
     private MountainGroup mountainGroup;
 
-    public Integer getId() {
-        return id;
+    @OneToMany(mappedBy = "section")
+    private Set<RouteSection> routeSections;
+
+    public Set<RouteSection> getRouteSections() {
+        return routeSections;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setRouteSections(Set<RouteSection> routeSections) {
+        this.routeSections = routeSections;
+    }
+
+
+    public String getSectionInfo()
+    {
+        return locationOne.getName() + "->" + locationTwo.getName();
+    }
+
+
+    public Integer getSectionId() {
+        return sectionId;
+    }
+
+    public void setSectionId(Integer sectionId) {
+        this.sectionId = sectionId;
     }
 
     public Integer getPointsAltitude() {
@@ -92,7 +109,7 @@ public class Section {
 
     @Override
     public String toString() {
-        return "id=" + id + ", location 1 " + locationOne.getName() + " location two "
+        return "sectionId=" + sectionId + ", location 1 " + locationOne.getName() + " location two "
                 + locationTwo.getName() + " mountain " + mountainGroup;
     }
 }

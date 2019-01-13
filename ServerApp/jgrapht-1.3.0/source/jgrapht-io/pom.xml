@@ -62,7 +62,7 @@
 				<version>4.7</version>
 				<executions>
 					<execution>
-						<id>antlr</id>
+						<sectionId>antlr</sectionId>
 						<goals>
 							<goal>antlr4</goal>
 						</goals>

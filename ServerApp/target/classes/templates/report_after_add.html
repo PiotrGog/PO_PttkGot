@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../static/css/egot_template.css" th:href="@{/css/egot_template.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Zgłaszanie wycieczki</title>
+</head>
+<body>
+
+<header class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Elektroniczna Górska Odznaka Turystyczna
+    </a>
+</header>
+<header class="navbar navbar-light" id="current_app_page">
+    <form class="back_button navbar-form navbar-left"
+          action="#" th:action="@{'/report/' + ${tourist_id}}" method="get">
+        <button type="submit" class="btn btn-info" aria-label="Left Align">< Powrót
+        </button>
+        <a class="">Zgłaszanie wycieczki do potwierdzenia</a>
+    </form>
+</header>
+
+<main>
+    <div id="report_state" th:switch="${not_reported.isEmpty()}" class="row justify-content-center">
+
+        <div th:case="true" class="col-8 text-center alert-success">
+            <h3>Pomyślnie zgłoszono wycieczkę</h3>
+        </div>
+
+        <div th:case="false" class="col-8 text-center alert-danger">
+            <h3>Część odcinków nie została zgłoszona - brak przodowników</h3>
+            <h4>Możesz zgłosić je ponownie później</h4>
+            <ul class="list-group">
+                <li class="list-group-item" th:each="reportItem, status : ${report_wrapper.reports}">
+                    <div class="form-group row">
+                        <span th:text="${reportItem.getRouteSection().getSection().getSectionInfo()}"></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <footer class="foot">
+        ©Jakub Binkowski
+    </footer>
+
+</main>
+</body>
+</html>

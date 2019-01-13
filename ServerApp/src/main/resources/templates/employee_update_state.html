@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../static/css/egot_template.css" th:href="@{/css/egot_template.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<title th:title="${'Usuwanie' + employee.getName() + ' ' + employee.getSurname()}"></title>
+<body>
+
+<header class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Elektroniczna Górska Odznaka Turystyczna
+    </a>
+</header>
+<header class="navbar navbar-light" id="current_app_page">
+    <form class="back_button navbar-form navbar-left"
+          action="#" th:action="@{'/employees/' + ${employee.getEmpId()} + '/details'}" method="get">
+        <button type="submit" class="btn btn-info" aria-label="Left Align">< Powrót
+        </button>
+        <a class="">Edycja danych pracownika</a>
+    </form>
+</header>
+
+<main id="confirm_change_state">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <form action="#" th:action="@{'/employees/' + ${employee.getEmpId()}+'/update_state'}" method="post">
+                <button class="btn btn-warning btn-lg btn-block" type="submit" th:value="${action}"></button>
+            </form>
+
+            <form action="#" th:action="@{'/employees'}" method="get">
+                <button class="btn btn-primary btn-lg btn-block" type="submit" value="Anuluj"></button>
+            </form>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

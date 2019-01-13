@@ -22,16 +22,16 @@
 
             length = data.length;
             for (i = 0; i < length; i++) {
-                console.log(typeof data[i].mountainRange.id);
-                console.log(data[i].mountainRange.id);
+                console.log(typeof data[i].mountainRange.sectionId);
+                console.log(data[i].mountainRange.sectionId);
                 console.log(typeof mountainRangesSelector.options.selectedIndex);
                 console.log(mountainRangesSelector.options.selectedIndex);
-                console.log(data[i].mountainRange.id == mountainRangesSelector.options.selectedIndex);
-                if (data[i].mountainRange.id == mountainRangesSelector.options.selectedIndex) {
+                console.log(data[i].mountainRange.sectionId == mountainRangesSelector.options.selectedIndex);
+                if (data[i].mountainRange.sectionId == mountainRangesSelector.options.selectedIndex) {
                     console.log("aaaadddd");
                     var option = document.createElement("option");
                     option.text = data[i].name;
-                    option.value = data[i].id;
+                    option.value = data[i].sectionId;
                     mountainGroupsSelector.add(option);
                 }
             }
@@ -58,14 +58,14 @@
     /*]]>*/
 </script>
 
-<div id="test">dkfsajfkdljlf</div>
+<div sectionId="test">dkfsajfkdljlf</div>
 
 <form action="#" th:action="@{/sections/addSection}" method="post">
     <table>
         <tr>
             <td>Pasmo górskie</td>
             <td>
-                <select id="mountainRangesSelectList" onchange="changeMountainRangesListener();">
+                <select sectionId="mountainRangesSelectList" onchange="changeMountainRangesListener();">
                     <option th:each="mr : ${mountainRanges}"
                             th:value="${mr}" th:text="${mr.getName()}"></option>
                 </select>
@@ -74,7 +74,7 @@
         <tr>
             <td>Grupa górskie</td>
             <td>
-                <select id="mountainGroupsSelectList" name="mountainGroup">
+                <select sectionId="mountainGroupsSelectList" name="mountainGroup">
                     <option th:each="mg : ${mountainGroups}"
                             th:value="${mg.getId()}" th:text="${mg.getName()}"></option>
                 </select>
