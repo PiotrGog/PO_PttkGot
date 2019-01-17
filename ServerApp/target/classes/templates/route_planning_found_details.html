@@ -14,10 +14,14 @@
 </p>
 
 <th:block th:if="${currentIndex>1}">
-    <div style="float: left"><a th:href="@{'/route/details/' + ${currentIndex-1}}">Poprzedni</a></div>
+    <div style="float: left"><a th:href="@{'/route/details/' + ${currentIndex-1}}">
+        Poprzedni <img src="../static/images/arrow_l.png" th:src="@{/images/arrow_l.png}" width="20" alt="Poprzedni"></a>
+    </div>
 </th:block>
-<th:block th:if="${currentIndex<3}">
-    <div style="float: right"><a th:href="@{'/route/details/' + ${currentIndex+1}}">Następny</a></div>
+<th:block th:if="${currentIndex<size}">
+    <div style="float: right"><a th:href="@{'/route/details/' + ${currentIndex+1}}">
+        Następny <img src="../static/images/arrow_r.png" th:src="@{/images/arrow_r.png}" width="20" alt="Następny"></a>
+    </div>
 </th:block>
 <div style="font-size: 1.5em" align="center">Szczegóły trasy</div>
 

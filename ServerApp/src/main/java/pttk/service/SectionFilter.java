@@ -1,8 +1,23 @@
 package pttk.service;
 
-
+/**
+ * Class defining filters for sections.
+ */
 public class SectionFilter {
 
+    /**
+     * Filter parametric constructor
+     * @param mountainRangeFilter mountain range id
+     * @param groupRangeFilter mountain group id
+     * @param localizationOneFilter localization id
+     * @param localizationTwoFilter localization id
+     * @param distanceMaxFilter maximum distance
+     * @param distanceMinFilter minimum distance
+     * @param distancePointsMaxFilter maximum distance points
+     * @param distancePointsMinFilter minimum distance points
+     * @param altitudePointsMaxFilter maximum altitude points
+     * @param altitudePointsMinFilter minimum altitude points
+     */
     public SectionFilter(Integer mountainRangeFilter,
                          Integer groupRangeFilter,
                          Integer localizationOneFilter,
@@ -25,9 +40,16 @@ public class SectionFilter {
         this.altitudePointsMinFilter = altitudePointsMinFilter;
     }
 
+    /**
+     * Filter default non-parametric constructor
+     */
     public SectionFilter() {
     }
 
+    /**
+     * To string function
+     * @return filter string representation.
+     */
     @Override
     public String toString() {
         return "SectionFilter{" +

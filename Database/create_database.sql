@@ -82,7 +82,7 @@ INSERT INTO sections (points_altitude, points_distance, distance, fk_location_on
 	VALUES (12, 12, 0, 1, 5, 2);
 
 INSERT INTO sections (points_altitude, points_distance, distance, fk_location_one_id, fk_location_two_id, fk_mountain_group_id)
-	VALUES (12, 12, 0, 5, 5, 2);
+	VALUES (12, 12, 0, 1, 6, 2);
 
 
 INSERT INTO mountain_ranges (mountain_range_name) VALUES ("Beskid Sądecki");

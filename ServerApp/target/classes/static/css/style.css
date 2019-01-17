@@ -106,3 +106,9 @@ table.other_localizations td{
     border-radius: 20px;
     padding: 8px;
 }
+
+p.error_box{
+    border: 1px solid red;
+    /*border-radius: 20px;*/
+    /*color: red;*/
+}

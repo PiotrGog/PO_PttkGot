@@ -117,6 +117,7 @@ public class RouteController {
                         .locations.size() - 1).getSecond().getName());
         model.addAttribute("currentIndex", id);
         model.addAttribute("pathSections", paths.get(id - 1).getSecond());
+        model.addAttribute("size", paths.size());
         return "route_planning_found_details";
     }
 
