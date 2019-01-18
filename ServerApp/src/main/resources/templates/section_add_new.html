@@ -5,13 +5,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="../static/css/style.css" th:href="@{/css/style.css}" type="text/css" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!--<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>-->
-    <!--<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>-->
-    <!--<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>-->
-    <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
-    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/additional-methods.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script>
         /*<![CDATA[*/
         var mountainRanges = null;
@@ -48,64 +45,87 @@
         data.push([[${item}]]);
     </script>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js">
+    <script>
         $(document).ready(function () {
-            $("#new_section_form").on('submit', function (e) {
 
-                var errorBox = $("#error_message");
-                // errorBox.cleanData();
-                var errorText = "";
+            $("#add_section").click(function (e) {
                 e.preventDefault();
-                alert("submit");
-                var validatiorCorrect = true;
-                if ($("#mountainRangesSelectList").val() === "") {
-                    validatiorCorrect = false;
-                    errorText += "Wypełnij pole 'Pasmo górskie'<\/br>";
+                // alert("post data to add new section");
+                var data = {};
+                data["mountainGroup"] = $("#mountainGroupsSelectList").val();
+                data["locationOne"] = $("#locationOne").val();
+                data["locationTwo"] = $("#locationTwo").val();
+                data["distance"] = $("#distance").val();
+                data["pointsAltitude"] = $("#pointsAltitude").val();
+                data["pointsDistance"] = $("#pointsDistance").val();
+                console.log(data);
+                $.post({
+                    url: "/sections/addSection",
+                    data: JSON.stringify(data),
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    success: function (result) {
+                        console.log(result.status);
+                        $("#dialog-message").html("Utworzono nowy odcinek z "
+                            + $("#locationOne option:selected").text()
+                            + " do " + $("#locationTwo option:selected").text());
+                        $("#new_section_form").trigger("reset");
+                    },
+                    error: function (result) {
+                        console.log(result.status);
+                        if (result.status == "424") {
+                            var errors = result.responseFields;
+                            console.log(errors);
+                            var errTable = {
+                                1 : "Lokalizacja pierwsza i druga nie mogą być identyczne",
+                                2 : "Dystans pomiędzy lokalizacjami musi być podany",
+                                3 : "Grupa górska szlaku musi być podana",
+                                4 : "Błąd bazy danych"
+                            };
+                            var strErr = "";
+                            for (var e in errTable) {
+                                strErr += errTable["1"] + "</br>"
+                            }
+                            $("#dialog-message").html(strErr);
+                        }
 
-                }
-                if ($("#mountainGroupsSelectList").val() === "") {
-                    validatiorCorrect = false;
-                    errorText += "Wypełnij pole 'Grupa górska'<\/br>";
-
-                }
-                if ($("#locationOne").val() === "") {
-                    validatiorCorrect = false;
-                    errorText += "Wypełnij pole 'Lokalizacja pierwsza'<\/br>";
-
-                }
-                if ($("#locationTwo").val() === "") {
-                    validatiorCorrect = false;
-                    errorText += "Wypełnij pole 'Lokalizacja druga'<\/br>";
-
-                }
-                if ($("#distance").val() === "") {
-                    validatiorCorrect = false;
-                    errorText += "Wypełnij pole 'Odległość'<\/br>";
-
-                }
-                if ($("#locationTwo").val() === "") {
-                    validatiorCorrect = false;
-                    errorText += "Wypełnij pole 'Punkty za wysokość'<\/br>";
-
-                }
-                if ($("#locationTwo").val() === "") {
-                    validatiorCorrect = false;
-                    errorText += "Wypełnij pole 'Punkty za odległość'<\/br>";
-
-                }
-
-
-                errorBox.html(errorText);
-                if(validatiorCorrect) {
-                    this.submit();
-                }
+                    }
+                });
+                var dialog = $("#dialog-message").dialog({
+                    autoOpen: false,
+                    modal: true,
+                    buttons: {
+                        Ok: function () {
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+                dialog.dialog("open");
             });
         });
     </script>
 
+    <script>
+        var dialog;
+        $(function () {
+            dialog = $("#dialog-message").dialog({
+                autoOpen: false,
+                modal: true,
+                buttons: {
+                    Ok: function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        })
+
+    </script>
+
 </head>
 <body>
+<div id="dialog-message" title="Status operacji">
 
+</div>
 
 <script>
     /*<![CDATA[*/
@@ -167,7 +187,7 @@
         <tr>
             <td class="align_right">Odległość:</td>
             <td>
-                <input class="select_section_param" name="distance" id="distance" type="number">
+                <input class="select_section_param" name="distance" id="distance" type="number" min="0">
             </td>
         </tr>
         <tr>
@@ -193,7 +213,7 @@
             </td>
             <td>
 
-                <input class="select_section_param" type="submit" value="Dodaj">
+                <input class="select_section_param" type="submit" value="Dodaj" id="add_section">
                 <!--<input id="submit_button" class="select_section_param" type="button" value="Dodaj">-->
             </td>
         </tr>

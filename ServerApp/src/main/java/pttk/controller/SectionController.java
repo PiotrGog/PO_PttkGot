@@ -1,19 +1,20 @@
 package pttk.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pttk.Application;
 import pttk.model.Section;
-import pttk.repositories.LocationRepository;
-import pttk.repositories.MountainGroupRepository;
-import pttk.repositories.MountainRangeRepository;
-import pttk.repositories.SectionRepository;
+import pttk.service.NewSectionWrapper;
 import pttk.service.SectionFilter;
+import pttk.service.SectionService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Controller
@@ -21,16 +22,7 @@ import java.util.Optional;
 public class SectionController {
 
     @Autowired
-    private SectionRepository sectionRepository_;
-
-    @Autowired
-    private MountainRangeRepository mountainRangeRepository_;
-
-    @Autowired
-    private MountainGroupRepository mountainGroupRepository_;
-
-    @Autowired
-    private LocationRepository locationRepository_;
+    private SectionService sectionService_;
 
     private SectionFilter sectionFilter_ = new SectionFilter();
 
@@ -45,7 +37,7 @@ public class SectionController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String listSections(Model model) {
-        Iterable<Section> sections = sectionRepository_.findAll();
+        Iterable<Section> sections = sectionService_.findAllSection();
         ArrayList<Section> filteredSections = new ArrayList<>();
         for (Section s : sections) {
             if (null != sectionFilter_.getAltitudePointsMaxFilter()
@@ -58,7 +50,7 @@ public class SectionController {
                 continue;
             }
 
-            if (null !=  sectionFilter_.getDistancePointsMaxFilter()
+            if (null != sectionFilter_.getDistancePointsMaxFilter()
                     && !(sectionFilter_.getDistancePointsMaxFilter() >= s.getPointsDistance())) {
                 continue;
             }
@@ -74,13 +66,14 @@ public class SectionController {
             }
 
             if (null != sectionFilter_.getMountainRangeFilter()
-                    && !sectionFilter_.getMountainRangeFilter().equals(s.getMountainGroup().getMountainRange().getId())) {
+                    &&
+                    !sectionFilter_.getMountainRangeFilter().equals(s.getMountainGroup().getMountainRange().getId())) {
                 continue;
             }
 
             if (null != sectionFilter_.getLocalizationOneFilter()
                     && !(sectionFilter_.getLocalizationOneFilter().equals(s.getLocationOne().getId())
-                        || sectionFilter_.getLocalizationOneFilter().equals(s.getLocationTwo().getId()))) {
+                    || sectionFilter_.getLocalizationOneFilter().equals(s.getLocationTwo().getId()))) {
                 continue;
             }
 
@@ -98,7 +91,7 @@ public class SectionController {
 
     @RequestMapping(value = "/details/{id}", method = RequestMethod.GET)
     public String detailsSection(@PathVariable("id") Integer id, Model model) {
-        Optional<Section> section = sectionRepository_.findById(id);
+        Optional<Section> section = sectionService_.findByIdSection(id);
         if (section.isPresent()) {
             model.addAttribute("mountainRange", section.get().getMountainGroup().getMountainRange().getName());
             model.addAttribute("mountainGroup", section.get().getMountainGroup().getName());
@@ -115,12 +108,12 @@ public class SectionController {
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String editSection(@PathVariable("id") Integer id, Model model) {
-        Optional<Section> section = sectionRepository_.findById(id);
+        Optional<Section> section = sectionService_.findByIdSection(id);
         if (section.isPresent()) {
             model.addAttribute("section", section.get());
-            model.addAttribute("mountainRanges", mountainRangeRepository_.findAll());
-            model.addAttribute("mountainGroups", mountainGroupRepository_.findAll());
-            model.addAttribute("locations", locationRepository_.findAll());
+            model.addAttribute("mountainRanges", sectionService_.findAllMountainRange());
+            model.addAttribute("mountainGroups", sectionService_.findAllMountainGroup());
+            model.addAttribute("locations", sectionService_.findAllLocation());
         }
         return "section_edit";
     }
@@ -144,14 +137,14 @@ public class SectionController {
 
         Section newSection = new Section();
         newSection.setId(id);
-        newSection.setLocationOne(locationRepository_.findById(locationOne).get());
-        newSection.setLocationTwo(locationRepository_.findById(locationTwo).get());
+        newSection.setLocationOne(sectionService_.findByIdLocation(locationOne).get());
+        newSection.setLocationTwo(sectionService_.findByIdLocation(locationTwo).get());
         newSection.setDistance(distance);
         newSection.setPointsAltitude(pointsAltitude);
         newSection.setPointsDistance(pointsDistance);
-        newSection.setMountainGroup(mountainGroupRepository_.findById(mountainGroup).get());
+        newSection.setMountainGroup(sectionService_.findByIdMountainGroup(mountainGroup).get());
         Application.log.info("updated section = " + newSection);
-        sectionRepository_.save(newSection);
+        sectionService_.saveSection(newSection);
         return "redirect:/sections";
     }
 
@@ -159,50 +152,81 @@ public class SectionController {
     public String showAddSectionForm(Model model) {
         System.out.println("showAddSectionForm");
         System.out.println("showAddSectionForm");
-        model.addAttribute("mountainRanges", mountainRangeRepository_.findAll());
-        model.addAttribute("mountainGroups", mountainGroupRepository_.findAll());
-        model.addAttribute("locations", locationRepository_.findAll());
+        model.addAttribute("mountainRanges", sectionService_.findAllMountainRange());
+        model.addAttribute("mountainGroups", sectionService_.findAllMountainGroup());
+        model.addAttribute("locations", sectionService_.findAllLocation());
         return "section_add_new";
     }
 
     @GetMapping(value = "/filterSectionsForm")
     public String filterSectionForm(Model model) {
-        model.addAttribute("mountainRanges", mountainRangeRepository_.findAll());
-        model.addAttribute("mountainGroups", mountainGroupRepository_.findAll());
-        model.addAttribute("locations", locationRepository_.findAll());
+        model.addAttribute("mountainRanges", sectionService_.findAllMountainRange());
+        model.addAttribute("mountainGroups", sectionService_.findAllMountainGroup());
+        model.addAttribute("locations", sectionService_.findAllLocation());
         return "section_filter";
     }
 
+    /**
+     * Response method to add new section operation.
+     * @param newSectionReceive NewSectionWrapper which holds all required data to create new seciton.
+     * @return ResponseEntity<List<Integer>>
+     *     if section is created HttpStatus is Created
+     *     if section has not been created HttpStatus is FAILED_DEPENDENCY and data list contains error numbers:
+     *     1 - Location One and Location Two are the same
+     *     2 - Distance is not defined
+     *     3 - Mountain group is not defined
+     *     4 - Database exception
+     */
     @RequestMapping(value = "/addSection", method = RequestMethod.POST)
-    public String addSection(@RequestParam Integer mountainGroup,
-                             @RequestParam Integer locationOne,
-                             @RequestParam Integer locationTwo,
-                             @RequestParam Integer distance,
-                             @RequestParam Integer pointsAltitude,
-                             @RequestParam Integer pointsDistance) {
-        Application.log.info("mountainGroup=" + mountainGroup);
-        Application.log.info("locationOne=" + mountainGroup);
-        Application.log.info("locationOne=" + locationOne);
-        Application.log.info("locationTwo=" + locationTwo);
-        Application.log.info("distance=" + distance);
-        Application.log.info("pointsAltitude=" + pointsAltitude);
-        Application.log.info("pointsDistance=" + pointsDistance);
-        Section newSection = new Section();
-        newSection.setLocationOne(locationRepository_.findById(locationOne).get());
-        newSection.setLocationTwo(locationRepository_.findById(locationTwo).get());
-        newSection.setDistance(distance);
-        newSection.setPointsAltitude(pointsAltitude);
-        newSection.setPointsDistance(pointsDistance);
-        newSection.setMountainGroup(mountainGroupRepository_.findById(mountainGroup).get());
-        Application.log.info("added section = " + newSection);
-        sectionRepository_.save(newSection);
-        return "redirect:/sections";
+    @ResponseBody
+    public ResponseEntity<List<Integer>> addSection(@RequestBody NewSectionWrapper newSectionReceive) {
+        Application.log.info("mountainGroup=" + newSectionReceive.getMountainGroup());
+        Application.log.info("locationOne=" + newSectionReceive.getLocationOne());
+        Application.log.info("locationTwo=" + newSectionReceive.getLocationTwo());
+        Application.log.info("distance=" + newSectionReceive.getDistance());
+        Application.log.info("pointsAltitude=" + newSectionReceive.getPointsAltitude());
+        Application.log.info("pointsDistance=" + newSectionReceive.getPointsDistance());
+        List<Integer> errors = new ArrayList<>();
+        HttpStatus status = HttpStatus.CREATED;
+        if(Objects.equals(newSectionReceive.getLocationOne(), newSectionReceive.getLocationTwo())){
+            errors.add(1);
+            status = HttpStatus.FAILED_DEPENDENCY;
+        }
+        if(newSectionReceive.getDistance() == null){
+            errors.add(2);
+            status = HttpStatus.FAILED_DEPENDENCY;
+        }
+        if(newSectionReceive.getMountainGroup() == null){
+            errors.add(3);
+            status = HttpStatus.FAILED_DEPENDENCY;
+        }
+
+        if(HttpStatus.CREATED == status){
+            try {
+                Section newSection = new Section();
+                newSection.setLocationOne(sectionService_.findByIdLocation(newSectionReceive.getLocationOne()).get());
+                newSection.setLocationTwo(sectionService_.findByIdLocation(newSectionReceive.getLocationTwo()).get());
+                newSection.setDistance(newSectionReceive.getDistance());
+                newSection.setPointsAltitude(newSectionReceive.getPointsAltitude());
+                newSection.setPointsDistance(newSectionReceive.getPointsDistance());
+                newSection.setMountainGroup(
+                        sectionService_.findByIdMountainGroup(newSectionReceive.getMountainGroup()).get());
+                Application.log.info("added section = " + newSection);
+                sectionService_.saveSection(newSection);
+            }
+            catch (Exception e){
+                Application.log.info(e.getMessage());
+                errors.add(4);
+                status = HttpStatus.FAILED_DEPENDENCY;
+            }
+        }
+        return new ResponseEntity<>(errors, status);
     }
 
     @RequestMapping(value = "/remove/{id}", method = RequestMethod.GET)
     public String removeSection(@PathVariable("id") Integer id) {
-        Optional<Section> section = sectionRepository_.findById(id);
-        sectionRepository_.delete(section.get());
+        Optional<Section> section = sectionService_.findByIdSection(id);
+        sectionService_.deleteSection(section.get());
         return "redirect:/sections";
     }
 
@@ -212,8 +236,8 @@ public class SectionController {
     public List<Integer> removeCheckedSection(@RequestBody List<Integer> sectionsToDelete) {
         for (Integer i : sectionsToDelete) {
             Application.log.info(i);
-            Optional<Section> section = sectionRepository_.findById(i);
-            sectionRepository_.delete(section.get());
+            Optional<Section> section = sectionService_.findByIdSection(i);
+            sectionService_.deleteSection(section.get());
         }
         return sectionsToDelete;
     }
