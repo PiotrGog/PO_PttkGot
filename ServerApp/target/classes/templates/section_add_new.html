@@ -64,32 +64,38 @@
                     data: JSON.stringify(data),
                     contentType: 'application/json; charset=utf-8',
                     dataType: 'json',
-                    success: function (result) {
-                        console.log(result.status);
+                    success: function (data) {
+                        console.log(data.status);
+                        console.log(data.body);
                         $("#dialog-message").html("Utworzono nowy odcinek z "
                             + $("#locationOne option:selected").text()
                             + " do " + $("#locationTwo option:selected").text());
                         $("#new_section_form").trigger("reset");
                     },
-                    error: function (result) {
-                        console.log(result.status);
-                        if (result.status == "424") {
-                            var errors = result.responseFields;
-                            console.log(errors);
-                            var errTable = {
-                                1 : "Lokalizacja pierwsza i druga nie mogą być identyczne",
-                                2 : "Dystans pomiędzy lokalizacjami musi być podany",
-                                3 : "Grupa górska szlaku musi być podana",
-                                4 : "Błąd bazy danych"
-                            };
-                            var strErr = "";
-                            for (var e in errTable) {
-                                strErr += errTable["1"] + "</br>"
-                            }
-                            $("#dialog-message").html(strErr);
+                    error: function (data) {
+                        console.log(data.status);
+                        console.log(data.body);
+                        console.log(data);
+                        var errors = JSON.parse(data.responseText);
+                        console.log(errors);
+                        var errTable = {
+                            1: "Lokalizacja pierwsza i druga nie mogą być identyczne",
+                            2: "Dystans pomiędzy lokalizacjami musi być podany",
+                            3: "Grupa górska szlaku musi być podana",
+                            4: "W bazie istnieje już odcinek z "
+                            + $("#locationOne option:selected").text()
+                            + " do " + $("#locationTwo option:selected").text()
+                        };
+                        var strErr = "";
+                        for (var i = 0; i < errors.length; i++) {
+                            strErr += errTable[errors[i]] + "</br>"
                         }
+                        $("#dialog-message").css("background", "red");
+                        $("#dialog-message").html(strErr);
 
                     }
+
+
                 });
                 var dialog = $("#dialog-message").dialog({
                     autoOpen: false,

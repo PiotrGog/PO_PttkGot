@@ -127,7 +127,7 @@ public class SectionController {
      *     3 - Mountain group is not defined
      *     4 - Database exception
      */
-    @RequestMapping(value = "/addSection", method = RequestMethod.POST)
+    @RequestMapping(value = "/addSection", method = RequestMethod.POST,  produces = "application/json")
     @ResponseBody
     public ResponseEntity<List<Integer>> addSection(@RequestBody NewSectionWrapper newSectionReceive) {
         Application.log.info("mountainGroup=" + newSectionReceive.getMountainGroup());
@@ -140,15 +140,15 @@ public class SectionController {
         HttpStatus status = HttpStatus.CREATED;
         if(Objects.equals(newSectionReceive.getLocationOne(), newSectionReceive.getLocationTwo())){
             errors.add(1);
-            status = HttpStatus.FAILED_DEPENDENCY;
+            status = HttpStatus.BAD_REQUEST;
         }
         if(newSectionReceive.getDistance() == null){
             errors.add(2);
-            status = HttpStatus.FAILED_DEPENDENCY;
+            status = HttpStatus.BAD_REQUEST;
         }
         if(newSectionReceive.getMountainGroup() == null){
             errors.add(3);
-            status = HttpStatus.FAILED_DEPENDENCY;
+            status = HttpStatus.BAD_REQUEST;
         }
 
         if(HttpStatus.CREATED == status){
@@ -165,12 +165,14 @@ public class SectionController {
                 sectionService_.saveSection(newSection);
             }
             catch (Exception e){
+                System.err.println(e.getMessage());
+                System.err.println(e.getCause());
                 Application.log.info(e.getMessage());
                 errors.add(4);
-                status = HttpStatus.FAILED_DEPENDENCY;
+                status = HttpStatus.BAD_REQUEST;
             }
         }
-        return new ResponseEntity<>(errors, status);
+        return ResponseEntity.status(status).body(errors);
     }
 
     @RequestMapping(value = "/remove/{id}", method = RequestMethod.GET)

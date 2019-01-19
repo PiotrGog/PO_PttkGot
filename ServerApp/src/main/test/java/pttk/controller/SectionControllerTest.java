@@ -36,7 +36,7 @@ public class SectionControllerTest {
 
     @Test
     public void addSection_When_LocationOneIsEqualLocationTwo_Expect_StatusIsFAILED_DEPENDENCYAndHasErrorNumber1() {
-        HttpStatus expectedStatus = HttpStatus.FAILED_DEPENDENCY;
+        HttpStatus expectedStatus = HttpStatus.BAD_REQUEST;
         Integer expectedHasErrorNum = 1;
 
         ResponseEntity<List<Integer>> result = sectionController.addSection(
@@ -48,7 +48,7 @@ public class SectionControllerTest {
 
     @Test
     public void addSection_When_DistanceIsNotDefined_Expect_StatusIsFAILED_DEPENDENCYAndHasErrorNumber2() {
-        HttpStatus expectedStatus = HttpStatus.FAILED_DEPENDENCY;
+        HttpStatus expectedStatus = HttpStatus.BAD_REQUEST;
         Integer expectedHasErrorNum = 2;
 
         ResponseEntity<List<Integer>> result = sectionController.addSection(
@@ -60,7 +60,7 @@ public class SectionControllerTest {
 
     @Test
     public void addSection_When_MountainGroupIsNotDefined_Expect_StatusIsFAILED_DEPENDENCYAndHasErrorNumber3() {
-        HttpStatus expectedStatus = HttpStatus.FAILED_DEPENDENCY;
+        HttpStatus expectedStatus = HttpStatus.BAD_REQUEST;
         Integer expectedHasErrorNum = 3;
 
         ResponseEntity<List<Integer>> result = sectionController.addSection(
