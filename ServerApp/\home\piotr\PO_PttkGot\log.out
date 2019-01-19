@@ -1,25 +1,18 @@
-mountainGroup=null
+Application start
+Application start
+mountainGroup=3
 locationOne=1
-locationTwo=1
-distance=null
+locationTwo=4
+distance=31
 pointsAltitude=1
 pointsDistance=1
-mountainGroup=1
+added section = id=null, location 1 A location two D mountain id=3, name=BZ.09, mountain range=id=5, name=Beskid S?decki
+could not execute statement; SQL [n/a]; constraint [PRIMARY]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+mountainGroup=3
 locationOne=1
-locationTwo=1
-distance=1
+locationTwo=4
+distance=31
 pointsAltitude=1
 pointsDistance=1
-mountainGroup=1
-locationOne=1
-locationTwo=2
-distance=1
-pointsAltitude=1
-pointsDistance=1
-added section = id=null, location 1 null location two null mountain id=null, name=null, mountain range=null
-mountainGroup=1
-locationOne=1
-locationTwo=1
-distance=null
-pointsAltitude=1
-pointsDistance=1
+added section = id=null, location 1 A location two D mountain id=3, name=BZ.09, mountain range=id=5, name=Beskid S?decki
+could not execute statement; SQL [n/a]; constraint [PRIMARY]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement

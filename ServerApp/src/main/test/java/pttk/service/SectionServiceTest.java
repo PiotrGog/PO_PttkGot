@@ -231,7 +231,7 @@ public class SectionServiceTest {
                 null, null, 10, null,
                 null, null, null);
 
-        List<Integer> expectedIds = Arrays.asList(2, 4, 5, 7, 11);
+        List<Integer> expectedIds = Arrays.asList(1, 2, 4, 5, 7, 9, 10, 11);
 
         List<Section> result = sectionService_.filterSections(inputSections, sectionFilter);
 
@@ -249,7 +249,7 @@ public class SectionServiceTest {
                 null, null, null, null,
                 10, null, null);
 
-        List<Integer> expectedIds = Arrays.asList(0, 1, 3, 7, 8, 11);
+        List<Integer> expectedIds = Arrays.asList(0, 1, 2, 3, 7, 8, 11, 12, 13, 14);
 
         List<Section> result = sectionService_.filterSections(inputSections, sectionFilter);
 
@@ -267,7 +267,7 @@ public class SectionServiceTest {
                 null, null, null, null,
                 null, null, 10);
 
-        List<Integer> expectedIds = Arrays.asList(0, 3, 5, 7, 10, 15);
+        List<Integer> expectedIds = Arrays.asList(0, 1, 3, 4, 5, 6, 7, 10, 15);
 
         List<Section> result = sectionService_.filterSections(inputSections, sectionFilter);
 
