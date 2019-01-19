@@ -59,7 +59,7 @@ public class SectionControllerTest {
     }
 
     @Test
-    public void addSection_When_MountainGroup_Expect_StatusIsFAILED_DEPENDENCYAndHasErrorNumber3() {
+    public void addSection_When_MountainGroupIsNotDefined_Expect_StatusIsFAILED_DEPENDENCYAndHasErrorNumber3() {
         HttpStatus expectedStatus = HttpStatus.FAILED_DEPENDENCY;
         Integer expectedHasErrorNum = 3;
 

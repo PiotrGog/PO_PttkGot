@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 
@@ -67,36 +66,36 @@ public class SectionServiceTest {
         inputSections = new ArrayList<>(Arrays.asList(
                 makeSection(0, 1, 5, 3, 1, 2, 10,
                         15),
-                makeSection(1, 2, 4, 3, 1, 2, 4,
+                makeSection(1, 2, 4, 3, 1, 30, 24,
                         16),
-                makeSection(2, 3, 1, 3, 1, 11, 4,
-                        2),
+                makeSection(2, 3, 1, 3, 1, 11, 9,
+                        17),
                 makeSection(3, 1, 9, 3, 1, 9, 25,
                         10),
-                makeSection(4, 2, 4, 3, 1, 21, 4,
+                makeSection(4, 2, 4, 3, 1, 21, 21,
                         9),
                 makeSection(5, 3, 1, 9, 5, 20, 15,
-                        2),
-                makeSection(6, 1, 1, 3, 1, 2, 4,
+                        9),
+                makeSection(6, 1, 1, 3, 1, 2, 16,
                         2),
                 makeSection(7, 2, 1, 3, 1, 15, 16,
                         14),
-                makeSection(8, 3, 2, 3, 1, 2, 4,
+                makeSection(8, 3, 2, 3, 1, 9, 5,
                         16),
-                makeSection(9, 3, 0, 3, 1, 2, 4,
-                        2),
-                makeSection(10, 2, 1, 3, 1, 2, 11,
-                        2),
+                makeSection(9, 3, 0, 3, 1, 25, 1,
+                        8),
+                makeSection(10, 2, 1, 3, 1, 22, 11,
+                        7),
                 makeSection(11, 1, 9, 5, 9, 19, 4,
                         12),
                 makeSection(12, 5, 3, 3, 1, 2, 4,
-                        2),
-                makeSection(13, 5, 3, 3, 1, 2, 9,
-                        2),
-                makeSection(14, 2, 2, 3, 1, 2, 4,
-                        2),
+                        22),
+                makeSection(13, 5, 3, 3, 1, 7, 9,
+                        19),
+                makeSection(14, 2, 2, 3, 1, 1, 4,
+                        30),
                 makeSection(15, 1, 6, 3, 1, 2, 14,
-                        2)));
+                        4)));
     }
 
     @Test
@@ -154,7 +153,7 @@ public class SectionServiceTest {
     }
 
     @Test
-    public void filterSection_When_DistaneFilterIsGiven_Expect_SectionWithDistanceBetweenSpecifiedValue() {
+    public void filterSection_When_DistanceFilterIsGiven_Expect_SectionWithDistanceBetweenSpecifiedValue() {
         sectionFilter = new SectionFilter(null, null, null,
                 null, 20, 10, null,
                 null, null, null);
@@ -172,7 +171,7 @@ public class SectionServiceTest {
     }
 
     @Test
-    public void filterSection_When_DistanePointsFilterIsGiven_Expect_SectionWithDistanceBetweenSpecifiedValue() {
+    public void filterSection_When_DistancePointsFilterIsGiven_Expect_SectionWithDistanceBetweenSpecifiedValue() {
         sectionFilter = new SectionFilter(null, null, null,
                 null, null, null, 15,
                 10, null, null);
@@ -224,4 +223,115 @@ public class SectionServiceTest {
         }
         assertThat(resultIdx, containsInAnyOrder(expectedIds.toArray()));
     }
+
+
+    @Test
+    public void filterSection_When_DistanceLowerBoundIsGiven_Expect_SectionsWithDistanceGreater() {
+        sectionFilter = new SectionFilter(null, null, null,
+                null, null, 10, null,
+                null, null, null);
+
+        List<Integer> expectedIds = Arrays.asList(2, 4, 5, 7, 11);
+
+        List<Section> result = sectionService_.filterSections(inputSections, sectionFilter);
+
+        assertEquals(expectedIds.size(), result.size());
+        List<Integer> resultIdx = new ArrayList<>();
+        for (Section r : result) {
+            resultIdx.add(r.getId());
+        }
+        assertThat(resultIdx, containsInAnyOrder(expectedIds.toArray()));
+    }
+
+    @Test
+    public void filterSection_When_DistancePointsLowerBoundIsGiven_Expect_SectionWithDistancePointsGreater() {
+        sectionFilter = new SectionFilter(null, null, null,
+                null, null, null, null,
+                10, null, null);
+
+        List<Integer> expectedIds = Arrays.asList(0, 1, 3, 7, 8, 11);
+
+        List<Section> result = sectionService_.filterSections(inputSections, sectionFilter);
+
+        assertEquals(expectedIds.size(), result.size());
+        List<Integer> resultIdx = new ArrayList<>();
+        for (Section r : result) {
+            resultIdx.add(r.getId());
+        }
+        assertThat(resultIdx, containsInAnyOrder(expectedIds.toArray()));
+    }
+
+    @Test
+    public void filterSection_When_AltitudePointsLowerBoundIsGiven_Expect_SectionWithAltitudePointsGreater() {
+        sectionFilter = new SectionFilter(null, null, null,
+                null, null, null, null,
+                null, null, 10);
+
+        List<Integer> expectedIds = Arrays.asList(0, 3, 5, 7, 10, 15);
+
+        List<Section> result = sectionService_.filterSections(inputSections, sectionFilter);
+
+        assertEquals(expectedIds.size(), result.size());
+        List<Integer> resultIdx = new ArrayList<>();
+        for (Section r : result) {
+            resultIdx.add(r.getId());
+        }
+        assertThat(resultIdx, containsInAnyOrder(expectedIds.toArray()));
+    }
+
+    @Test
+    public void filterSection_When_DistanceUpperBoundIsGiven_Expect_SectionsWithDistanceLower() {
+        sectionFilter = new SectionFilter(null, null, null,
+                null, 15, null, null,
+                null, null, null);
+
+        List<Integer> expectedIds = Arrays.asList(0, 2, 3, 6, 7, 8, 12, 13, 14, 15);
+
+        List<Section> result = sectionService_.filterSections(inputSections, sectionFilter);
+
+        assertEquals(expectedIds.size(), result.size());
+        List<Integer> resultIdx = new ArrayList<>();
+        for (Section r : result) {
+            resultIdx.add(r.getId());
+        }
+        assertThat(resultIdx, containsInAnyOrder(expectedIds.toArray()));
+    }
+
+    @Test
+    public void filterSection_When_DistancePointsUpperBoundIsGiven_Expect_SectionWithDistancePointsLower() {
+        sectionFilter = new SectionFilter(null, null, null,
+                null, null, null, 15,
+                null, null, null);
+
+        List<Integer> expectedIds = Arrays.asList(0, 3, 4, 5, 6, 7, 9, 10, 11, 15);
+
+        List<Section> result = sectionService_.filterSections(inputSections, sectionFilter);
+
+        assertEquals(expectedIds.size(), result.size());
+        List<Integer> resultIdx = new ArrayList<>();
+        for (Section r : result) {
+            resultIdx.add(r.getId());
+        }
+        assertThat(resultIdx, containsInAnyOrder(expectedIds.toArray()));
+    }
+
+    @Test
+    public void filterSection_When_AltitudePointsUpperBoundIsGiven_Expect_SectionWithAltitudePointsLower() {
+        sectionFilter = new SectionFilter(null, null, null,
+                null, null, null, null,
+                null, 15, null);
+
+        List<Integer> expectedIds = Arrays.asList(0, 2, 5, 8, 9, 10, 11, 12, 13, 14, 15);
+
+        List<Section> result = sectionService_.filterSections(inputSections, sectionFilter);
+
+        assertEquals(expectedIds.size(), result.size());
+        List<Integer> resultIdx = new ArrayList<>();
+        for (Section r : result) {
+            resultIdx.add(r.getId());
+        }
+        assertThat(resultIdx, containsInAnyOrder(expectedIds.toArray()));
+    }
+
+
 }

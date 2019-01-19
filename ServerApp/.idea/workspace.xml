@@ -16,38 +16,22 @@
     </SUITE>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.17485714">
+    <splitter split-orientation="horizontal" split-proportion="0.49257144">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="SectionController.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/pttk/controller/SectionController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="360">
+                <state relative-caret-position="-1162">
                   <caret line="107" column="37" selection-start-line="107" selection-start-column="37" selection-end-line="107" selection-end-column="37" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#1266#1332#0" />
                     <element signature="method#detailsSection#0;class#SectionController#0" />
                     <element signature="method#editSection#0;class#SectionController#0" />
                     <element signature="method#showAddSectionForm#0;class#SectionController#0" />
                     <element signature="method#filterSectionForm#0;class#SectionController#0" />
                     <element signature="method#removeSection#0;class#SectionController#0" />
-                    <element signature="e#9619#9716#0" />
                     <element signature="method#removeCheckedSection#0;class#SectionController#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="SectionService.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/pttk/service/SectionService.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="207">
-                  <caret line="101" column="80" selection-start-line="101" selection-start-column="80" selection-end-line="101" selection-end-column="80" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#1954#1955#0" expanded="true" />
-                    <element signature="e#2014#2015#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -56,8 +40,23 @@
           <file leaf-file-name="SectionControllerTest.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/test/java/pttk/controller/SectionControllerTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="90">
-                  <caret line="17" column="28" lean-forward="true" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+                <state relative-caret-position="202">
+                  <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="SectionServiceTest.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/test/java/pttk/service/SectionServiceTest.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="359">
+                  <caret line="90" column="47" lean-forward="true" selection-start-line="90" selection-start-column="47" selection-end-line="90" selection-end-column="47" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -65,7 +64,7 @@
           <file leaf-file-name="route_planning_criteria.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/resources/templates/route_planning_criteria.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="324">
+                <state relative-caret-position="1512">
                   <caret line="84" selection-start-line="84" selection-end-line="84" />
                 </state>
               </provider>
@@ -74,7 +73,7 @@
           <file leaf-file-name="section_add_new.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/resources/templates/section_add_new.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="144">
+                <state relative-caret-position="1548">
                   <caret line="86" column="55" selection-start-line="86" selection-start-column="55" selection-end-line="86" selection-end-column="55" />
                 </state>
               </provider>
@@ -83,7 +82,7 @@
           <file leaf-file-name="SectionFilter.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/pttk/service/SectionFilter.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="187">
+                <state relative-caret-position="1656">
                   <caret line="108" column="19" selection-start-line="108" selection-start-column="19" selection-end-line="108" selection-end-column="19" />
                   <folding>
                     <element signature="e#4027#4028#0" expanded="true" />
@@ -96,7 +95,7 @@
           <file leaf-file-name="section_filter.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/resources/templates/section_filter.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="552">
+                <state relative-caret-position="2034">
                   <caret line="113" column="73" selection-start-line="113" selection-start-column="73" selection-end-line="113" selection-end-column="73" />
                 </state>
               </provider>
@@ -105,12 +104,12 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="SectionServiceTest.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/test/java/pttk/service/SectionServiceTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="137">
-                  <caret line="199" column="53" lean-forward="true" selection-start-line="199" selection-start-column="53" selection-end-line="199" selection-end-column="53" />
+                <state relative-caret-position="165">
+                  <caret line="323" column="84" selection-start-line="323" selection-start-column="84" selection-end-line="323" selection-end-column="84" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -121,7 +120,7 @@
           <file leaf-file-name="Section.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/pttk/model/Section.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="36">
+                <state relative-caret-position="468">
                   <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
                   <folding>
                     <element signature="e#1433#1434#0" expanded="true" />
@@ -134,7 +133,7 @@
           <file leaf-file-name="Test.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/test/java/pttk/controller/Test.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="378">
+                <state relative-caret-position="234">
                   <caret line="33" selection-start-line="33" selection-end-line="33" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -146,7 +145,7 @@
           <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/pom.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="342">
+                <state relative-caret-position="1854">
                   <caret line="103" selection-start-line="103" selection-end-line="103" />
                 </state>
               </provider>
@@ -250,9 +249,9 @@
         <option value="$PROJECT_DIR$/src/main/test/java/pttk/model/SectionControllerTest.java" />
         <option value="$PROJECT_DIR$/src/main/test/java/pttk/controller/Test.java" />
         <option value="$PROJECT_DIR$/src/main/java/pttk/controller/SectionController.java" />
-        <option value="$PROJECT_DIR$/src/main/test/java/pttk/controller/SectionControllerTest.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/pttk/service/SectionService.java" />
+        <option value="$PROJECT_DIR$/src/main/test/java/pttk/controller/SectionControllerTest.java" />
         <option value="$PROJECT_DIR$/src/main/test/java/pttk/service/SectionServiceTest.java" />
       </list>
     </option>
@@ -284,7 +283,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
@@ -391,6 +389,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -448,32 +447,9 @@
     </option>
     <option name="contentProportion" value="0.18429662" />
   </component>
-  <component name="RunManager" selected="JUnit.SectionServiceTest">
+  <component name="RunManager" selected="JUnit.SectionServiceTest.filterSection_When_AltitudePointsUpperBoundIsGiven_Expect_SectionWithAltitudePointsLower">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-    </configuration>
-    <configuration name="SectionControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ServerApp" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="pttk.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="pttk.controller" />
-      <option name="MAIN_CLASS_NAME" value="pttk.controller.SectionControllerTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
     </configuration>
     <configuration name="SectionServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ServerApp" />
@@ -498,6 +474,75 @@
       </option>
       <patterns />
     </configuration>
+    <configuration name="SectionServiceTest.filterSection_When_AltitudePointsUpperBoundIsGiven_Expect_SectionWithAltitudePointsLower" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ServerApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pttk.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="pttk.service" />
+      <option name="MAIN_CLASS_NAME" value="pttk.service.SectionServiceTest" />
+      <option name="METHOD_NAME" value="filterSection_When_AltitudePointsUpperBoundIsGiven_Expect_SectionWithAltitudePointsLower" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="SectionServiceTest.filterSection_When_DistancePointsUpperBoundIsGiven_Expect_SectionWithDistancePointsLower" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ServerApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pttk.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="pttk.service" />
+      <option name="MAIN_CLASS_NAME" value="pttk.service.SectionServiceTest" />
+      <option name="METHOD_NAME" value="filterSection_When_DistancePointsUpperBoundIsGiven_Expect_SectionWithDistancePointsLower" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="SectionServiceTest.filterSection_When_DistanceUpperBoundIsGiven_Expect_SectionsWithDistanceLower" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ServerApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pttk.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="pttk.service" />
+      <option name="MAIN_CLASS_NAME" value="pttk.service.SectionServiceTest" />
+      <option name="METHOD_NAME" value="filterSection_When_DistanceUpperBoundIsGiven_Expect_SectionsWithDistanceLower" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
     <configuration name="SectionServiceTest.filterSection_When_MountainGroup1FilterIsGiven_Expect_SectionWithinMountainGroup1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ServerApp" />
       <extension name="coverage">
@@ -512,52 +557,6 @@
       <option name="MAIN_CLASS_NAME" value="pttk.service.SectionServiceTest" />
       <option name="METHOD_NAME" value="filterSection_When_MountainGroup1FilterIsGiven_Expect_SectionWithinMountainGroup1" />
       <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="SectionServiceTest.filterSection_When_MountainRange2FilterIsGiven_Expect_SectionWithinMountainRange2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ServerApp" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="pttk.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="pttk.service" />
-      <option name="MAIN_CLASS_NAME" value="pttk.service.SectionServiceTest" />
-      <option name="METHOD_NAME" value="filterSection_When_MountainRange2FilterIsGiven_Expect_SectionWithinMountainRange2" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ServerApp" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="pttk.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="pttk.controller" />
-      <option name="MAIN_CLASS_NAME" value="pttk.controller.Test" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -610,20 +609,20 @@
       <listeners />
     </configuration>
     <list>
-      <item itemvalue="JUnit.SectionControllerTest" />
-      <item itemvalue="JUnit.Test" />
-      <item itemvalue="JUnit.SectionServiceTest" />
-      <item itemvalue="JUnit.SectionServiceTest.filterSection_When_MountainRange2FilterIsGiven_Expect_SectionWithinMountainRange2" />
       <item itemvalue="Spring Boot.Application" />
+      <item itemvalue="JUnit.SectionServiceTest" />
       <item itemvalue="JUnit.SectionServiceTest.filterSection_When_MountainGroup1FilterIsGiven_Expect_SectionWithinMountainGroup1" />
+      <item itemvalue="JUnit.SectionServiceTest.filterSection_When_DistanceUpperBoundIsGiven_Expect_SectionsWithDistanceLower" />
+      <item itemvalue="JUnit.SectionServiceTest.filterSection_When_DistancePointsUpperBoundIsGiven_Expect_SectionWithDistancePointsLower" />
+      <item itemvalue="JUnit.SectionServiceTest.filterSection_When_AltitudePointsUpperBoundIsGiven_Expect_SectionWithAltitudePointsLower" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SectionServiceTest.filterSection_When_AltitudePointsUpperBoundIsGiven_Expect_SectionWithAltitudePointsLower" />
+        <item itemvalue="JUnit.SectionServiceTest.filterSection_When_DistancePointsUpperBoundIsGiven_Expect_SectionWithDistancePointsLower" />
+        <item itemvalue="JUnit.SectionServiceTest.filterSection_When_DistanceUpperBoundIsGiven_Expect_SectionsWithDistanceLower" />
         <item itemvalue="JUnit.SectionServiceTest" />
         <item itemvalue="JUnit.SectionServiceTest.filterSection_When_MountainGroup1FilterIsGiven_Expect_SectionWithinMountainGroup1" />
-        <item itemvalue="JUnit.SectionServiceTest.filterSection_When_MountainRange2FilterIsGiven_Expect_SectionWithinMountainRange2" />
-        <item itemvalue="JUnit.SectionControllerTest" />
-        <item itemvalue="JUnit.Test" />
       </list>
     </recent_temporary>
   </component>
@@ -658,44 +657,45 @@
       <workItem from="1547383003780" duration="278000" />
       <workItem from="1547386216820" duration="668000" />
       <workItem from="1547396990078" duration="40000" />
-      <workItem from="1547744613351" duration="39076000" />
+      <workItem from="1547744613351" duration="39494000" />
+      <workItem from="1547911289577" duration="3535000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="SectionServiceTest_filterSection_When_MountainGroup1FilterIsGiven_Expect_SectionWithinMountainGroup1 - 2019.01.19 at 01h 54m 12s.xml">
-      <configuration name="SectionServiceTest.filterSection_When_MountainGroup1FilterIsGiven_Expect_SectionWithinMountainGroup1" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SectionServiceTest_filterSection_When_MountainGroup1FilterIsGiven_Expect_SectionWithinMountainGroup1 - 2019.01.19 at 01h 57m 44s.xml">
-      <configuration name="SectionServiceTest.filterSection_When_MountainGroup1FilterIsGiven_Expect_SectionWithinMountainGroup1" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SectionServiceTest - 2019.01.19 at 01h 57m 51s.xml">
+    <history-entry file="SectionServiceTest - 2019.01.19 at 18h 46m 16s.xml">
       <configuration name="SectionServiceTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SectionServiceTest - 2019.01.19 at 01h 58m 36s.xml">
+    <history-entry file="SectionServiceTest - 2019.01.19 at 19h 00m 22s.xml">
       <configuration name="SectionServiceTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SectionServiceTest - 2019.01.19 at 02h 00m 55s.xml">
+    <history-entry file="SectionServiceTest - 2019.01.19 at 19h 02m 32s.xml">
       <configuration name="SectionServiceTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SectionServiceTest - 2019.01.19 at 02h 04m 01s.xml">
+    <history-entry file="SectionServiceTest - 2019.01.19 at 19h 03m 52s.xml">
       <configuration name="SectionServiceTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SectionServiceTest - 2019.01.19 at 02h 07m 06s.xml">
+    <history-entry file="SectionServiceTest - 2019.01.19 at 19h 04m 09s.xml">
       <configuration name="SectionServiceTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SectionServiceTest - 2019.01.19 at 02h 08m 40s.xml">
+    <history-entry file="SectionServiceTest - 2019.01.19 at 19h 04m 24s.xml">
       <configuration name="SectionServiceTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SectionServiceTest - 2019.01.19 at 02h 10m 42s.xml">
+    <history-entry file="SectionServiceTest - 2019.01.19 at 19h 06m 35s.xml">
       <configuration name="SectionServiceTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SectionServiceTest - 2019.01.19 at 02h 11m 49s.xml">
+    <history-entry file="SectionServiceTest - 2019.01.19 at 19h 20m 15s.xml">
       <configuration name="SectionServiceTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SectionServiceTest_filterSection_When_DistanceUpperBoundIsGiven_Expect_SectionsWithDistanceLower - 2019.01.19 at 19h 26m 05s.xml">
+      <configuration name="SectionServiceTest.filterSection_When_DistanceUpperBoundIsGiven_Expect_SectionsWithDistanceLower" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SectionServiceTest_filterSection_When_DistancePointsUpperBoundIsGiven_Expect_SectionWithDistancePointsLower - 2019.01.19 at 19h 28m 08s.xml">
+      <configuration name="SectionServiceTest.filterSection_When_DistancePointsUpperBoundIsGiven_Expect_SectionWithDistancePointsLower" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="248744000" />
+    <option name="totallyTimeSpent" value="252697000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="27" width="1865" height="1053" extended-state="6" />
@@ -720,13 +720,12 @@
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Run Dashboard" order="14" sideWeight="0.6477212" weight="0.35074627" />
       <window_info anchor="bottom" id="Version Control" order="12" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4997319" visible="true" weight="0.14605543" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4997319" visible="true" weight="0.36993605" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32942432" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.061662197" />
       <window_info anchor="right" id="Bean Validation" order="8" />
       <window_info id="Web" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.34434968" />
       <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -734,6 +733,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.34434968" />
       <window_info anchor="right" id="Coverage" order="10" side_tool="true" weight="0.3297587" />
     </layout>
   </component>
@@ -904,9 +904,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="25" column="45" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
-          <folding>
-            <element signature="e#680#681#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -914,9 +911,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="918">
           <caret line="56" column="20" selection-start-line="56" selection-start-column="20" selection-end-line="56" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -966,10 +960,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="22" column="11" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
-          <folding>
-            <element signature="e#669#670#0" expanded="true" />
-            <element signature="e#736#737#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -991,9 +981,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="76" column="5" selection-start-line="42" selection-start-column="4" selection-end-line="76" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1020,7 +1007,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/test/java/pttk/controller/Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
+        <state relative-caret-position="234">
           <caret line="33" selection-start-line="33" selection-end-line="33" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1032,32 +1019,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-620">
           <caret column="2" selection-start-column="2" selection-end-column="2" />
-          <folding>
-            <element signature="e#747#748#0" expanded="true" />
-            <element signature="e#783#784#0" expanded="true" />
-            <element signature="e#842#843#0" expanded="true" />
-            <element signature="e#892#893#0" expanded="true" />
-            <element signature="e#931#932#0" expanded="true" />
-            <element signature="e#965#966#0" expanded="true" />
-            <element signature="e#1020#1021#0" expanded="true" />
-            <element signature="e#1066#1067#0" expanded="true" />
-            <element signature="e#1105#1106#0" expanded="true" />
-            <element signature="e#1139#1140#0" expanded="true" />
-            <element signature="e#1194#1195#0" expanded="true" />
-            <element signature="e#1240#1241#0" expanded="true" />
-            <element signature="e#1276#1277#0" expanded="true" />
-            <element signature="e#1307#1308#0" expanded="true" />
-            <element signature="e#1356#1357#0" expanded="true" />
-            <element signature="e#1396#1397#0" expanded="true" />
-            <element signature="e#1438#1439#0" expanded="true" />
-            <element signature="e#1475#1476#0" expanded="true" />
-            <element signature="e#1536#1537#0" expanded="true" />
-            <element signature="e#1588#1589#0" expanded="true" />
-            <element signature="e#1630#1631#0" expanded="true" />
-            <element signature="e#1667#1668#0" expanded="true" />
-            <element signature="e#1728#1729#0" expanded="true" />
-            <element signature="e#1780#1781#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1070,7 +1031,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pttk/model/Section.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
+        <state relative-caret-position="468">
           <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
           <folding>
             <element signature="e#1433#1434#0" expanded="true" />
@@ -1079,27 +1040,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pttk/controller/SectionController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="107" column="37" selection-start-line="107" selection-start-column="37" selection-end-line="107" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1266#1332#0" />
-            <element signature="method#detailsSection#0;class#SectionController#0" />
-            <element signature="method#editSection#0;class#SectionController#0" />
-            <element signature="method#showAddSectionForm#0;class#SectionController#0" />
-            <element signature="method#filterSectionForm#0;class#SectionController#0" />
-            <element signature="method#removeSection#0;class#SectionController#0" />
-            <element signature="e#9619#9716#0" />
-            <element signature="method#removeCheckedSection#0;class#SectionController#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/section_add_new.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
+        <state relative-caret-position="1548">
           <caret line="86" column="55" selection-start-line="86" selection-start-column="55" selection-end-line="86" selection-end-column="55" />
         </state>
       </provider>
@@ -1108,16 +1051,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="106" column="33" selection-start-line="106" selection-start-column="33" selection-end-line="106" selection-end-column="33" />
-          <folding>
-            <element signature="e#4182#4183#0" expanded="true" />
-            <element signature="e#4219#4220#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
+        <state relative-caret-position="1854">
           <caret line="103" selection-start-line="103" selection-end-line="103" />
         </state>
       </provider>
@@ -1131,28 +1070,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/route_planning_criteria.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
+        <state relative-caret-position="1512">
           <caret line="84" selection-start-line="84" selection-end-line="84" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/section_filter.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
+        <state relative-caret-position="2034">
           <caret line="113" column="73" selection-start-line="113" selection-start-column="73" selection-end-line="113" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/test/java/pttk/controller/SectionControllerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="17" column="28" lean-forward="true" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pttk/service/SectionFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
+        <state relative-caret-position="1656">
           <caret line="108" column="19" selection-start-line="108" selection-start-column="19" selection-end-line="108" selection-end-column="19" />
           <folding>
             <element signature="e#4027#4028#0" expanded="true" />
@@ -1163,20 +1095,41 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pttk/service/SectionService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
+        <state relative-caret-position="1494">
           <caret line="101" column="80" selection-start-line="101" selection-start-column="80" selection-end-line="101" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pttk/controller/SectionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1162">
+          <caret line="107" column="37" selection-start-line="107" selection-start-column="37" selection-end-line="107" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1954#1955#0" expanded="true" />
-            <element signature="e#2014#2015#0" expanded="true" />
+            <element signature="method#detailsSection#0;class#SectionController#0" />
+            <element signature="method#editSection#0;class#SectionController#0" />
+            <element signature="method#showAddSectionForm#0;class#SectionController#0" />
+            <element signature="method#filterSectionForm#0;class#SectionController#0" />
+            <element signature="method#removeSection#0;class#SectionController#0" />
+            <element signature="method#removeCheckedSection#0;class#SectionController#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/test/java/pttk/controller/SectionControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/test/java/pttk/service/SectionServiceTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="199" column="53" lean-forward="true" selection-start-line="199" selection-start-column="53" selection-end-line="199" selection-end-column="53" />
+        <state relative-caret-position="165">
+          <caret line="323" column="84" selection-start-line="323" selection-start-column="84" selection-end-line="323" selection-end-column="84" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
