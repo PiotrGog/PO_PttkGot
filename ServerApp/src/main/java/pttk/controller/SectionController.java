@@ -35,7 +35,8 @@ public class SectionController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String listSections(Model model) {
-        model.addAttribute("sections", sectionService_.filterSections(sectionService_.findAllSection(), sectionFilter_));
+        model.addAttribute("sections",
+                sectionService_.filterSections(sectionService_.findAllSection(), sectionFilter_));
         return "sections";
     }
 
@@ -68,34 +69,53 @@ public class SectionController {
         return "section_edit";
     }
 
-    @RequestMapping(value = "/edit/save/{id}", method = RequestMethod.POST)
-    public String updateSection(@PathVariable("id") Integer id,
-                                @RequestParam Integer mountainGroup,
-                                @RequestParam Integer locationOne,
-                                @RequestParam Integer locationTwo,
-                                @RequestParam Integer distance,
-                                @RequestParam Integer pointsAltitude,
-                                @RequestParam Integer pointsDistance) {
+    @RequestMapping(value = "/edit/save/{id}", method = RequestMethod.POST, produces = "application/json")
+    @ResponseBody
+    public ResponseEntity<List<Integer>> updateSection(@PathVariable("id") Integer id,
+                                                       @RequestBody NewSectionWrapper newSectionReceive) {
+        Application.log.info("mountainGroup=" + newSectionReceive.getMountainGroup());
+        Application.log.info("locationOne=" + newSectionReceive.getLocationOne());
+        Application.log.info("locationTwo=" + newSectionReceive.getLocationTwo());
+        Application.log.info("distance=" + newSectionReceive.getDistance());
+        Application.log.info("pointsAltitude=" + newSectionReceive.getPointsAltitude());
+        Application.log.info("pointsDistance=" + newSectionReceive.getPointsDistance());
+        List<Integer> errors = new ArrayList<>();
+        HttpStatus status = HttpStatus.CREATED;
+        if (Objects.equals(newSectionReceive.getLocationOne(), newSectionReceive.getLocationTwo())) {
+            errors.add(1);
+            status = HttpStatus.BAD_REQUEST;
+        }
+        if (newSectionReceive.getDistance() == null) {
+            errors.add(2);
+            status = HttpStatus.BAD_REQUEST;
+        }
+        if (newSectionReceive.getMountainGroup() == null) {
+            errors.add(3);
+            status = HttpStatus.BAD_REQUEST;
+        }
 
-        Application.log.info("mountainGroup=" + mountainGroup);
-        Application.log.info("locationOne=" + mountainGroup);
-        Application.log.info("locationOne=" + locationOne);
-        Application.log.info("locationTwo=" + locationTwo);
-        Application.log.info("distance=" + distance);
-        Application.log.info("pointsAltitude=" + pointsAltitude);
-        Application.log.info("pointsDistance=" + pointsDistance);
-
-        Section newSection = new Section();
-        newSection.setId(id);
-        newSection.setLocationOne(sectionService_.findByIdLocation(locationOne).get());
-        newSection.setLocationTwo(sectionService_.findByIdLocation(locationTwo).get());
-        newSection.setDistance(distance);
-        newSection.setPointsAltitude(pointsAltitude);
-        newSection.setPointsDistance(pointsDistance);
-        newSection.setMountainGroup(sectionService_.findByIdMountainGroup(mountainGroup).get());
-        Application.log.info("updated section = " + newSection);
-        sectionService_.saveSection(newSection);
-        return "redirect:/sections";
+        if (HttpStatus.CREATED == status) {
+            try {
+                Section newSection = new Section();
+                newSection.setId(id);
+                newSection.setLocationOne(sectionService_.findByIdLocation(newSectionReceive.getLocationOne()).get());
+                newSection.setLocationTwo(sectionService_.findByIdLocation(newSectionReceive.getLocationTwo()).get());
+                newSection.setDistance(newSectionReceive.getDistance());
+                newSection.setPointsAltitude(newSectionReceive.getPointsAltitude());
+                newSection.setPointsDistance(newSectionReceive.getPointsDistance());
+                newSection.setMountainGroup(
+                        sectionService_.findByIdMountainGroup(newSectionReceive.getMountainGroup()).get());
+                Application.log.info("edited section = " + newSection);
+                sectionService_.saveSection(newSection);
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+                System.err.println(e.getCause());
+                Application.log.info(e.getMessage());
+                errors.add(4);
+                status = HttpStatus.BAD_REQUEST;
+            }
+        }
+        return ResponseEntity.status(status).body(errors);
     }
 
     @GetMapping(value = "/addSectionForm")
@@ -118,16 +138,17 @@ public class SectionController {
 
     /**
      * Response method to add new section operation.
+     *
      * @param newSectionReceive NewSectionWrapper which holds all required data to create new seciton.
-     * @return ResponseEntity<List<Integer>>
-     *     if section is created HttpStatus is Created
-     *     if section has not been created HttpStatus is FAILED_DEPENDENCY and data list contains error numbers:
-     *     1 - Location One and Location Two are the same
-     *     2 - Distance is not defined
-     *     3 - Mountain group is not defined
-     *     4 - Database exception
+     * @return ResponseEntity<List                               <                               Integer>>
+     * if section is created HttpStatus is Created
+     * if section has not been created HttpStatus is FAILED_DEPENDENCY and data list contains error numbers:
+     * 1 - Location One and Location Two are the same
+     * 2 - Distance is not defined
+     * 3 - Mountain group is not defined
+     * 4 - Database exception
      */
-    @RequestMapping(value = "/addSection", method = RequestMethod.POST,  produces = "application/json")
+    @RequestMapping(value = "/addSection", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
     public ResponseEntity<List<Integer>> addSection(@RequestBody NewSectionWrapper newSectionReceive) {
         Application.log.info("mountainGroup=" + newSectionReceive.getMountainGroup());
@@ -138,20 +159,20 @@ public class SectionController {
         Application.log.info("pointsDistance=" + newSectionReceive.getPointsDistance());
         List<Integer> errors = new ArrayList<>();
         HttpStatus status = HttpStatus.CREATED;
-        if(Objects.equals(newSectionReceive.getLocationOne(), newSectionReceive.getLocationTwo())){
+        if (Objects.equals(newSectionReceive.getLocationOne(), newSectionReceive.getLocationTwo())) {
             errors.add(1);
             status = HttpStatus.BAD_REQUEST;
         }
-        if(newSectionReceive.getDistance() == null){
+        if (newSectionReceive.getDistance() == null) {
             errors.add(2);
             status = HttpStatus.BAD_REQUEST;
         }
-        if(newSectionReceive.getMountainGroup() == null){
+        if (newSectionReceive.getMountainGroup() == null) {
             errors.add(3);
             status = HttpStatus.BAD_REQUEST;
         }
 
-        if(HttpStatus.CREATED == status){
+        if (HttpStatus.CREATED == status) {
             try {
                 Section newSection = new Section();
                 newSection.setLocationOne(sectionService_.findByIdLocation(newSectionReceive.getLocationOne()).get());
@@ -163,8 +184,7 @@ public class SectionController {
                         sectionService_.findByIdMountainGroup(newSectionReceive.getMountainGroup()).get());
                 Application.log.info("added section = " + newSection);
                 sectionService_.saveSection(newSection);
-            }
-            catch (Exception e){
+            } catch (Exception e) {
                 System.err.println(e.getMessage());
                 System.err.println(e.getCause());
                 Application.log.info(e.getMessage());

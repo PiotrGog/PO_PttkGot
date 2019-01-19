@@ -16,50 +16,64 @@
     </SUITE>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SectionController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/pttk/controller/SectionController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="165" column="13" lean-forward="true" selection-start-line="165" selection-start-column="13" selection-end-line="165" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SectionControllerTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/test/java/pttk/controller/SectionControllerTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1566">
-              <caret line="87" selection-start-line="74" selection-end-line="87" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="section_add_new.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/section_add_new.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="36" column="17" lean-forward="true" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="110" column="25" selection-start-line="110" selection-start-column="25" selection-end-line="110" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5836711">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="SectionController.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/pttk/controller/SectionController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="121">
+                  <caret line="123" column="49" lean-forward="true" selection-start-line="123" selection-start-column="49" selection-end-line="123" selection-end-column="49" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="section_add_new.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/templates/section_add_new.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="188">
+                  <caret line="154" column="12" lean-forward="true" selection-start-line="154" selection-start-column="12" selection-end-line="154" selection-end-column="12" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/style.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="510">
+                  <caret line="110" column="25" selection-start-line="110" selection-start-column="25" selection-end-line="110" selection-end-column="25" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="section_edit.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/templates/section_edit.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="267">
+                  <caret line="71" column="79" selection-start-line="71" selection-start-column="79" selection-end-line="71" selection-end-column="79" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="section_edit.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/templates/section_edit.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="458">
+                  <caret line="160" column="28" lean-forward="true" selection-start-line="160" selection-start-column="28" selection-end-line="160" selection-end-column="28" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -98,6 +112,9 @@
       <find>SectionController</find>
       <find>assertT</find>
       <find>delete</find>
+      <find>distance</find>
+      <find>mountainGroupsSelectList</find>
+      <find>mountainRangesSelectList</find>
     </findStrings>
     <replaceStrings>
       <replace>addSection</replace>
@@ -140,7 +157,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/sections.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/section_details.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/route_planning_found.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/section_edit.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/route_planning_criteria.html" />
         <option value="$PROJECT_DIR$/src/main/java/pttk/controller/MountainGroupController.java" />
         <option value="$PROJECT_DIR$/src/main/java/pttk/controller/MountainRangeController.java" />
@@ -158,8 +174,9 @@
         <option value="$PROJECT_DIR$/src/main/java/pttk/service/SectionService.java" />
         <option value="$PROJECT_DIR$/src/main/test/java/pttk/service/SectionServiceTest.java" />
         <option value="$PROJECT_DIR$/src/main/test/java/pttk/controller/SectionControllerTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pttk/controller/SectionController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/section_add_new.html" />
+        <option value="$PROJECT_DIR$/src/main/java/pttk/controller/SectionController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/section_edit.html" />
       </list>
     </option>
   </component>
@@ -393,7 +410,7 @@
         </RuleState>
       </list>
     </option>
-    <option name="contentProportion" value="0.18429662" />
+    <option name="contentProportion" value="0.0736096" />
   </component>
   <component name="RunManager" selected="Spring Boot.Application">
     <configuration default="true" type="Application" factoryName="Application">
@@ -575,7 +592,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="256020000" />
+    <option name="totallyTimeSpent" value="257863000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="27" width="1865" height="1053" extended-state="6" />
@@ -598,12 +615,12 @@
       <window_info id="Image Layers" order="3" />
       <window_info anchor="bottom" id="Java Enterprise" order="10" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info active="true" anchor="bottom" id="Run Dashboard" order="14" sideWeight="0.6477212" visible="true" weight="0.25479743" />
+      <window_info active="true" anchor="bottom" id="Run Dashboard" order="14" sideWeight="0.6477212" visible="true" weight="0.23347548" />
       <window_info anchor="bottom" id="Version Control" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4997319" weight="0.2238806" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32942432" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20589812" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.07399464" />
       <window_info anchor="right" id="Bean Validation" order="8" />
       <window_info id="Web" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.34434968" />
@@ -678,8 +695,14 @@
           <properties />
           <option name="timeStamp" value="49" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/pttk/controller/SectionController.java</url>
+          <line>75</line>
+          <properties />
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="50" />
+      <option name="time" value="51" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -757,13 +780,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/section_edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="128" column="53" selection-start-line="128" selection-start-column="53" selection-end-line="128" selection-end-column="53" />
         </state>
       </provider>
     </entry>
@@ -1041,16 +1057,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pttk/controller/SectionController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="165" column="13" lean-forward="true" selection-start-line="165" selection-start-column="13" selection-end-line="165" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/test/java/pttk/controller/SectionControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1566">
@@ -1063,8 +1069,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/section_add_new.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="36" column="17" lean-forward="true" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
+        <state relative-caret-position="188">
+          <caret line="154" column="12" lean-forward="true" selection-start-line="154" selection-start-column="12" selection-end-line="154" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pttk/controller/SectionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="123" column="49" lean-forward="true" selection-start-line="123" selection-start-column="49" selection-end-line="123" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/section_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="71" column="79" selection-start-line="71" selection-start-column="79" selection-end-line="71" selection-end-column="79" />
         </state>
       </provider>
     </entry>

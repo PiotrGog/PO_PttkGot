@@ -67,6 +67,7 @@
                     success: function (data) {
                         console.log(data.status);
                         console.log(data.body);
+                        $("#dialog-message").css("color", "green");
                         $("#dialog-message").html("Utworzono nowy odcinek z "
                             + $("#locationOne option:selected").text()
                             + " do " + $("#locationTwo option:selected").text());
@@ -90,7 +91,7 @@
                         for (var i = 0; i < errors.length; i++) {
                             strErr += errTable[errors[i]] + "</br>"
                         }
-                        $("#dialog-message").css("background", "red");
+                        $("#dialog-message").css("color", "red");
                         $("#dialog-message").html(strErr);
 
                     }
