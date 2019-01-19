@@ -35,8 +35,7 @@ public class SectionController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String listSections(Model model) {
-        List<Section> sections = new ArrayList<>();
-        model.addAttribute("sections", sectionService_.filterSections(sections, sectionFilter_)/*filteredSections*/);
+        model.addAttribute("sections", sectionService_.filterSections(sectionService_.findAllSection(), sectionFilter_));
         return "sections";
     }
 
