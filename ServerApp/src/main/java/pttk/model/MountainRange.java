@@ -15,9 +15,8 @@ import javax.persistence.Table;
 public class MountainRange {
 
     @Id
-    @UniqueElements
     @Column(name="id_mountain_range")
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name="mountain_range_name")

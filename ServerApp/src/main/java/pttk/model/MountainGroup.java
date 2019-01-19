@@ -9,9 +9,8 @@ import javax.persistence.*;
 public class MountainGroup {
 
     @Id
-    @UniqueElements
     @Column(name = "id_mountain_group")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "mountain_group_name")

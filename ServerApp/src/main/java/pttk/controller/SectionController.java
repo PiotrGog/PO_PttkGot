@@ -48,9 +48,14 @@ public class SectionController {
             model.addAttribute("mountainGroup", section.get().getMountainGroup().getName());
             model.addAttribute("localizationOne", section.get().getLocationOne().getName());
             model.addAttribute("localizationTwo", section.get().getLocationTwo().getName());
-            model.addAttribute("altitudeDiff", Math.abs(section.get().getLocationOne().getAltitude() -
-                    section.get().getLocationTwo().getAltitude()));
-            model.addAttribute("distance", section.get().getDistance());
+            if (null == section.get().getLocationOne().getAltitude() ||
+                    null == section.get().getLocationTwo().getAltitude()) {
+                model.addAttribute("altitudeDiff", "--- ");
+            } else {
+                model.addAttribute("altitudeDiff", Math.abs(section.get().getLocationOne().getAltitude() -
+                        section.get().getLocationTwo().getAltitude()));
+            }
+            model.addAttribute("distance", section.get().getDistance() == null ? "--- " : section.get().getDistance());
             model.addAttribute("altitudePoints", section.get().getPointsAltitude());
             model.addAttribute("distancePoints", section.get().getPointsDistance());
         }
@@ -85,10 +90,10 @@ public class SectionController {
             errors.add(1);
             status = HttpStatus.BAD_REQUEST;
         }
-        if (newSectionReceive.getDistance() == null) {
-            errors.add(2);
-            status = HttpStatus.BAD_REQUEST;
-        }
+//        if (newSectionReceive.getDistance() == null) {
+//            errors.add(2);
+//            status = HttpStatus.BAD_REQUEST;
+//        }
         if (newSectionReceive.getMountainGroup() == null) {
             errors.add(3);
             status = HttpStatus.BAD_REQUEST;
@@ -140,7 +145,7 @@ public class SectionController {
      * Response method to add new section operation.
      *
      * @param newSectionReceive NewSectionWrapper which holds all required data to create new seciton.
-     * @return ResponseEntity<List                               <                               Integer>>
+     * @return ResponseEntity<List                                                               <                                                               Integer>>
      * if section is created HttpStatus is Created
      * if section has not been created HttpStatus is FAILED_DEPENDENCY and data list contains error numbers:
      * 1 - Location One and Location Two are the same
@@ -163,10 +168,10 @@ public class SectionController {
             errors.add(1);
             status = HttpStatus.BAD_REQUEST;
         }
-        if (newSectionReceive.getDistance() == null) {
-            errors.add(2);
-            status = HttpStatus.BAD_REQUEST;
-        }
+//        if (newSectionReceive.getDistance() == null) {
+//            errors.add(2);
+//            status = HttpStatus.BAD_REQUEST;
+//        }
         if (newSectionReceive.getMountainGroup() == null) {
             errors.add(3);
             status = HttpStatus.BAD_REQUEST;
@@ -218,5 +223,13 @@ public class SectionController {
     public SectionFilter filter() {
         return this.sectionFilter_;
     }
+
+
+    @RequestMapping(value = "/fillDefaultData", method = RequestMethod.GET)
+    public String fillDatabase() {
+        sectionService_.fillDatabase();
+        return "/";
+    }
+
 
 }

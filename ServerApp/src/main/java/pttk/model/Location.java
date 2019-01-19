@@ -9,9 +9,8 @@ import javax.persistence.*;
 public class Location {
 
     @Id
-    @UniqueElements
     @Column(name = "id_location")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "location_name")
