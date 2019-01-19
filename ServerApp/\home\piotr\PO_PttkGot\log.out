@@ -12,6 +12,13 @@ pointsAltitude=1
 pointsDistance=1
 mountainGroup=1
 locationOne=1
+locationTwo=2
+distance=1
+pointsAltitude=1
+pointsDistance=1
+added section = id=null, location 1 null location two null mountain id=null, name=null, mountain range=null
+mountainGroup=1
+locationOne=1
 locationTwo=1
 distance=null
 pointsAltitude=1

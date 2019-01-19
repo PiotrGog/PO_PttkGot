@@ -12,6 +12,8 @@ import pttk.repositories.MountainGroupRepository;
 import pttk.repositories.MountainRangeRepository;
 import pttk.repositories.SectionRepository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -86,6 +88,66 @@ public class SectionService {
 
     public void deleteSection(Section section){
         sectionRepository_.delete(section);
+    }
+
+    public List<Section> filterSections(Iterable<Section> sections, SectionFilter sectionFilter){
+        ArrayList<Section> filteredSections = new ArrayList<>();
+        for (Section s : sections) {
+            if (null != sectionFilter.getDistanceMaxFilter()
+                    && !(sectionFilter.getDistanceMaxFilter() >= s.getDistance())) {
+                continue;
+            }
+
+            if (null != sectionFilter.getDistanceMinFilter()
+                    && !(sectionFilter.getDistanceMinFilter() <= s.getDistance())) {
+                continue;
+            }
+            if (null != sectionFilter.getAltitudePointsMaxFilter()
+                    && !(sectionFilter.getAltitudePointsMaxFilter() >= s.getPointsAltitude())) {
+                continue;
+            }
+
+            if (null != sectionFilter.getAltitudePointsMinFilter()
+                    && !(sectionFilter.getAltitudePointsMinFilter() <= s.getPointsAltitude())) {
+                continue;
+            }
+
+            if (null != sectionFilter.getDistancePointsMaxFilter()
+                    && !(sectionFilter.getDistancePointsMaxFilter() >= s.getPointsDistance())) {
+                continue;
+            }
+
+            if (null != sectionFilter.getDistancePointsMinFilter()
+                    && !(sectionFilter.getDistancePointsMinFilter() <= s.getPointsDistance())) {
+                continue;
+            }
+
+            if (null != sectionFilter.getMountainGroupFilter()
+                    && !sectionFilter.getMountainGroupFilter().equals(s.getMountainGroup().getId())) {
+                continue;
+            }
+
+            if (null != sectionFilter.getMountainRangeFilter()
+                    &&
+                    !sectionFilter.getMountainRangeFilter().equals(s.getMountainGroup().getMountainRange().getId())) {
+                continue;
+            }
+
+            if (null != sectionFilter.getLocalizationOneFilter()
+                    && !(sectionFilter.getLocalizationOneFilter().equals(s.getLocationOne().getId())
+                    || sectionFilter.getLocalizationOneFilter().equals(s.getLocationTwo().getId()))) {
+                continue;
+            }
+
+            if (null != sectionFilter.getLocalizationTwoFilter()
+                    && !(sectionFilter.getLocalizationTwoFilter().equals(s.getLocationOne().getId())
+                    || sectionFilter.getLocalizationTwoFilter().equals(s.getLocationTwo().getId()))) {
+                continue;
+            }
+
+            filteredSections.add(s);
+        }
+        return filteredSections;
     }
 
 }

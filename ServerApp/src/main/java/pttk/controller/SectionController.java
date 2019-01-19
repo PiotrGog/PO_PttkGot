@@ -1,5 +1,6 @@
 package pttk.controller;
 
+import org.aspectj.weaver.Iterators;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,10 +13,7 @@ import pttk.service.NewSectionWrapper;
 import pttk.service.SectionFilter;
 import pttk.service.SectionService;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 @RequestMapping("/sections")
@@ -37,55 +35,55 @@ public class SectionController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String listSections(Model model) {
-        Iterable<Section> sections = sectionService_.findAllSection();
-        ArrayList<Section> filteredSections = new ArrayList<>();
-        for (Section s : sections) {
-            if (null != sectionFilter_.getAltitudePointsMaxFilter()
-                    && !(sectionFilter_.getAltitudePointsMaxFilter() >= s.getPointsAltitude())) {
-                continue;
-            }
-
-            if (null != sectionFilter_.getAltitudePointsMinFilter()
-                    && !(sectionFilter_.getAltitudePointsMinFilter() <= s.getPointsAltitude())) {
-                continue;
-            }
-
-            if (null != sectionFilter_.getDistancePointsMaxFilter()
-                    && !(sectionFilter_.getDistancePointsMaxFilter() >= s.getPointsDistance())) {
-                continue;
-            }
-
-            if (null != sectionFilter_.getDistancePointsMinFilter()
-                    && !(sectionFilter_.getDistancePointsMinFilter() <= s.getPointsDistance())) {
-                continue;
-            }
-
-            if (null != sectionFilter_.getMountainGroupFilter()
-                    && !sectionFilter_.getMountainGroupFilter().equals(s.getMountainGroup().getId())) {
-                continue;
-            }
-
-            if (null != sectionFilter_.getMountainRangeFilter()
-                    &&
-                    !sectionFilter_.getMountainRangeFilter().equals(s.getMountainGroup().getMountainRange().getId())) {
-                continue;
-            }
-
-            if (null != sectionFilter_.getLocalizationOneFilter()
-                    && !(sectionFilter_.getLocalizationOneFilter().equals(s.getLocationOne().getId())
-                    || sectionFilter_.getLocalizationOneFilter().equals(s.getLocationTwo().getId()))) {
-                continue;
-            }
-
-            if (null != sectionFilter_.getLocalizationTwoFilter()
-                    && !(sectionFilter_.getLocalizationTwoFilter().equals(s.getLocationOne().getId())
-                    || sectionFilter_.getLocalizationTwoFilter().equals(s.getLocationTwo().getId()))) {
-                continue;
-            }
-
-            filteredSections.add(s);
-        }
-        model.addAttribute("sections", filteredSections);
+        List<Section> sections = new ArrayList<>();
+//        ArrayList<Section> filteredSections = new ArrayList<>();
+//        for (Section s : sections) {
+//            if (null != sectionFilter_.getAltitudePointsMaxFilter()
+//                    && !(sectionFilter_.getAltitudePointsMaxFilter() >= s.getPointsAltitude())) {
+//                continue;
+//            }
+//
+//            if (null != sectionFilter_.getAltitudePointsMinFilter()
+//                    && !(sectionFilter_.getAltitudePointsMinFilter() <= s.getPointsAltitude())) {
+//                continue;
+//            }
+//
+//            if (null != sectionFilter_.getDistancePointsMaxFilter()
+//                    && !(sectionFilter_.getDistancePointsMaxFilter() >= s.getPointsDistance())) {
+//                continue;
+//            }
+//
+//            if (null != sectionFilter_.getDistancePointsMinFilter()
+//                    && !(sectionFilter_.getDistancePointsMinFilter() <= s.getPointsDistance())) {
+//                continue;
+//            }
+//
+//            if (null != sectionFilter_.getMountainGroupFilter()
+//                    && !sectionFilter_.getMountainGroupFilter().equals(s.getMountainGroup().getId())) {
+//                continue;
+//            }
+//
+//            if (null != sectionFilter_.getMountainRangeFilter()
+//                    &&
+//                    !sectionFilter_.getMountainRangeFilter().equals(s.getMountainGroup().getMountainRange().getId())) {
+//                continue;
+//            }
+//
+//            if (null != sectionFilter_.getLocalizationOneFilter()
+//                    && !(sectionFilter_.getLocalizationOneFilter().equals(s.getLocationOne().getId())
+//                    || sectionFilter_.getLocalizationOneFilter().equals(s.getLocationTwo().getId()))) {
+//                continue;
+//            }
+//
+//            if (null != sectionFilter_.getLocalizationTwoFilter()
+//                    && !(sectionFilter_.getLocalizationTwoFilter().equals(s.getLocationOne().getId())
+//                    || sectionFilter_.getLocalizationTwoFilter().equals(s.getLocationTwo().getId()))) {
+//                continue;
+//            }
+//
+//            filteredSections.add(s);
+//        }
+        model.addAttribute("sections", sectionService_.filterSections(sections, sectionFilter_)/*filteredSections*/);
         return "sections";
     }
 
