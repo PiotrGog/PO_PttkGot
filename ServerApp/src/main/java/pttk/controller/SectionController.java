@@ -15,6 +15,10 @@ import pttk.service.SectionService;
 
 import java.util.*;
 
+/**
+ * Spring MVC controller for Sections management.
+ */
+
 @Controller
 @RequestMapping("/sections")
 public class SectionController {
@@ -24,7 +28,12 @@ public class SectionController {
 
     private SectionFilter sectionFilter_ = new SectionFilter();
 
-
+    /**
+     * Request controller function to set sections filter policy.
+     *
+     * @param sectionFilter SectionFilter object received from client.
+     * @return redirect to sections page.
+     */
     @RequestMapping(value = "/filter", method = RequestMethod.POST)
     public String acceptFilter(@ModelAttribute(value = "sectionFilter") SectionFilter sectionFilter) {
         sectionFilter_ = sectionFilter;
@@ -32,7 +41,12 @@ public class SectionController {
         return "redirect:/sections";
     }
 
-
+    /**
+     * Callback function which call client site with list of filtered sections
+     *
+     * @param model Client view model
+     * @return show section view with sections list
+     */
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String listSections(Model model) {
         model.addAttribute("sections",
@@ -40,6 +54,13 @@ public class SectionController {
         return "sections";
     }
 
+    /**
+     * Request function to show section's details
+     *
+     * @param id    section id
+     * @param model Client view model
+     * @return view with detailed description of section
+     */
     @RequestMapping(value = "/details/{id}", method = RequestMethod.GET)
     public String detailsSection(@PathVariable("id") Integer id, Model model) {
         Optional<Section> section = sectionService_.findByIdSection(id);
@@ -62,6 +83,13 @@ public class SectionController {
         return "section_details";
     }
 
+    /**
+     * Request function on edit button for section
+     *
+     * @param id    section's id
+     * @param model section's model
+     * @return show view to edit section
+     */
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String editSection(@PathVariable("id") Integer id, Model model) {
         Optional<Section> section = sectionService_.findByIdSection(id);
@@ -74,6 +102,19 @@ public class SectionController {
         return "section_edit";
     }
 
+    /**
+     * Callback function to save edited section
+     *
+     * @param id                edited section id
+     * @param newSectionReceive new data for edited section
+     * @return ResponseEntity<List                               <                               Integer>>
+     * if section is created HttpStatus is Created
+     * if section has not been created HttpStatus is FAILED_DEPENDENCY and data list contains error numbers:
+     * 1 - Location One and Location Two are the same
+     * 2 - Distance is not defined
+     * 3 - Mountain group is not defined
+     * 4 - Database exception - section with the same start and finish locations exists in database
+     */
     @RequestMapping(value = "/edit/save/{id}", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
     public ResponseEntity<List<Integer>> updateSection(@PathVariable("id") Integer id,
@@ -123,6 +164,12 @@ public class SectionController {
         return ResponseEntity.status(status).body(errors);
     }
 
+    /**
+     * Request function to show form to allow defile new section
+     *
+     * @param model new section form model
+     * @return view with form for new section
+     */
     @GetMapping(value = "/addSectionForm")
     public String showAddSectionForm(Model model) {
         System.out.println("showAddSectionForm");
@@ -133,6 +180,10 @@ public class SectionController {
         return "section_add_new";
     }
 
+    /**
+     * @param model
+     * @return
+     */
     @GetMapping(value = "/filterSectionsForm")
     public String filterSectionForm(Model model) {
         model.addAttribute("mountainRanges", sectionService_.findAllMountainRange());
@@ -145,13 +196,13 @@ public class SectionController {
      * Response method to add new section operation.
      *
      * @param newSectionReceive NewSectionWrapper which holds all required data to create new seciton.
-     * @return ResponseEntity<List                                                               <                                                               Integer>>
+     * @return ResponseEntity<List               <               Integer>>                                                             <                                                               Integer>>
      * if section is created HttpStatus is Created
      * if section has not been created HttpStatus is FAILED_DEPENDENCY and data list contains error numbers:
      * 1 - Location One and Location Two are the same
      * 2 - Distance is not defined
      * 3 - Mountain group is not defined
-     * 4 - Database exception
+     * 4 - Database exception - section with the same start and finish locations exists in database
      */
     @RequestMapping(value = "/addSection", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
@@ -200,6 +251,12 @@ public class SectionController {
         return ResponseEntity.status(status).body(errors);
     }
 
+    /**
+     * Callback function performing the removal of section
+     *
+     * @param id is of section to remove
+     * @return redirect to section main window
+     */
     @RequestMapping(value = "/remove/{id}", method = RequestMethod.GET)
     public String removeSection(@PathVariable("id") Integer id) {
         Optional<Section> section = sectionService_.findByIdSection(id);
@@ -207,7 +264,12 @@ public class SectionController {
         return "redirect:/sections";
     }
 
-
+    /**
+     * Callback function performing the removal of selected sections
+     *
+     * @param sectionsToDelete list of sections' ids to remove
+     * @return list of removed sections' ids
+     */
     @RequestMapping(value = "/removeAll", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
     public List<Integer> removeCheckedSection(@RequestBody List<Integer> sectionsToDelete) {

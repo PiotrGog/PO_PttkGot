@@ -27,7 +27,7 @@ public class RouteController {
 
     private List<Pair<Integer, GraphPathDecorator>> paths = null;
 
-    private List<Integer> localizationsList= null;
+    private List<Integer> localizationsList = null;
 
     @RequestMapping(value = "/find", method = RequestMethod.GET)
     public String findRoute(Model model) {
@@ -35,6 +35,18 @@ public class RouteController {
         return "route_planning_found";
     }
 
+    /**
+     * Callback function performing planning route with given criteria
+     *
+     * @param mountainRange  mountain range criteria
+     * @param mountainGroup  mountain group criteria
+     * @param locationStart  start location criteria
+     * @param locationFinish finish location criteria
+     * @param pointsAltitude minimum altitude points criteria
+     * @param pointsDistance minimum distance points criteria
+     * @param model          to receive found paths
+     * @return view showing found paths
+     */
     @RequestMapping(value = "/find", method = RequestMethod.POST)
     public String findRoute(@RequestParam Integer mountainRange,
                             @RequestParam Integer mountainGroup,
@@ -48,7 +60,7 @@ public class RouteController {
             Application.log.info("localizationsList is null");
         } else {
             Application.log.info(localizationsList.size());
-            for (int i = 0 ; i<localizationsList.size(); i++) {
+            for (int i = 0; i < localizationsList.size(); i++) {
                 System.out.println(localizationsList.get(i));
             }
         }
@@ -90,8 +102,7 @@ public class RouteController {
                     paths.add(tmpPaths.get(i));
                 }
             }
-        }
-        else {
+        } else {
             paths = tmpPaths;
         }
 
@@ -108,6 +119,12 @@ public class RouteController {
         return "route_planning_found";
     }
 
+    /**
+     * One route details
+     * @param id route id
+     * @param model model which receive path details
+     * @return view
+     */
     @RequestMapping(value = "/details/{id}", method = RequestMethod.GET)
     public String findRouteDetails(@PathVariable Integer id, Model model) {
         model.addAttribute("startLocation", paths.get(id - 1).getSecond()
@@ -122,6 +139,12 @@ public class RouteController {
     }
 
 
+    /**
+     * Show view to define route planning criteria
+     *
+     * @param model view model
+     * @return define route criteria view
+     */
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String findRouteCriteria(Model model) {
         model.addAttribute("mountainRanges", routeService_.findAllMountainRange());
@@ -130,13 +153,24 @@ public class RouteController {
         return "route_planning_criteria";
     }
 
+    /**
+     * ModelAttribute function for wanted locations inside route
+     *
+     * @return empty ArrayList
+     */
     @ModelAttribute(value = "localizationsList")
     public List<String> localizationsListModelAttribute() {
         return new ArrayList<>();
     }
 
+    /**
+     * Receive the list of wanted locations in route
+     *
+     * @param localizations locations ids
+     * @return Request status
+     */
     @RequestMapping(value = "/localizationOthers", method = RequestMethod.POST)
-    public ResponseEntity receiveLocationsCriteria(@RequestBody List<Integer> localizations){
+    public ResponseEntity receiveLocationsCriteria(@RequestBody List<Integer> localizations) {
         this.localizationsList = localizations;
         return ResponseEntity.ok(HttpStatus.OK);
     }

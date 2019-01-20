@@ -1,5 +1,9 @@
 package pttk.service;
 
+
+/**
+ * Wrapper class for Section data. Class is used when communication between Server and Client is needed.
+ */
 public class NewSectionWrapper {
     private Integer mountainGroup;
     private Integer locationOne;
@@ -8,7 +12,15 @@ public class NewSectionWrapper {
     private Integer pointsAltitude;
     private Integer pointsDistance;
 
-
+    /**
+     * NewSectionWrapper parametrized constructor
+     * @param mountainGroup section's mountain group id
+     * @param locationOne section's start location
+     * @param locationTwo section's finish location
+     * @param distance section's distance
+     * @param pointsAltitude section's altitude points
+     * @param pointsDistance section's distance points
+     */
     public NewSectionWrapper(Integer mountainGroup, Integer locationOne, Integer locationTwo, Integer distance,
                              Integer pointsAltitude, Integer pointsDistance) {
         this.mountainGroup = mountainGroup;
@@ -19,6 +31,9 @@ public class NewSectionWrapper {
         this.pointsDistance = pointsDistance;
     }
 
+    /**
+     * NewSectionWrapper non-parametrized constructor
+     */
     public NewSectionWrapper() {
     }
 
