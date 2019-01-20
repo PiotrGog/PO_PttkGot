@@ -192,11 +192,11 @@ public class SectionService {
         return s;
     }
 
-    private Section sectionBuilder(Location location1, Location location2,
+    private Section sectionBuilder(Location destination, Location start,
                                    Integer pDistance, Integer pAltitude, MountainGroup mountainGroup) {
         Section s = new Section();
-        s.setLocationOne(location1);
-        s.setLocationTwo(location2);
+        s.setLocationOne(start);
+        s.setLocationTwo(destination);
         s.setDistance(null);
         s.setPointsDistance(pDistance);
         s.setPointsAltitude(pAltitude);
@@ -281,7 +281,7 @@ public class SectionService {
                         locationBuilder("Dolina Czarnego Potoku"),  //11
                         locationBuilder("Słotwina"),                //12
                         locationBuilder("Przełęcz Krzyżowa"),        //13
-                        locationBuilder("Radziejów", 1266), //14
+                        locationBuilder("Radziejowa", 1266), //14
                         locationBuilder("Polana Konieczna"),        //15
                         locationBuilder("Rytra"),                   //16
                         locationBuilder("Wielki Rogacz"),            //17
@@ -295,8 +295,7 @@ public class SectionService {
                         locationBuilder("Szczawnica Zdrój")        //25
                 ));
 
-
-        List<Section> sections = new ArrayList<>(
+                List<Section> sections = new ArrayList<>(
                 Arrays.asList(
                         sectionBuilder(locations.get(0), locations.get(1), 9, 4, mountainGroups.get(10)),
                         sectionBuilder(locations.get(0), locations.get(2), 12, 6, mountainGroups.get(10)),

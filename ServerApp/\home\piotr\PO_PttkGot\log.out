@@ -2,3 +2,94 @@ Application start
 Application start
 0
 0
+0
+0
+mountainGroup=1
+locationOne=24
+locationTwo=18
+distance=20
+pointsAltitude=14
+pointsDistance=10
+added section = id=null, location 1 Barcic location two Wielki Rogacz mountain id=1, name=T.01, mountain range=id=1, name=TATRY I PODTATRZE
+mountainGroup=2
+locationOne=24
+locationTwo=18
+distance=20
+pointsAltitude=15
+pointsDistance=18
+added section = id=null, location 1 Barcic location two Wielki Rogacz mountain id=2, name=T.02, mountain range=id=1, name=TATRY I PODTATRZE
+could not execute statement; SQL [n/a]; constraint [PRIMARY]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+mountainGroup=1
+locationOne=24
+locationTwo=18
+distance=20
+pointsAltitude=14
+pointsDistance=10
+added section = id=null, location 1 Barcic location two Wielki Rogacz mountain id=1, name=T.01, mountain range=id=1, name=TATRY I PODTATRZE
+mountainGroup=2
+locationOne=24
+locationTwo=18
+distance=20
+pointsAltitude=15
+pointsDistance=18
+added section = id=null, location 1 Barcic location two Wielki Rogacz mountain id=2, name=T.02, mountain range=id=1, name=TATRY I PODTATRZE
+could not execute statement; SQL [n/a]; constraint [PRIMARY]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+mountainGroup=1
+locationOne=24
+locationTwo=18
+distance=20
+pointsAltitude=10
+pointsDistance=15
+added section = id=null, location 1 Barcic location two Wielki Rogacz mountain id=1, name=T.01, mountain range=id=1, name=TATRY I PODTATRZE
+mountainGroup=1
+locationOne=24
+locationTwo=18
+distance=20
+pointsAltitude=10
+pointsDistance=15
+added section = id=null, location 1 Barcic location two Wielki Rogacz mountain id=1, name=T.01, mountain range=id=1, name=TATRY I PODTATRZE
+mountainGroup=1
+locationOne=24
+locationTwo=18
+distance=20
+pointsAltitude=10
+pointsDistance=15
+added section = id=null, location 1 Barcic location two Wielki Rogacz mountain id=1, name=T.01, mountain range=id=1, name=TATRY I PODTATRZE
+could not execute statement; SQL [n/a]; constraint [PRIMARY]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+mountainGroup=1
+locationOne=24
+locationTwo=18
+distance=4000
+pointsAltitude=7
+pointsDistance=20
+added section = id=null, location 1 Barcic location two Wielki Rogacz mountain id=1, name=T.01, mountain range=id=1, name=TATRY I PODTATRZE
+could not execute statement; SQL [n/a]; constraint [PRIMARY]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+mountainGroup=1
+locationOne=24
+locationTwo=18
+distance=4000
+pointsAltitude=7
+pointsDistance=20
+added section = id=null, location 1 Barcic location two Wielki Rogacz mountain id=1, name=T.01, mountain range=id=1, name=TATRY I PODTATRZE
+could not execute statement; SQL [n/a]; constraint [PRIMARY]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+mountainGroup=1
+locationOne=24
+locationTwo=18
+distance=20
+pointsAltitude=10
+pointsDistance=15
+added section = id=null, location 1 Barcic location two Wielki Rogacz mountain id=1, name=T.01, mountain range=id=1, name=TATRY I PODTATRZE
+mountainGroup=1
+locationOne=24
+locationTwo=18
+distance=4000
+pointsAltitude=7
+pointsDistance=20
+added section = id=null, location 1 Barcic location two Wielki Rogacz mountain id=1, name=T.01, mountain range=id=1, name=TATRY I PODTATRZE
+could not execute statement; SQL [n/a]; constraint [PRIMARY]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+mountainGroup=null
+locationOne=4
+locationTwo=5
+distance=null
+pointsAltitude=1
+pointsDistance=1
