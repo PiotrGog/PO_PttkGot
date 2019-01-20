@@ -22,16 +22,17 @@
             mountainGroupsSelector.find('option')
                 .remove()
                 .end();
-
+            // console.log();
             var option = new Option("", "", true, true);
             mountainGroupsSelector.append(option);
-
+            console.log(data.length);
+            console.log(data);
+            console.log(mountainRangesSelector.val());
             length = data.length;
             for (i = 0; i < length; i++) {
-                console.log(data[i].mountainRange.id);
-                console.log(mountainRangesSelector.val());
+                // console.log(data[i].mountainRange.id);
+                // console.log(mountainRangesSelector.val());
                 if (data[i].mountainRange.id == mountainRangesSelector.val()) {
-                    console.log("aaaadddd");
                     option = new Option(data[i].name, data[i].id, false, false);
                     mountainGroupsSelector.append(option);
                 }
@@ -156,14 +157,14 @@
                 <select class="select_section_param" id="mountainRangesSelectList" name="mountainRange"
                         onchange="changeMountainRangesListener();">
                     <option th:each="mr : ${mountainRanges}"
-                            th:value="${mr}"
+                            th:value="${mr.getId()}"
                             th:text="${mr.getName()}"
                             th:selected="${mr.getId()==section.getMountainGroup().getMountainRange().getId()}"></option>
                 </select>
             </td>
         </tr>
         <tr>
-            <td class="align_right">Grupa górskie:</td>
+            <td class="align_right">Grupa górska:</td>
             <td>
                 <select class="select_section_param" name="mountainGroup" id="mountainGroupsSelectList">
                     <th:block th:each="mg : ${mountainGroups}">

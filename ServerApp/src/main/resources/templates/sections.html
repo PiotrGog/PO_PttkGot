@@ -24,7 +24,6 @@
                 });
 
 
-
                 $("#dialog-message").html("Czy usunąć wszystie zaznaczone odcinki?");
                 var dialog = $("#dialog-message").dialog({
                     autoOpen: false,
@@ -57,6 +56,16 @@
                         console.log(data[i]);
                         $('table#sections_table tr#' + data[i]).remove();
                     }
+                    $("#dialog-message").html("Wskazane odcinki zostały usunięte");
+                    var dialog = $("#dialog-message").dialog({
+                        autoOpen: false,
+                        buttons: {
+                            "ok": function () {
+                                $(this).dialog("close");
+                            }
+                        }
+                    });
+                    dialog.dialog("open");
                 }
             });
         }
@@ -71,7 +80,7 @@
                 buttons: {
                     "ok": function () {
                         $(this).dialog("close");
-                        window.location.href=url;
+                        window.location.href = url;
                     },
                     "cancel": function () {
                         $(this).dialog("close");
