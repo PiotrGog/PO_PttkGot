@@ -296,10 +296,11 @@ public class SectionService {
                         locationBuilder("Niemcowa", 1001),  //26
                         locationBuilder("Młodowa"),                 //27
                         locationBuilder("Piwniczna Zdrój"),         //28
-                        locationBuilder("Kosarzysk")                //29
+                        locationBuilder("Kosarzysk"),               //29
+                        locationBuilder("Przełęczy Obidza (Gromadzka)", 931) //30
                 ));
 
-                List<Section> sections = new ArrayList<>(
+        List<Section> sections = new ArrayList<>(
                 Arrays.asList(
                         sectionBuilder(locations.get(0), locations.get(1), 9, 4, mountainGroups.get(10)),
                         sectionBuilder(locations.get(0), locations.get(2), 12, 6, mountainGroups.get(10)),
@@ -331,14 +332,16 @@ public class SectionService {
                         sectionBuilder(locations.get(18), locations.get(25), 15, 8, mountainGroups.get(10)),
                         sectionBuilder(locations.get(18), locations.get(19), 16, 9, mountainGroups.get(10)),
                         sectionBuilder(locations.get(18), locations.get(14), 4, 5, mountainGroups.get(10)),
-
                         sectionBuilder(locations.get(26), locations.get(16), 13, 6, mountainGroups.get(10)),
                         sectionBuilder(locations.get(26), locations.get(27), 11, 5, mountainGroups.get(10)),
                         sectionBuilder(locations.get(26), locations.get(28), 12, 5, mountainGroups.get(10)),
-                        sectionBuilder(locations.get(26), locations.get(29), 9, 3, mountainGroups.get(10))
+                        sectionBuilder(locations.get(26), locations.get(29), 9, 3, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(17), locations.get(21), 14, 6, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(17), locations.get(30), 4, 2, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(17), locations.get(26), 5, 3, mountainGroups.get(10))
 
 
-                        ));
+                ));
 
         mountainRangeRepository_.saveAll(mountainRanges);
         mountainGroupRepository_.saveAll(mountainGroups);

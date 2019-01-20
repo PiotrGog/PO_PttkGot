@@ -133,8 +133,12 @@ public class RouteService {
         int graphPathIndex = 1;
         for (GraphPath<Integer, CustomWeightedEdge> route : routes) {
             List<CustomWeightedEdge> graphsEdges = route.getEdgeList();
-            if (!(2 <= graphsEdges.size()
-                    && !graphsEdges.get(0).getSection().getId().equals(graphsEdges.get(1).getSection().getId()))) {
+//            if (!(2 <= graphsEdges.size()
+//                    && !graphsEdges.get(0).getSection().getId().equals(graphsEdges.get(1).getSection().getId()))) {
+//                continue;
+//            }
+            if(0 == graphsEdges.size())
+            {
                 continue;
             }
             GraphPathDecorator newPath = new GraphPathDecorator();
