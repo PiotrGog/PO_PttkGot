@@ -5,7 +5,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="../static/css/style.css" th:href="@{/css/style.css}" type="text/css" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/additional-methods.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script>
         /*<![CDATA[*/
         $(document).ready(function () {
@@ -19,24 +23,43 @@
                     sectionsToDelete.push($(this).val());
                 });
 
-                var posting = $.post({
-                    url: url,
-                    data: JSON.stringify(sectionsToDelete),
-                    contentType: 'application/json; charset=utf-8',
-                    dataType: 'json',
-                    success: function (data, status, jq) {
-                        console.log("success");
-                        for (var i = 0; i < data.length; i++) {
-                            console.log(data[i]);
-                            $('table#sections_table tr#' + data[i]).remove();
+
+
+                $("#dialog-message").html("Czy usunąć wszystie zaznaczone odcinki?");
+                var dialog = $("#dialog-message").dialog({
+                    autoOpen: false,
+                    buttons: {
+                        "ok": function () {
+                            $(this).dialog("close");
+                            accept_deletion(sectionsToDelete, url);
+                        },
+                        "cancel": function () {
+                            $(this).dialog("close");
                         }
                     }
                 });
-
+                dialog.dialog("open");
 
                 console.log("submit form");
             });
         });
+
+        function accept_deletion(sectionsToDelete, url) {
+
+            var posting = $.post({
+                url: url,
+                data: JSON.stringify(sectionsToDelete),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (data, status, jq) {
+                    console.log("success");
+                    for (var i = 0; i < data.length; i++) {
+                        console.log(data[i]);
+                        $('table#sections_table tr#' + data[i]).remove();
+                    }
+                }
+            });
+        }
 
 
         var are_checked = false;
@@ -57,6 +80,10 @@
 
 </head>
 <body>
+<div id="dialog-message" title="Ostrzeżenie">
+
+</div>
+
 <p class="header">
     <img class="header" src="../static/images/pttk_logo.jpg"
          th:src="@{/images/pttk_logo.jpg}" width="100" alt="Logo Pttk">
