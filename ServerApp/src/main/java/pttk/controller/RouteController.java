@@ -108,9 +108,11 @@ public class RouteController {
 
         tmpPaths = paths;
         paths = new ArrayList<>();
+        int index = 1;
         for (int i = 0; i < tmpPaths.size(); i++) {
             if (tmpPaths.get(i).getSecond().hasLocations(localizationsList)) {
-                paths.add(tmpPaths.get(i));
+                paths.add(Pair.of(index, tmpPaths.get(i).getSecond()));
+                index++;
             }
         }
 
