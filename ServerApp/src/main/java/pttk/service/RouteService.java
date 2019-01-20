@@ -98,7 +98,7 @@ public class RouteService {
                     && (null == mountainRange || s.getMountainGroup().getMountainRange().getId().equals(mountainRange))) {
                 CustomWeightedEdge edge = graph.addEdge(s.getLocationOne().getId(), s.getLocationTwo().getId());
                 edge.setSection(s);
-                graph.setEdgeWeight(edge, s.getDistance().doubleValue());
+                graph.setEdgeWeight(edge, null==s.getDistance()?0:s.getDistance().doubleValue());
             }
         }
 

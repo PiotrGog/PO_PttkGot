@@ -267,20 +267,70 @@ public class SectionService {
 
         List<Location> locations = new ArrayList<>(
                 Arrays.asList(
-                        locationBuilder("Jaworzynka", 936),
-                        locationBuilder("Tylmanowa Rzeka"),
-                        locationBuilder("Zabrzeż"),
-                        locationBuilder("Łącka"),
-                        locationBuilder("Jazowsko")
-                )
-        );
+                        locationBuilder("Jaworzynka", 936), //0
+                        locationBuilder("Tylmanowa Rzeka"),         //1
+                        locationBuilder("Zabrzeż"),                 //2
+                        locationBuilder("Łącka"),                   //3
+                        locationBuilder("Jazowsko"),                //4
+                        locationBuilder("Dzwonkówka", 983), //5
+                        locationBuilder("Krościenko nad Dunajcem"), //6
+                        locationBuilder("Schronisko na Bereśniku", 843), //7
+                        locationBuilder("Przysłopy", 944),  //8
+                        locationBuilder("Łosie"),                   //9
+                        locationBuilder("Bukowinka"),               //10
+                        locationBuilder("Dolina Czarnego Potoku"),  //11
+                        locationBuilder("Słotwina"),                //12
+                        locationBuilder("Przełęcz Krzyżowa"),        //13
+                        locationBuilder("Radziejów", 1266), //14
+                        locationBuilder("Polana Konieczna"),        //15
+                        locationBuilder("Rytra"),                   //16
+                        locationBuilder("Wielki Rogacz"),            //17
+                        locationBuilder("Schronisko PTTK Prehyba", 1175), //18
+                        locationBuilder("Szczawnica (PKS)"),         //19
+                        locationBuilder("Gabonia (PKS)"),           //20
+                        locationBuilder("Jaworek"),                 //21
+                        locationBuilder("Stary Sącza"),             //22
+                        locationBuilder("Barcic"),                  //23
+                        locationBuilder("Szlachtowa"),             //24
+                        locationBuilder("Szczawnica Zdrój")        //25
+                ));
 
 
         List<Section> sections = new ArrayList<>(
                 Arrays.asList(
-                        sectionBuilder(locations.get(0), locations.get(1), 9, 4, mountainGroups.get(10))
-                )
-        );
+                        sectionBuilder(locations.get(0), locations.get(1), 9, 4, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(0), locations.get(2), 12, 6, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(0), locations.get(3), 13, 7, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(0), locations.get(4), 14, 8, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(5), locations.get(6), 11, 6, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(5), locations.get(0), 6, 6, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(5), locations.get(4), 15, 9, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(5), locations.get(7), 5, 3, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(8), locations.get(9), 9, 6, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(8), locations.get(0), 2, 1, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(8), locations.get(10), 2, 1, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(8), locations.get(11), 5, 3, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(10), locations.get(0), 2, 3, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(10), locations.get(12), 3, 3, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(10), locations.get(13), 5, 2, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(14), locations.get(15), 4, 3, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(14), locations.get(16), 17, 9, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(14), locations.get(17), 2, 1, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(18), locations.get(5), 9, 7, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(18), locations.get(16), 18, 10, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(18), locations.get(4), 17, 9, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(18), locations.get(20), 14, 7, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(18), locations.get(21), 14, 7, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(18), locations.get(22), 21, 12, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(18), locations.get(23), 19, 11, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(18), locations.get(15), 4, 3, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(18), locations.get(24), 15, 8, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(18), locations.get(25), 15, 8, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(18), locations.get(19), 16, 9, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(18), locations.get(14), 4, 5, mountainGroups.get(10))
+
+
+                        ));
 
         mountainRangeRepository_.saveAll(mountainRanges);
         mountainGroupRepository_.saveAll(mountainGroups);

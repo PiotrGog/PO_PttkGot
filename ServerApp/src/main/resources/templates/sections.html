@@ -84,8 +84,8 @@
                        type="checkbox" title=""
                        th:value="${section.getId()}">
             </td>
-            <td th:text="${section.mountainGroup.getName()}"></td>
             <td th:text="${section.mountainGroup.getMountainRange().getName()}"></td>
+            <td th:text="${section.mountainGroup.getName()}"></td>
             <td th:text="${section.getLocationOne().getName()}"></td>
             <td th:text="${section.getLocationTwo().getName()}"></td>
             <td class="number" th:text="${section.getPointsAltitude() + '/' + section.getPointsDistance()}"></td>
