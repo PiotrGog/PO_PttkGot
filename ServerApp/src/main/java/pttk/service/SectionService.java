@@ -297,7 +297,12 @@ public class SectionService {
                         locationBuilder("Młodowa"),                 //27
                         locationBuilder("Piwniczna Zdrój"),         //28
                         locationBuilder("Kosarzysk"),               //29
-                        locationBuilder("Przełęczy Obidza (Gromadzka)", 931) //30
+                        locationBuilder("Przełęczy Obidza (Gromadzka)", 931), //30
+
+                        locationBuilder("Buczyna"), //31
+                        locationBuilder("Rączki"), //32
+                        locationBuilder("Dobromierz"), //33
+                        locationBuilder("Kozłowa", 337) //34
                 ));
 
         List<Section> sections = new ArrayList<>(
