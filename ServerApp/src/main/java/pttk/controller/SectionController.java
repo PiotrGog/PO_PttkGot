@@ -107,7 +107,7 @@ public class SectionController {
      *
      * @param id                edited section id
      * @param newSectionReceive new data for edited section
-     * @return ResponseEntity<List                               <                               Integer>>
+     * @return ResponseEntity&lt;List&lt;Integer&gt;&gt;
      * if section is created HttpStatus is Created
      * if section has not been created HttpStatus is FAILED_DEPENDENCY and data list contains error numbers:
      * 1 - Location One and Location Two are the same
@@ -196,7 +196,7 @@ public class SectionController {
      * Response method to add new section operation.
      *
      * @param newSectionReceive NewSectionWrapper which holds all required data to create new seciton.
-     * @return ResponseEntity<List               <               Integer>>                                                             <                                                               Integer>>
+     * @return ResponseEntity&lt;List&lt;Integer&gt;&gt;
      * if section is created HttpStatus is Created
      * if section has not been created HttpStatus is FAILED_DEPENDENCY and data list contains error numbers:
      * 1 - Location One and Location Two are the same

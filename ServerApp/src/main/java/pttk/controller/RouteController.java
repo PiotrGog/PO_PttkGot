@@ -19,6 +19,10 @@ import pttk.service.RouteService;
 import java.util.*;
 import java.util.function.BiFunction;
 
+
+/**
+ * Route Spring MVC controller performing automatic route planning with given criteria.
+ */
 @Controller
 @RequestMapping("/route")
 public class RouteController {
@@ -29,6 +33,11 @@ public class RouteController {
 
     private List<Integer> localizationsList = null;
 
+    /**
+     * Callback function to generate view with found paths.
+     * @param model model for paths
+     * @return view with paths list
+     */
     @RequestMapping(value = "/find", method = RequestMethod.GET)
     public String findRoute(Model model) {
         model.addAttribute("routes", paths);

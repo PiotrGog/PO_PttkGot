@@ -125,7 +125,7 @@ public class RouteService {
     /**
      * Pack GraphPack with CustomWeightedEdge into GraphPackDecorator
      * @param routes list of GraphPaths with CustomWeightedEdge
-     * @return List<Pair<Integer, GraphPathDecorator>> where GraphPathDecorator is class which packs GraphPaths from routes parameter
+     * @return List&lt;Pair&lt;Integer, GraphPathDecorator&gt;&gt; where GraphPathDecorator is class which packs GraphPaths from routes parameter
      */
     public List<Pair<Integer, GraphPathDecorator>> graphPathDecorate(List<GraphPath<Integer, CustomWeightedEdge>> routes)
     {
