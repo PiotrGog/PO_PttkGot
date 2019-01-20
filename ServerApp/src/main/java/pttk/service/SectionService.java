@@ -292,7 +292,11 @@ public class SectionService {
                         locationBuilder("Stary Sącza"),             //22
                         locationBuilder("Barcic"),                  //23
                         locationBuilder("Szlachtowa"),             //24
-                        locationBuilder("Szczawnica Zdrój")        //25
+                        locationBuilder("Szczawnica Zdrój"),       //25
+                        locationBuilder("Niemcowa", 1001),  //26
+                        locationBuilder("Młodowa"),                 //27
+                        locationBuilder("Piwniczna Zdrój"),         //28
+                        locationBuilder("Kosarzysk")                //29
                 ));
 
                 List<Section> sections = new ArrayList<>(
@@ -326,7 +330,12 @@ public class SectionService {
                         sectionBuilder(locations.get(18), locations.get(24), 15, 8, mountainGroups.get(10)),
                         sectionBuilder(locations.get(18), locations.get(25), 15, 8, mountainGroups.get(10)),
                         sectionBuilder(locations.get(18), locations.get(19), 16, 9, mountainGroups.get(10)),
-                        sectionBuilder(locations.get(18), locations.get(14), 4, 5, mountainGroups.get(10))
+                        sectionBuilder(locations.get(18), locations.get(14), 4, 5, mountainGroups.get(10)),
+
+                        sectionBuilder(locations.get(26), locations.get(16), 13, 6, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(26), locations.get(27), 11, 5, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(26), locations.get(28), 12, 5, mountainGroups.get(10)),
+                        sectionBuilder(locations.get(26), locations.get(29), 9, 3, mountainGroups.get(10))
 
 
                         ));

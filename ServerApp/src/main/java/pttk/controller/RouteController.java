@@ -78,7 +78,7 @@ public class RouteController {
         }
 
         Set<Integer> finishLocations = null;
-        if (null == locationStart) {
+        if (null == locationFinish) {
             finishLocations = graph.vertexSet();
         } else {
             finishLocations = new HashSet<>(Collections.singletonList(locationFinish));
