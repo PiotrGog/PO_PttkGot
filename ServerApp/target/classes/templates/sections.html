@@ -61,6 +61,27 @@
             });
         }
 
+        function warningRemoveSection(url, loc1, loc2) {
+            console.log(url);
+            console.log(loc1);
+            console.log(loc2);
+            $("#dialog-message").html("Czy usunąć odcinek z " + loc1 + " do " + loc2 + "?");
+            var dialog = $("#dialog-message").dialog({
+                autoOpen: false,
+                buttons: {
+                    "ok": function () {
+                        $(this).dialog("close");
+                        window.location.href=url;//accept_deletion(sectionsToDelete, url);
+                    },
+                    "cancel": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+            dialog.dialog("open");
+
+        }
+
 
         var are_checked = false;
 
@@ -119,7 +140,8 @@
             <td>
                 <a th:href="@{/sections/details/} + ${section.getId()}" class="table_button">Wyświetl</a>
                 <a th:href="@{/sections/edit/} + ${section.getId()}" class="table_button">Edytuj</a>
-                <a th:href="@{/sections/remove/} + ${section.getId()}">
+                <a href="#" th:onclick="|warningRemoveSection('@{/sections/remove/}${section.getId()}',
+                                            '${section.getLocationOne().getName()}', '${section.getLocationTwo().getName()}')|">
                     <img src="../static/images/remove_symbol.jpg"
                          th:src="@{/images/remove_symbol.jpg}" width=20 alt="Remove symbol">
                 </a>
