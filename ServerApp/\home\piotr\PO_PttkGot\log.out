@@ -1,9 +1,25 @@
-Application start
-Application start
-mountainGroup=3
-locationOne=13
-locationTwo=6
-distance=200013
-pointsAltitude=15
-pointsDistance=9
-edited section = id=6, location 1 Słotwina location two Dzwonkówka mountain id=3, name=T.03, mountain range=id=1, name=TATRY I PODTATRZE
+mountainGroup=null
+locationOne=1
+locationTwo=1
+distance=null
+pointsAltitude=1
+pointsDistance=1
+mountainGroup=1
+locationOne=1
+locationTwo=2
+distance=1
+pointsAltitude=1
+pointsDistance=1
+added section = id=null, location 1 null location two null mountain id=null, name=null, mountain range=null
+mountainGroup=1
+locationOne=1
+locationTwo=1
+distance=1
+pointsAltitude=1
+pointsDistance=1
+mountainGroup=1
+locationOne=1
+locationTwo=1
+distance=null
+pointsAltitude=1
+pointsDistance=1

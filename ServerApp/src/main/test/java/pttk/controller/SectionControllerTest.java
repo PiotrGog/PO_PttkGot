@@ -35,7 +35,7 @@ public class SectionControllerTest {
     private SectionController sectionController;
 
     @Test
-    public void addSection_When_LocationOneIsEqualLocationTwo_Expect_StatusIsFAILED_DEPENDENCYAndHasErrorNumber1() {
+    public void addSection_When_LocationOneIsEqualLocationTwo_Expect_StatusIsBAD_REQUESTAndHasErrorNumber1() {
         HttpStatus expectedStatus = HttpStatus.BAD_REQUEST;
         Integer expectedHasErrorNum = 1;
 
@@ -47,9 +47,9 @@ public class SectionControllerTest {
     }
 
     @Test
-    public void addSection_When_DistanceIsNotDefined_Expect_StatusIsFAILED_DEPENDENCYAndHasErrorNumber2() {
+    public void addSection_When_DistanceIsNotDefined_Expect_StatusIsBAD_REQUESTAndHasErrorNumber2() {
         HttpStatus expectedStatus = HttpStatus.BAD_REQUEST;
-        Integer expectedHasErrorNum = 2;
+        Integer expectedHasErrorNum = 1;
 
         ResponseEntity<List<Integer>> result = sectionController.addSection(
                 new NewSectionWrapper(1, 1, 1, null, 1, 1));
@@ -59,7 +59,7 @@ public class SectionControllerTest {
     }
 
     @Test
-    public void addSection_When_MountainGroupIsNotDefined_Expect_StatusIsFAILED_DEPENDENCYAndHasErrorNumber3() {
+    public void addSection_When_MountainGroupIsNotDefined_Expect_StatusIsBAD_REQUESTAndHasErrorNumber3() {
         HttpStatus expectedStatus = HttpStatus.BAD_REQUEST;
         Integer expectedHasErrorNum = 3;
 
@@ -86,6 +86,4 @@ public class SectionControllerTest {
         assertEquals(expectedStatus, result.getStatusCode());
         assertThat(result.getBody(), is(empty()));
     }
-
-
 }
